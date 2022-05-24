@@ -6,6 +6,11 @@ target 'InStore' do
   use_frameworks!
 
   # Pods for InStore
+  pod 'Alamofire', '~> 4.9.1'
+  pod 'Kingfisher', '~> 5.0'
+  pod 'lottie-ios'
+  pod 'Toaster'
+  pod 'Cosmos'
 
   target 'InStoreTests' do
     inherit! :search_paths
