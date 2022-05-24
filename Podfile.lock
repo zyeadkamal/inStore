@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.9.1)
+  - Cosmos (23.0.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - lottie-ios (3.3.0)
+  - Toaster (2.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.9.1)
+  - Cosmos
+  - Kingfisher (~> 5.0)
+  - lottie-ios
+  - Toaster
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Cosmos
+    - Kingfisher
+    - lottie-ios
+    - Toaster
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+
+PODFILE CHECKSUM: a6af3c6c61e7888b3a4a53806afd9ce6b128f2bf
+
+COCOAPODS: 1.8.4
