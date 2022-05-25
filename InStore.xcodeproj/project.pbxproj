@@ -27,6 +27,11 @@
 		59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2065D283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift */; };
 		59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */; };
 		944397F4C9AD8E18D82E8C5B /* Pods_InStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */; };
+		B656DFC4283EF10D0043FCF7 /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC3283EF10D0043FCF7 /* ConfirmOrderViewController.swift */; };
+		B656DFC6283EF1290043FCF7 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC5283EF1290043FCF7 /* CardViewController.swift */; };
+		B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */; };
+		B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCB283EF1C20043FCF7 /* Card.storyboard */; };
+		B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,11 @@
 		59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		695AE2BF82C757218FF03BA1 /* Pods-InStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B656DFC3283EF10D0043FCF7 /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
+		B656DFC5283EF1290043FCF7 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		B656DFCB283EF1C20043FCF7 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
+		B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm_order_anim.json; sourceTree = "<group>"; };
 		FB4234B27298C048DF342585 /* Pods-InStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.release.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +175,8 @@
 		048B3F66283CD28100CEF8D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B656DFC2283EF0E30043FCF7 /* ConfirmOrder */,
+				B656DFC1283EF0CA0043FCF7 /* Cart */,
 				59F20649283E6C2500E12D88 /* HomeScreen */,
 				59F20644283E6A9D00E12D88 /* SplashScreen */,
 				044E7F18283DE5F60078CA50 /* UserAuthentication */,
@@ -222,6 +234,7 @@
 		048B3F6F283CD88600CEF8D0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B656DFCE283EF38B0043FCF7 /* Animation */,
 				59F20655283E735D00E12D88 /* Extentions */,
 			);
 			path = Utilities;
@@ -316,6 +329,40 @@
 			path = Xibs;
 			sourceTree = "<group>";
 		};
+		B656DFC1283EF0CA0043FCF7 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				B656DFCD283EF1D70043FCF7 /* CardScreen */,
+				B656DFCB283EF1C20043FCF7 /* Card.storyboard */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		B656DFC2283EF0E30043FCF7 /* ConfirmOrder */ = {
+			isa = PBXGroup;
+			children = (
+				B656DFC3283EF10D0043FCF7 /* ConfirmOrderViewController.swift */,
+			);
+			path = ConfirmOrder;
+			sourceTree = "<group>";
+		};
+		B656DFCD283EF1D70043FCF7 /* CardScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B656DFC5283EF1290043FCF7 /* CardViewController.swift */,
+				B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */,
+			);
+			path = CardScreen;
+			sourceTree = "<group>";
+		};
+		B656DFCE283EF38B0043FCF7 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -400,6 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */,
+				B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */,
 				048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */,
 				59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */,
 				048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */,
@@ -492,10 +541,13 @@
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
+				B656DFC6283EF1290043FCF7 /* CardViewController.swift in Sources */,
 				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
+				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
+				B656DFC4283EF10D0043FCF7 /* ConfirmOrderViewController.swift in Sources */,
 				59F20659283E798E00E12D88 /* OnboardingSlide.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
 			);
