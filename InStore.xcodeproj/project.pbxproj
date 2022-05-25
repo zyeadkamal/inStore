@@ -17,6 +17,15 @@
 		048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B3F4F283CD23C00CEF8D0 /* LaunchScreen.storyboard */; };
 		048B3F5C283CD23C00CEF8D0 /* InStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
+		59F20646283E6ACA00E12D88 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F20645283E6ACA00E12D88 /* SplashScreen.storyboard */; };
+		59F2064B283E6C3C00E12D88 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F2064A283E6C3C00E12D88 /* HomeScreen.storyboard */; };
+		59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2064D283E6CD000E12D88 /* SplashScreenViewController.swift */; };
+		59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2064F283E6EA700E12D88 /* OnBoardingViewController.swift */; };
+		59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F20651283E6EEA00E12D88 /* GetStartedViewController.swift */; };
+		59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F20656283E73BB00E12D88 /* UIView+Extention.swift */; };
+		59F20659283E798E00E12D88 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F20658283E798E00E12D88 /* OnboardingSlide.swift */; };
+		59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2065D283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift */; };
+		59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */; };
 		944397F4C9AD8E18D82E8C5B /* Pods_InStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +56,15 @@
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		59F20645283E6ACA00E12D88 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		59F2064A283E6C3C00E12D88 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
+		59F2064D283E6CD000E12D88 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		59F2064F283E6EA700E12D88 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		59F20651283E6EEA00E12D88 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		59F20656283E73BB00E12D88 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
+		59F20658283E798E00E12D88 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingSlide.swift; path = InStore/Utilities/Extentions/OnboardingSlide.swift; sourceTree = SOURCE_ROOT; };
+		59F2065D283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		695AE2BF82C757218FF03BA1 /* Pods-InStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB4234B27298C048DF342585 /* Pods-InStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.release.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +165,8 @@
 		048B3F66283CD28100CEF8D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59F20649283E6C2500E12D88 /* HomeScreen */,
+				59F20644283E6A9D00E12D88 /* SplashScreen */,
 				044E7F18283DE5F60078CA50 /* UserAuthentication */,
 			);
 			path = View;
@@ -162,6 +182,7 @@
 		048B3F68283CD29400CEF8D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59F20658283E798E00E12D88 /* OnboardingSlide.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +222,7 @@
 		048B3F6F283CD88600CEF8D0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				59F20655283E735D00E12D88 /* Extentions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -223,6 +245,75 @@
 				1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		59F20644283E6A9D00E12D88 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				59F20648283E6ADE00E12D88 /* OnBoarding */,
+				59F20647283E6ACF00E12D88 /* SplashScreen */,
+				59F20645283E6ACA00E12D88 /* SplashScreen.storyboard */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		59F20647283E6ACF00E12D88 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				59F2064D283E6CD000E12D88 /* SplashScreenViewController.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		59F20648283E6ADE00E12D88 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				59F2065A283E7C1800E12D88 /* Xibs */,
+				59F20653283E6EF300E12D88 /* OnBoardingView */,
+				59F20654283E6F0600E12D88 /* GetStartedView */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		59F20649283E6C2500E12D88 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				59F2064A283E6C3C00E12D88 /* HomeScreen.storyboard */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		59F20653283E6EF300E12D88 /* OnBoardingView */ = {
+			isa = PBXGroup;
+			children = (
+				59F2064F283E6EA700E12D88 /* OnBoardingViewController.swift */,
+			);
+			path = OnBoardingView;
+			sourceTree = "<group>";
+		};
+		59F20654283E6F0600E12D88 /* GetStartedView */ = {
+			isa = PBXGroup;
+			children = (
+				59F20651283E6EEA00E12D88 /* GetStartedViewController.swift */,
+			);
+			path = GetStartedView;
+			sourceTree = "<group>";
+		};
+		59F20655283E735D00E12D88 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				59F20656283E73BB00E12D88 /* UIView+Extention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		59F2065A283E7C1800E12D88 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				59F2065D283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift */,
+				59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */,
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +401,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */,
+				59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */,
 				048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */,
 				048B3F49283CD23A00CEF8D0 /* Main.storyboard in Resources */,
+				59F2064B283E6C3C00E12D88 /* HomeScreen.storyboard in Resources */,
+				59F20646283E6ACA00E12D88 /* SplashScreen.storyboard in Resources */,
 				044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +491,12 @@
 				048B3F4C283CD23A00CEF8D0 /* InStore.xcdatamodeld in Sources */,
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
+				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
+				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
+				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
+				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
+				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
+				59F20659283E798E00E12D88 /* OnboardingSlide.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
