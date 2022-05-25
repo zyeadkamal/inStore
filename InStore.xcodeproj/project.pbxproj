@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */; };
 		048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */; };
 		048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */; };
 		048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */; };
@@ -30,10 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
 		048B3F3E283CD23A00CEF8D0 /* InStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/View/UserAuthentication/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		048B3F48283CD23A00CEF8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		048B3F4B283CD23A00CEF8D0 /* InStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InStore.xcdatamodel; sourceTree = "<group>"; };
 		048B3F4D283CD23C00CEF8D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +72,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044E7F18283DE5F60078CA50 /* UserAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */,
+				044E7F1C283DE6540078CA50 /* Register */,
+				044E7F1B283DE64A0078CA50 /* Login */,
+			);
+			path = UserAuthentication;
+			sourceTree = "<group>";
+		};
+		044E7F1B283DE64A0078CA50 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		044E7F1C283DE6540078CA50 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		048B3F35283CD23A00CEF8D0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +147,7 @@
 		048B3F66283CD28100CEF8D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
+				044E7F18283DE5F60078CA50 /* UserAuthentication */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,7 +222,6 @@
 				695AE2BF82C757218FF03BA1 /* Pods-InStoreTests.debug.xcconfig */,
 				1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -286,6 +312,7 @@
 				048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */,
 				048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */,
 				048B3F49283CD23A00CEF8D0 /* Main.storyboard in Resources */,
+				044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
