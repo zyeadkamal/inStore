@@ -10,9 +10,13 @@ import UIKit
 
 class GetStartedViewController: UIViewController {
 
+    var brand : Brand?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(brand?.name)
+    
         // Do any additional setup after loading the view.
     }
     
