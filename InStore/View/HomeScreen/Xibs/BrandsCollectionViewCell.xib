@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BrandsCollectionViewCell" id="gTV-IL-0wX" customClass="BrandsCollectionViewCell" customModule="InStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="134" height="181"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="134" height="181"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wx6-s2-tQU">
+                        <rect key="frame" x="0.0" y="0.0" width="134" height="181"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Puma-logo" translatesAutoresizingMaskIntoConstraints="NO" id="R4N-dO-lBD">
+                                <rect key="frame" x="8" y="12" width="118" height="108.5"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhL-Lf-Q9v">
+                                <rect key="frame" x="41" y="139" width="53" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PhL-Lf-Q9v" firstAttribute="leading" secondItem="wx6-s2-tQU" secondAttribute="leading" constant="41" id="1s2-ap-18b"/>
+                            <constraint firstItem="PhL-Lf-Q9v" firstAttribute="top" secondItem="R4N-dO-lBD" secondAttribute="bottom" constant="18.5" id="2gG-Gp-SLf"/>
+                            <constraint firstItem="R4N-dO-lBD" firstAttribute="leading" secondItem="wx6-s2-tQU" secondAttribute="leading" constant="8" id="5sb-um-nrR"/>
+                            <constraint firstAttribute="bottom" secondItem="PhL-Lf-Q9v" secondAttribute="bottom" constant="26" id="7b3-SM-zNp"/>
+                            <constraint firstAttribute="trailing" secondItem="PhL-Lf-Q9v" secondAttribute="trailing" constant="40" id="Phz-Z4-wEy"/>
+                            <constraint firstItem="R4N-dO-lBD" firstAttribute="top" secondItem="wx6-s2-tQU" secondAttribute="top" constant="12" id="gKl-0L-M7K"/>
+                            <constraint firstItem="R4N-dO-lBD" firstAttribute="height" secondItem="wx6-s2-tQU" secondAttribute="height" multiplier="0.6" id="iCU-Cm-Lk3"/>
+                            <constraint firstAttribute="trailing" secondItem="R4N-dO-lBD" secondAttribute="trailing" constant="8" id="nx5-fG-oJj"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wx6-s2-tQU" secondAttribute="bottom" id="AWJ-gK-sXK"/>
+                <constraint firstAttribute="trailing" secondItem="wx6-s2-tQU" secondAttribute="trailing" id="Vq2-23-H24"/>
+                <constraint firstItem="wx6-s2-tQU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lQn-Es-RKk"/>
+                <constraint firstItem="wx6-s2-tQU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ve8-2J-pFH"/>
+            </constraints>
+            <size key="customSize" width="134" height="181"/>
+            <connections>
+                <outlet property="brandImage" destination="R4N-dO-lBD" id="VSE-uR-Mq0"/>
+                <outlet property="brandName" destination="PhL-Lf-Q9v" id="Ouy-o1-fBA"/>
+            </connections>
+            <point key="canvasLocation" x="197.10144927536234" y="140.29017857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Puma-logo" width="1024" height="600"/>
+        <namedColor name="black">
+            <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
