@@ -34,7 +34,11 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
+<<<<<<< HEAD
 					<string>UserAuthentication</string>
+=======
+					<string>Card</string>
+>>>>>>> 6cd3f0ac6032b4eb4f2c46cd2cfcbbfeeab94264
 				</dict>
 			</array>
 		</dict>
@@ -42,7 +46,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
+<<<<<<< HEAD
 	<string>UserAuthentication</string>
+=======
+	<string>Card</string>
+>>>>>>> 6cd3f0ac6032b4eb4f2c46cd2cfcbbfeeab94264
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
