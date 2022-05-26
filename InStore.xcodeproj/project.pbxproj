@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */; };
-		04610C88283ED66D00BE74C4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04610C87283ED66D00BE74C4 /* RegisterViewController.swift */; };
 		048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */; };
 		048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */; };
 		048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */; };
@@ -17,6 +16,8 @@
 		048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048B3F4D283CD23C00CEF8D0 /* Assets.xcassets */; };
 		048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B3F4F283CD23C00CEF8D0 /* LaunchScreen.storyboard */; };
 		048B3F5C283CD23C00CEF8D0 /* InStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */; };
+		04DF6869283EDD9F00B13493 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF6868283EDD9F00B13493 /* RegisterViewController.swift */; };
+		04E9D12C283EFC6B007E8AB1 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E9D12B283EFC6B007E8AB1 /* UITextField+Extension.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
 		59F20646283E6ACA00E12D88 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F20645283E6ACA00E12D88 /* SplashScreen.storyboard */; };
 		59F2064B283E6C3C00E12D88 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F2064A283E6C3C00E12D88 /* HomeScreen.storyboard */; };
@@ -42,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
-		04610C87283ED66D00BE74C4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ../../../../../../../../../Documents/RegisterViewController.swift; sourceTree = "<group>"; };
 		048B3F3E283CD23A00CEF8D0 /* InStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		048B3F57283CD23C00CEF8D0 /* InStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InStoreTests.swift; sourceTree = "<group>"; };
 		048B3F5D283CD23C00CEF8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DF6868283EDD9F00B13493 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		04E9D12B283EFC6B007E8AB1 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */,
-				044E7F1C283DE6540078CA50 /* Register */,
+				04DF6867283EDD7C00B13493 /* Register */,
 				044E7F1B283DE64A0078CA50 /* Login */,
 			);
 			path = UserAuthentication;
@@ -108,14 +110,6 @@
 				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		044E7F1C283DE6540078CA50 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				04610C87283ED66D00BE74C4 /* RegisterViewController.swift */,
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 		048B3F35283CD23A00CEF8D0 = {
@@ -230,6 +224,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		04DF6867283EDD7C00B13493 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				04DF6868283EDD9F00B13493 /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		20679023F968D1D6DC36F69E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				59F20656283E73BB00E12D88 /* UIView+Extention.swift */,
+				04E9D12B283EFC6B007E8AB1 /* UITextField+Extension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -492,7 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				048B3F4C283CD23A00CEF8D0 /* InStore.xcdatamodeld in Sources */,
-				04610C88283ED66D00BE74C4 /* RegisterViewController.swift in Sources */,
+				04DF6869283EDD9F00B13493 /* RegisterViewController.swift in Sources */,
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
@@ -500,6 +503,7 @@
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
+				04E9D12C283EFC6B007E8AB1 /* UITextField+Extension.swift in Sources */,
 				59F20659283E798E00E12D88 /* OnboardingSlide.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
 			);

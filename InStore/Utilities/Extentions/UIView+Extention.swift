@@ -8,13 +8,14 @@
 
 import UIKit
 extension UIView{
+    
     @IBInspectable var shadow: Bool {
         get {
             return layer.shadowOpacity > 0.0
         }
         set {
             if newValue == true {
-                self.addShadow()
+                self.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
             }
         }
     }
@@ -32,15 +33,19 @@ extension UIView{
         }
     }
     
-    func addShadow(shadowColor: CGColor = UIColor.white.cgColor,
-                   shadowOffset: CGSize = CGSize(width: 2.0, height: 2.0),
-                   shadowOpacity: Float = 0.5,
-                   shadowRadius: CGFloat = 10.0) {
-        layer.shadowColor = shadowColor
-        layer.shadowOffset = shadowOffset
-        layer.shadowOpacity = shadowOpacity
-        layer.shadowRadius = shadowRadius
+    
+    func addShadow(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
     }
+    
     @IBInspectable var borderWidth: CGFloat {
         set {
             self.layer.borderWidth = newValue
@@ -53,6 +58,7 @@ extension UIView{
             return self.layer.borderWidth
         }
     }
+    
     
     @IBInspectable var borderColor: UIColor? {
         set {
