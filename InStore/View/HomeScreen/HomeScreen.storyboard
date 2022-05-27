@@ -334,11 +334,22 @@ Fashion </string>
                     </tabBar>
                     <connections>
                         <segue destination="OzS-VS-oMp" kind="relationship" relationship="viewControllers" id="JBy-kb-zVk"/>
+                        <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3m-Ga-z7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="81.696428571428569"/>
+        </scene>
+        <!--MyAccountScreen-->
+        <scene sceneID="rQo-G0-N47">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MyAccountViewController" storyboardName="MyAccountScreen" id="bkP-aR-noO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MyAccount" image="person.crop.circle" catalog="system" id="mpB-Ct-Ibd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXv-dp-FF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="538" y="552"/>
         </scene>
         <!--Home-->
         <scene sceneID="tcW-wc-51n">
@@ -369,6 +380,7 @@ Fashion </string>
         <image name="kids" width="159" height="219"/>
         <image name="men" width="159" height="219"/>
         <image name="offers" width="159" height="230"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="vouchers" width="327" height="180"/>
         <image name="women" width="159" height="230"/>
         <namedColor name="PrimaryColor">
