@@ -1,24 +1,24 @@
 //
-//  ViewController.swift
+//  RegisterViewController.swift
 //  InStore
 //
-//  Created by mac on 5/24/22.
+//  Created by mac on 5/25/22.
 //  Copyright © 2022 mac. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    
+class RegisterViewController: UIViewController {
+
     @IBOutlet weak var superContentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-    }
 
+    }
+    
+
+   
 
 }
-
