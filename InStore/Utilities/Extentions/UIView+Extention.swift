@@ -15,7 +15,7 @@ extension UIView{
         }
         set {
             if newValue == true {
-                self.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
+                self.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.25)
             }
         }
     }
