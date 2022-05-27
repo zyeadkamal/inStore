@@ -10,7 +10,7 @@ target 'InStore' do
   pod 'Kingfisher', '~> 5.0'
   pod 'lottie-ios'
   pod 'Toaster'
-  pod 'Cosmos'
+  pod 'Cosmos', '~> 23.0'
 
 
   target 'InStoreTests' do
