@@ -37,15 +37,6 @@ class MyOrdersViewController: UIViewController {
 
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension MyOrdersViewController : UITableViewDataSource,UITableViewDelegate{
@@ -72,12 +63,12 @@ extension MyOrdersViewController : UITableViewDataSource,UITableViewDelegate{
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
+        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: OrderDetailsViewController.self)) as! OrderDetailsViewController
     
-       // viewController.brand = brands[indexPath.row]
+        viewController.order = orders[indexPath.row]
+        ordersTableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
     
 }
 

@@ -10,11 +10,22 @@ import UIKit
 
 class OrderDetailsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak private var productName: UILabel!
+    
+    @IBOutlet weak private var productPrice: UILabel!
+    
+    @IBOutlet weak private var productQty: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func setupCell(orderItem:OrderItem){
+        productName.text = String("\(orderItem.name ?? "")")
+        productPrice.text = String("\(orderItem.price ?? "")")
+        productQty.text = String("\(orderItem.quantity!)")
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

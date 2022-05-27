@@ -13,7 +13,7 @@ class MyAccountViewController: UIViewController {
     @IBOutlet weak var noOrdersImage: UIImageView!
     @IBOutlet weak var ordersTableView: UITableView!
     
-    let orders = [MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150")]
+    let orders = [MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150")]
     
 
     
@@ -84,10 +84,12 @@ extension MyAccountViewController : UITableViewDataSource,UITableViewDelegate{
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
+        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: OrderDetailsViewController.self)) as! OrderDetailsViewController
     
-       // viewController.brand = brands[indexPath.row]
+        viewController.order = orders[indexPath.row]
+        ordersTableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     
