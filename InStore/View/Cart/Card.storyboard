@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g6v-c4-1Ia">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BVF-dD-JbF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_top" translatesAutoresizingMaskIntoConstraints="NO" id="dyh-Zz-aED">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="245.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="217.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ri-bu-X88" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="200.5" width="414" height="695.5"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="616"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6pp-4J-UJA">
-                                        <rect key="frame" x="0.0" y="32" width="414" height="663.5"/>
+                                        <rect key="frame" x="0.0" y="32" width="414" height="584"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AdQ-QE-W7N" userLabel="CardTableView">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="497.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="438"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardCell" rowHeight="100" id="zIS-DV-Xve" customClass="CardTableViewCell" customModule="InStore" customModuleProvider="target">
@@ -134,7 +134,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-ks-me6" userLabel="CheckoutView">
-                                                <rect key="frame" x="0.0" y="497.5" width="414" height="166"/>
+                                                <rect key="frame" x="0.0" y="438" width="414" height="146"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oiR-p7-Db3">
                                                         <rect key="frame" x="8" y="60" width="124" height="38.5"/>
@@ -154,7 +154,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZI-8Q-8b7">
-                                                        <rect key="frame" x="145.5" y="60" width="248.5" height="41.5"/>
+                                                        <rect key="frame" x="145.5" y="60" width="248.5" height="36.5"/>
                                                         <color key="backgroundColor" name="PrimaryColor"/>
                                                         <color key="tintColor" name="white"/>
                                                         <inset key="imageEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -202,7 +202,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqA-AX-fgP" userLabel="CardLabel">
-                                <rect key="frame" x="32" y="76" width="350" height="124.5"/>
+                                <rect key="frame" x="32" y="120" width="350" height="160"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                 <color key="textColor" name="white"/>
                                 <nil key="highlightedColor"/>
@@ -225,6 +225,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qIX-Aj-Ohf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QWq-wl-PQ5"/>
                     <connections>
                         <outlet property="cardTableView" destination="AdQ-QE-W7N" id="MuQ-BV-a0D"/>
                         <outlet property="checkoutBtn" destination="2ZI-8Q-8b7" id="e3G-aI-Y1P"/>
@@ -233,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUI-x5-Gy6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200.00000000000003" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="1110.144927536232" y="-66.294642857142861"/>
         </scene>
         <!--Confirm Order View Controller-->
         <scene sceneID="G1D-WU-hEN">
@@ -296,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLz-Vz-i75" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3207" y="-66"/>
+            <point key="canvasLocation" x="4115.9420289855079" y="-66.294642857142861"/>
         </scene>
         <!--Add Address View Controller-->
         <scene sceneID="c6y-RO-kBK">
@@ -518,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIy-9G-8w1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="1826.0869565217392" y="-66.294642857142861"/>
         </scene>
         <!--Addresses View Controller-->
         <scene sceneID="oBT-E2-2eF">
@@ -668,7 +669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eka-jh-rai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624.6376811594205" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="2534.7826086956525" y="-66.294642857142861"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="6FQ-y7-RWf">
@@ -932,7 +933,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWE-Fb-3Mt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389.8550724637685" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="3300.0000000000005" y="-66.294642857142861"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="aJF-CV-mOn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BVF-dD-JbF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cart" image="cart" catalog="system" selectedImage="cart" id="olT-Em-qsQ"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qeO-cC-RTP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tfn-yA-SPV" kind="relationship" relationship="rootViewController" id="rwI-MD-btm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d45-Tc-b3U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200.00000000000003" y="-66.294642857142861"/>
         </scene>
     </scenes>
     <resources>
@@ -940,6 +961,7 @@
         <image name="Icon ionic-ios-radio-button-on" width="20" height="20"/>
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="card_top" width="375" height="314"/>
+        <image name="cart" catalog="system" width="64" height="50"/>
         <image name="kid_shoes" width="226" height="223"/>
         <image name="minus" catalog="system" width="64" height="12"/>
         <image name="plus" catalog="system" width="64" height="56"/>
