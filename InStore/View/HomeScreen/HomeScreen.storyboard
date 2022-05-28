@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbh-do-C8s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbh-do-C8s">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="1165"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-KV-7yT" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1149"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1329"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_circle_top" translatesAutoresizingMaskIntoConstraints="NO" id="Kmv-hN-4Qg">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="534.5"/>
@@ -43,7 +42,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vouchers" translatesAutoresizingMaskIntoConstraints="NO" id="d5g-nj-MeQ">
-                                                <rect key="frame" x="31" y="104" width="352" height="180"/>
+                                                <rect key="frame" x="31" y="104" width="352" height="360"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="15"/>
@@ -51,19 +50,19 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRANDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8I-QM-wWE">
-                                                <rect key="frame" x="31" y="324" width="69" height="21"/>
+                                                <rect key="frame" x="31" y="504" width="69" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUd-X2-zjb">
-                                                <rect key="frame" x="31" y="545" width="86" height="21"/>
+                                                <rect key="frame" x="31" y="725" width="86" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-NF-Cti">
-                                                <rect key="frame" x="30" y="375" width="384" height="140"/>
+                                                <rect key="frame" x="30" y="555" width="384" height="140"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="JZa-xh-Qwc"/>
@@ -82,7 +81,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-QK-nFz" userLabel="womenView">
-                                                <rect key="frame" x="31" y="596" width="173" height="240"/>
+                                                <rect key="frame" x="31" y="776" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="women" translatesAutoresizingMaskIntoConstraints="NO" id="DOh-gk-8EM">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -100,10 +99,9 @@ Fashion </string>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkX-Ng-DEV">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkX-Ng-DEV">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=""/>
                                                         <connections>
                                                             <action selector="onWomenCategoryClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BJn-mn-RXu"/>
                                                         </connections>
@@ -124,7 +122,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXJ-jC-vyk" userLabel="kidsView">
-                                                <rect key="frame" x="224" y="596" width="159" height="240"/>
+                                                <rect key="frame" x="224" y="776" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kids" translatesAutoresizingMaskIntoConstraints="NO" id="Otl-66-hGQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
@@ -135,17 +133,16 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-aN-6xB">
-                                                        <rect key="frame" x="47" y="98.5" width="65" height="43"/>
+                                                        <rect key="frame" x="47" y="98.5" width="65.5" height="43"/>
                                                         <string key="text">Kids’
 Fashion </string>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-zt-WQo">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-zt-WQo">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=""/>
                                                         <connections>
                                                             <action selector="kidsCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Q2-Dd-8Yx"/>
                                                         </connections>
@@ -166,7 +163,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaH-Fm-sha" userLabel="menView">
-                                                <rect key="frame" x="31" y="856" width="159" height="240"/>
+                                                <rect key="frame" x="31" y="1036" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="4E2-9F-bhu">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
@@ -177,17 +174,16 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWQ-5c-Ilt">
-                                                        <rect key="frame" x="47" y="98.5" width="65" height="43"/>
+                                                        <rect key="frame" x="47" y="98.5" width="65.5" height="43"/>
                                                         <string key="text">Men’s
 Fashion </string>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-5z-GTb">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-5z-GTb">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=""/>
                                                         <connections>
                                                             <action selector="menCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iq4-Ig-3pQ"/>
                                                         </connections>
@@ -208,7 +204,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFK-ng-M21" userLabel="offerView">
-                                                <rect key="frame" x="210" y="856" width="173" height="240"/>
+                                                <rect key="frame" x="210" y="1036" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offers" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-SB-U3Y">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -219,15 +215,14 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnB-2M-fDr">
-                                                        <rect key="frame" x="60" y="109.5" width="53" height="21.5"/>
+                                                        <rect key="frame" x="60" y="109.5" width="53.5" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-a4-4Ke">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-a4-4Ke">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=""/>
                                                         <connections>
                                                             <action selector="offersCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uRq-AD-tQC"/>
                                                         </connections>
@@ -294,7 +289,6 @@ Fashion </string>
                                 <viewLayoutGuide key="frameLayoutGuide" id="izW-l0-TxW"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2ht-fx-h8P" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Jih-FF-mb7"/>
@@ -307,6 +301,7 @@ Fashion </string>
                             <constraint firstItem="2ht-fx-h8P" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="uTa-7X-jYW"/>
                             <constraint firstAttribute="trailing" secondItem="2ht-fx-h8P" secondAttribute="trailing" id="xCY-VD-ahj"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="4rD-D1-ppB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -336,11 +331,22 @@ Fashion </string>
                         <segue destination="OzS-VS-oMp" kind="relationship" relationship="viewControllers" id="JBy-kb-zVk"/>
                         <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
                         <segue destination="GKQ-YT-FSj" kind="relationship" relationship="viewControllers" id="ard-sQ-9yE"/>
+                        <segue destination="k2v-bD-iGx" kind="relationship" relationship="viewControllers" id="EX8-tk-sLD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3m-Ga-z7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="81.696428571428569"/>
+        </scene>
+        <!--Card-->
+        <scene sceneID="4ee-1g-IAD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Card" id="k2v-bD-iGx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="1hZ-3Z-aHb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxX-aG-7sd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="542"/>
         </scene>
         <!--AllProductsViewController-->
         <scene sceneID="wLU-uZ-8jX">
@@ -387,11 +393,11 @@ Fashion </string>
     </scenes>
     <resources>
         <image name="home_circle_top" width="1125" height="1153"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="kids" width="159" height="219"/>
         <image name="men" width="159" height="219"/>
         <image name="offers" width="159" height="230"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="vouchers" width="327" height="180"/>
         <image name="women" width="159" height="230"/>
         <namedColor name="PrimaryColor">
@@ -399,6 +405,9 @@ Fashion </string>
         </namedColor>
         <namedColor name="black">
             <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

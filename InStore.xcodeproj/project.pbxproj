@@ -49,11 +49,15 @@
 		59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2065D283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift */; };
 		59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */; };
 		944397F4C9AD8E18D82E8C5B /* Pods_InStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */; };
+		B605160D28404D310035EFC4 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B605160C28404D310035EFC4 /* AddAddressViewController.swift */; };
 		B656DFC4283EF10D0043FCF7 /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC3283EF10D0043FCF7 /* ConfirmOrderViewController.swift */; };
 		B656DFC6283EF1290043FCF7 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC5283EF1290043FCF7 /* CardViewController.swift */; };
 		B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */; };
 		B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCB283EF1C20043FCF7 /* Card.storyboard */; };
 		B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */; };
+		B66901E528400B7E00DD3F24 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E428400B7E00DD3F24 /* AddressesViewController.swift */; };
+		B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */; };
+		B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,11 +120,15 @@
 		59F2065E283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		695AE2BF82C757218FF03BA1 /* Pods-InStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7315BC62548B15AA6BEE7447 /* Pods_InStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B605160C28404D310035EFC4 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B656DFC3283EF10D0043FCF7 /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
 		B656DFC5283EF1290043FCF7 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		B656DFCB283EF1C20043FCF7 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
 		B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm_order_anim.json; sourceTree = "<group>"; };
+		B66901E428400B7E00DD3F24 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
+		B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
+		B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		FB4234B27298C048DF342585 /* Pods-InStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.release.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +227,9 @@
 		048B3F66283CD28100CEF8D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B6CD9731284149A5001E7FF5 /* Payment */,
+				B605160B28404D0C0035EFC4 /* AddAddress */,
+				B66901E128400B0100DD3F24 /* AdressesScreen */,
 				59F0D5EF284198C4003F9C96 /* Products */,
 				596F4FED2840DDB9008CA0E9 /* MyAccountScreen */,
 				B656DFC2283EF0E30043FCF7 /* ConfirmOrder */,
@@ -507,6 +518,14 @@
 			path = Xibs;
 			sourceTree = "<group>";
 		};
+		B605160B28404D0C0035EFC4 /* AddAddress */ = {
+			isa = PBXGroup;
+			children = (
+				B605160C28404D310035EFC4 /* AddAddressViewController.swift */,
+			);
+			path = AddAddress;
+			sourceTree = "<group>";
+		};
 		B656DFC1283EF0CA0043FCF7 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +558,23 @@
 				B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		B66901E128400B0100DD3F24 /* AdressesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B66901E428400B7E00DD3F24 /* AddressesViewController.swift */,
+				B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */,
+			);
+			path = AdressesScreen;
+			sourceTree = "<group>";
+		};
+		B6CD9731284149A5001E7FF5 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -726,6 +762,7 @@
 				596F4FFD2840DFAD008CA0E9 /* MyAccountViewController.swift in Sources */,
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
+				B66901E528400B7E00DD3F24 /* AddressesViewController.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
@@ -736,8 +773,11 @@
 				596F50012840DFD4008CA0E9 /* MyAddressesViewController.swift in Sources */,
 				596F500A2840E04D008CA0E9 /* MyOrderTableViewCell.swift in Sources */,
 				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
+				B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */,
+				B605160D28404D310035EFC4 /* AddAddressViewController.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
+				B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */,
 				596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,
