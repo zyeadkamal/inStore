@@ -34,7 +34,7 @@ class OrderDetailsViewController: UIViewController {
         orderDetailsTableView.delegate   = self
     }
     
-    
+
     private func registerCellsForTableView(){
         let ordersNib = UINib(nibName: String(describing: OrderDetailsTableViewCell.self), bundle: nil)
         orderDetailsTableView.register(ordersNib, forCellReuseIdentifier: String(describing: OrderDetailsTableViewCell.self))

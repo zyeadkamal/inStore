@@ -41,6 +41,7 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
         return cell
     }
     
+    
 }
 
 
