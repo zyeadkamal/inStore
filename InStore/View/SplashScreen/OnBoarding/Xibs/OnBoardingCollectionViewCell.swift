@@ -15,6 +15,7 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var onBoardingTitle: UILabel!
     
     @IBOutlet weak var onBoardingDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

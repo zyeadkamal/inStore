@@ -62,7 +62,8 @@ class OnBoardingViewController: UIViewController {
     @IBAction func onSkipBtnClick(_ sender: UIButton) {
         print("perform navigation")
         
-        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self))
+        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
+    
         
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true, completion: nil)

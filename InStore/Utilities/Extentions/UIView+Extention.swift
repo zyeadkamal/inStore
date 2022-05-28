@@ -70,4 +70,15 @@ extension UIView{
             return UIColor(cgColor: color)
         }
     }
+    @IBInspectable
+    public var isRounded: Bool
+    {
+        set {
+            self.layer.cornerRadius = self.bounds.width / 2
+            self.layer.masksToBounds = true
+        }
+        get {
+            return false
+        }
+    }
 }
