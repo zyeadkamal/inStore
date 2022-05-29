@@ -58,6 +58,8 @@
 		B66901E528400B7E00DD3F24 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E428400B7E00DD3F24 /* AddressesViewController.swift */; };
 		B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */; };
 		B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */; };
+		B6EDC3F62844164200BE0193 /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EDC3F52844164200BE0193 /* Wishlist.storyboard */; };
+		B6EDC3F828441EC900BE0193 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EDC3F728441EC900BE0193 /* WishlistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,8 @@
 		B66901E428400B7E00DD3F24 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
 		B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		B6EDC3F52844164200BE0193 /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
+		B6EDC3F728441EC900BE0193 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		FB4234B27298C048DF342585 /* Pods-InStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.release.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,12 +231,9 @@
 		048B3F66283CD28100CEF8D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B6CD9731284149A5001E7FF5 /* Payment */,
-				B605160B28404D0C0035EFC4 /* AddAddress */,
-				B66901E128400B0100DD3F24 /* AdressesScreen */,
+				B6EDC3F2284414CE00BE0193 /* WishlistScreen */,
 				59F0D5EF284198C4003F9C96 /* Products */,
 				596F4FED2840DDB9008CA0E9 /* MyAccountScreen */,
-				B656DFC2283EF0E30043FCF7 /* ConfirmOrder */,
 				B656DFC1283EF0CA0043FCF7 /* Cart */,
 				59F20649283E6C2500E12D88 /* HomeScreen */,
 				59F20644283E6A9D00E12D88 /* SplashScreen */,
@@ -530,6 +531,10 @@
 			isa = PBXGroup;
 			children = (
 				B656DFCD283EF1D70043FCF7 /* CardScreen */,
+				B605160B28404D0C0035EFC4 /* AddAddress */,
+				B66901E128400B0100DD3F24 /* AdressesScreen */,
+				B6CD9731284149A5001E7FF5 /* Payment */,
+				B656DFC2283EF0E30043FCF7 /* ConfirmOrder */,
 				B656DFCB283EF1C20043FCF7 /* Card.storyboard */,
 			);
 			path = Cart;
@@ -575,6 +580,31 @@
 				B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		B6EDC3F2284414CE00BE0193 /* WishlistScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B6EDC3F42844162B00BE0193 /* Xibs */,
+				B6EDC3F32844161400BE0193 /* WishlistScreenView */,
+				B6EDC3F52844164200BE0193 /* Wishlist.storyboard */,
+			);
+			path = WishlistScreen;
+			sourceTree = "<group>";
+		};
+		B6EDC3F32844161400BE0193 /* WishlistScreenView */ = {
+			isa = PBXGroup;
+			children = (
+				B6EDC3F728441EC900BE0193 /* WishlistViewController.swift */,
+			);
+			path = WishlistScreenView;
+			sourceTree = "<group>";
+		};
+		B6EDC3F42844162B00BE0193 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				596F4FCA283FBAD2008CA0E9 /* BrandsCollectionViewCell.xib in Resources */,
+				B6EDC3F62844164200BE0193 /* Wishlist.storyboard in Resources */,
 				B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */,
 				B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */,
 				59F0D5FB28419A56003F9C96 /* Products.storyboard in Resources */,
@@ -778,6 +809,7 @@
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
 				B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */,
+				B6EDC3F828441EC900BE0193 /* WishlistViewController.swift in Sources */,
 				596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,

@@ -30,6 +30,8 @@ class AddressesViewController: UIViewController {
     //MARK: -- IBActions
     
     @IBAction func didPressContinuePayment(_ sender: UIButton) {
+        var paymentVC = storyboard?.instantiateViewController(withIdentifier: String(describing: PaymentViewController.self)) as! PaymentViewController
+        navigationController?.pushViewController(paymentVC, animated: true)
     }
     
     //MARK: -- Functions

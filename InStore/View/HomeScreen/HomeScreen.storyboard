@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="1165"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-KV-7yT" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1329"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1149"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_circle_top" translatesAutoresizingMaskIntoConstraints="NO" id="Kmv-hN-4Qg">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="534.5"/>
@@ -42,7 +42,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vouchers" translatesAutoresizingMaskIntoConstraints="NO" id="d5g-nj-MeQ">
-                                                <rect key="frame" x="31" y="104" width="352" height="360"/>
+                                                <rect key="frame" x="31" y="104" width="352" height="180"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="15"/>
@@ -50,19 +50,19 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRANDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8I-QM-wWE">
-                                                <rect key="frame" x="31" y="504" width="69" height="21"/>
+                                                <rect key="frame" x="31" y="324" width="69" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUd-X2-zjb">
-                                                <rect key="frame" x="31" y="725" width="86" height="21"/>
+                                                <rect key="frame" x="31" y="545" width="86" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-NF-Cti">
-                                                <rect key="frame" x="30" y="555" width="384" height="140"/>
+                                                <rect key="frame" x="30" y="375" width="384" height="140"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="JZa-xh-Qwc"/>
@@ -81,7 +81,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-QK-nFz" userLabel="womenView">
-                                                <rect key="frame" x="31" y="776" width="173" height="240"/>
+                                                <rect key="frame" x="31" y="596" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="women" translatesAutoresizingMaskIntoConstraints="NO" id="DOh-gk-8EM">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -122,7 +122,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXJ-jC-vyk" userLabel="kidsView">
-                                                <rect key="frame" x="224" y="776" width="159" height="240"/>
+                                                <rect key="frame" x="224" y="596" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kids" translatesAutoresizingMaskIntoConstraints="NO" id="Otl-66-hGQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
@@ -163,7 +163,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaH-Fm-sha" userLabel="menView">
-                                                <rect key="frame" x="31" y="1036" width="159" height="240"/>
+                                                <rect key="frame" x="31" y="856" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="4E2-9F-bhu">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
@@ -204,7 +204,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFK-ng-M21" userLabel="offerView">
-                                                <rect key="frame" x="210" y="1036" width="173" height="240"/>
+                                                <rect key="frame" x="210" y="856" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offers" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-SB-U3Y">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -329,9 +329,10 @@ Fashion </string>
                     </tabBar>
                     <connections>
                         <segue destination="OzS-VS-oMp" kind="relationship" relationship="viewControllers" id="JBy-kb-zVk"/>
-                        <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
+                        <segue destination="w7T-Kg-SUp" kind="relationship" relationship="viewControllers" id="tzA-o4-CBr"/>
                         <segue destination="GKQ-YT-FSj" kind="relationship" relationship="viewControllers" id="ard-sQ-9yE"/>
                         <segue destination="k2v-bD-iGx" kind="relationship" relationship="viewControllers" id="EX8-tk-sLD"/>
+                        <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3m-Ga-z7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -346,7 +347,17 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxX-aG-7sd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="542"/>
+            <point key="canvasLocation" x="93" y="524"/>
+        </scene>
+        <!--Wishlist-->
+        <scene sceneID="bpJ-OJ-itg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wishlist" id="w7T-Kg-SUp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Njq-P5-dMn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DS7-Rd-1gd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431" y="494"/>
         </scene>
         <!--AllProductsViewController-->
         <scene sceneID="wLU-uZ-8jX">
@@ -356,7 +367,7 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaY-qu-3J9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-458" y="494"/>
+            <point key="canvasLocation" x="-207" y="550"/>
         </scene>
         <!--MyAccountScreen-->
         <scene sceneID="rQo-G0-N47">
@@ -366,7 +377,7 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXv-dp-FF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="552"/>
+            <point key="canvasLocation" x="330" y="550"/>
         </scene>
         <!--Home-->
         <scene sceneID="tcW-wc-51n">
