@@ -58,8 +58,12 @@
 		B66901E528400B7E00DD3F24 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E428400B7E00DD3F24 /* AddressesViewController.swift */; };
 		B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */; };
 		B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */; };
+		B6EC19172844AB6300D4007B /* SuggestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC19152844AB6300D4007B /* SuggestedCollectionViewCell.swift */; };
+		B6EC19182844AB6300D4007B /* SuggestedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EC19162844AB6300D4007B /* SuggestedCollectionViewCell.xib */; };
 		B6EDC3F62844164200BE0193 /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EDC3F52844164200BE0193 /* Wishlist.storyboard */; };
 		B6EDC3F828441EC900BE0193 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EDC3F728441EC900BE0193 /* WishlistViewController.swift */; };
+		B6EDC3FB284435DA00BE0193 /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EDC3F9284435DA00BE0193 /* WishlistTableViewCell.swift */; };
+		B6EDC3FC284435DA00BE0193 /* WishlistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EDC3FA284435DA00BE0193 /* WishlistTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,8 +135,12 @@
 		B66901E428400B7E00DD3F24 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		B66901E628400BA900DD3F24 /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
 		B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		B6EC19152844AB6300D4007B /* SuggestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6EC19162844AB6300D4007B /* SuggestedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedCollectionViewCell.xib; sourceTree = "<group>"; };
 		B6EDC3F52844164200BE0193 /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
 		B6EDC3F728441EC900BE0193 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
+		B6EDC3F9284435DA00BE0193 /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
+		B6EDC3FA284435DA00BE0193 /* WishlistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistTableViewCell.xib; sourceTree = "<group>"; };
 		FB4234B27298C048DF342585 /* Pods-InStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.release.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -603,6 +611,10 @@
 		B6EDC3F42844162B00BE0193 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				B6EDC3F9284435DA00BE0193 /* WishlistTableViewCell.swift */,
+				B6EDC3FA284435DA00BE0193 /* WishlistTableViewCell.xib */,
+				B6EC19152844AB6300D4007B /* SuggestedCollectionViewCell.swift */,
+				B6EC19162844AB6300D4007B /* SuggestedCollectionViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -695,6 +707,7 @@
 				B6EDC3F62844164200BE0193 /* Wishlist.storyboard in Resources */,
 				B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */,
 				B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */,
+				B6EC19182844AB6300D4007B /* SuggestedCollectionViewCell.xib in Resources */,
 				59F0D5FB28419A56003F9C96 /* Products.storyboard in Resources */,
 				048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */,
 				59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */,
@@ -703,6 +716,7 @@
 				596F4FEF2840DDE0008CA0E9 /* MyAccountScreen.storyboard in Resources */,
 				048B3F49283CD23A00CEF8D0 /* Main.storyboard in Resources */,
 				59F2064B283E6C3C00E12D88 /* HomeScreen.storyboard in Resources */,
+				B6EDC3FC284435DA00BE0193 /* WishlistTableViewCell.xib in Resources */,
 				596F500F2840E064008CA0E9 /* MyAddressTableViewCell.xib in Resources */,
 				59F20646283E6ACA00E12D88 /* SplashScreen.storyboard in Resources */,
 				044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */,
@@ -794,6 +808,7 @@
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				B66901E528400B7E00DD3F24 /* AddressesViewController.swift in Sources */,
+				B6EC19172844AB6300D4007B /* SuggestedCollectionViewCell.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
@@ -808,6 +823,7 @@
 				B605160D28404D310035EFC4 /* AddAddressViewController.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
+				B6EDC3FB284435DA00BE0193 /* WishlistTableViewCell.swift in Sources */,
 				B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */,
 				B6EDC3F828441EC900BE0193 /* WishlistViewController.swift in Sources */,
 				596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */,
