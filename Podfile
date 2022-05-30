@@ -15,7 +15,7 @@ target 'InStore' do
   pod 'RxCocoa', '6.5.0'
   pod 'IBAnimatable', '6.1.0'
   pod 'UICheckbox', '0.0.2'
-  pod 'IQKeyboardManagerSwift', '6.5.10'
+  pod 'IQKeyboardManagerSwift', '6.5.9'
 
 
   target 'InStoreTests' do
