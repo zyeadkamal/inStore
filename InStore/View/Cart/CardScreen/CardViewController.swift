@@ -18,10 +18,10 @@ class CardViewController: UIViewController {
     @IBOutlet weak var containerStack: UIStackView!
     
     //MARK: -- Properties
-    var hasAddress = true
+    var hasAddress = false
     
     // ay list just for testing UI
-    var cartList : [String] = []
+    var cartList : [String] = [""]
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
