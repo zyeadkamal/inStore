@@ -707,13 +707,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4P-hV-b3T">
-                                <rect key="frame" x="16" y="148" width="382" height="80"/>
+                                <rect key="frame" x="16" y="148" width="382" height="98"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5B1-rW-Iky">
-                                        <rect key="frame" x="16" y="29" width="350" height="22"/>
+                                        <rect key="frame" x="16" y="29" width="350" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUO-ew-VEY">
-                                                <rect key="frame" x="0.0" y="0.0" width="31.5" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="40"/>
                                                 <state key="normal" image="Icon ionic-ios-radio-button-off"/>
                                                 <state key="selected" image="Icon ionic-ios-radio-button-on"/>
                                                 <connections>
@@ -721,7 +721,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash On Delivery (COD)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-l4-If1">
-                                                <rect key="frame" x="47.5" y="0.0" width="302.5" height="22"/>
+                                                <rect key="frame" x="74" y="0.0" width="276" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -744,13 +744,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mwq-sg-pD7">
-                                <rect key="frame" x="16" y="244" width="382" height="80"/>
+                                <rect key="frame" x="16" y="262" width="382" height="98"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fFA-H6-N2F">
-                                        <rect key="frame" x="16" y="29" width="350" height="22"/>
+                                        <rect key="frame" x="16" y="29" width="350" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tR-sv-LhV">
-                                                <rect key="frame" x="0.0" y="0.0" width="32.5" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
                                                 <state key="normal" image="Icon ionic-ios-radio-button-off"/>
                                                 <state key="selected" image="Icon ionic-ios-radio-button-on"/>
                                                 <connections>
@@ -758,7 +758,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Pay                       " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pf-L4-AU9">
-                                                <rect key="frame" x="48.5" y="0.0" width="301.5" height="22"/>
+                                                <rect key="frame" x="76" y="0.0" width="274" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -781,19 +781,19 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SHIPMENT ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRv-ZQ-6Vk">
-                                <rect key="frame" x="16" y="356" width="382" height="18"/>
+                                <rect key="frame" x="16" y="392" width="382" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="6, October, Giza, Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG3-w7-BEV">
-                                <rect key="frame" x="16" y="390" width="382" height="21.5"/>
+                                <rect key="frame" x="16" y="426" width="382" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Promocode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-M8-Qyl">
-                                <rect key="frame" x="16" y="465.5" width="289.5" height="50"/>
+                                <rect key="frame" x="16" y="501.5" width="289.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kib-wc-CPm"/>
                                 </constraints>
@@ -815,7 +815,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2S-DG-rVg">
-                                <rect key="frame" x="313.5" y="465.5" width="84.5" height="50"/>
+                                <rect key="frame" x="313.5" y="501.5" width="84.5" height="50"/>
                                 <color key="backgroundColor" name="PrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="H0z-p4-nSs"/>
@@ -834,7 +834,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-Je-YRv">
-                                <rect key="frame" x="16" y="547.5" width="382" height="96"/>
+                                <rect key="frame" x="16" y="583.5" width="382" height="96"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="d3z-1U-4oT">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
