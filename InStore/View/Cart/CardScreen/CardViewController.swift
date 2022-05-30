@@ -18,7 +18,7 @@ class CardViewController: UIViewController {
     @IBOutlet weak var containerStack: UIStackView!
     
     //MARK: -- Properties
-    var hasAddress = false
+    var hasAddress = true
     
     // ay list just for testing UI
     var cartList : [String] = [""]

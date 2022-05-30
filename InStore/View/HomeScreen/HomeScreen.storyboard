@@ -359,10 +359,10 @@ Fashion </string>
             </objects>
             <point key="canvasLocation" x="-431" y="494"/>
         </scene>
-        <!--AllProductsViewController-->
+        <!--Products-->
         <scene sceneID="wLU-uZ-8jX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Products" referencedIdentifier="AllProductsViewController" id="GKQ-YT-FSj" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Products" id="GKQ-YT-FSj" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="fKv-Fj-WVd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaY-qu-3J9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
