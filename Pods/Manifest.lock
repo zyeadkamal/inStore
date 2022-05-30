@@ -19,14 +19,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - Cosmos (~> 23.0)
-  - IBAnimatable
-  - IQKeyboardManagerSwift
+  - IBAnimatable (= 6.1.0)
+  - IQKeyboardManagerSwift (= 6.5.10)
   - Kingfisher (~> 5.0)
-  - lottie-ios
+  - lottie-ios (= 3.3.0)
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
-  - Toaster
-  - UICheckbox
+  - Toaster (= 2.3.0)
+  - UICheckbox (= 0.0.2)
 
 SPEC REPOS:
   trunk:
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: d7a9e9761846c7c42c7d7f8304cebfe57317d734
+PODFILE CHECKSUM: 9f2e455fcb3d36254926131c2e56d44f45687770
 
 COCOAPODS: 1.8.4
