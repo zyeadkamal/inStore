@@ -329,9 +329,10 @@ Fashion </string>
                     </tabBar>
                     <connections>
                         <segue destination="OzS-VS-oMp" kind="relationship" relationship="viewControllers" id="JBy-kb-zVk"/>
-                        <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
+                        <segue destination="w7T-Kg-SUp" kind="relationship" relationship="viewControllers" id="tzA-o4-CBr"/>
                         <segue destination="GKQ-YT-FSj" kind="relationship" relationship="viewControllers" id="ard-sQ-9yE"/>
                         <segue destination="k2v-bD-iGx" kind="relationship" relationship="viewControllers" id="EX8-tk-sLD"/>
+                        <segue destination="bkP-aR-noO" kind="relationship" relationship="viewControllers" id="Nta-No-v8w"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3m-Ga-z7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -346,7 +347,17 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxX-aG-7sd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="542"/>
+            <point key="canvasLocation" x="93" y="524"/>
+        </scene>
+        <!--Wishlist-->
+        <scene sceneID="bpJ-OJ-itg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wishlist" id="w7T-Kg-SUp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Njq-P5-dMn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DS7-Rd-1gd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431" y="494"/>
         </scene>
         <!--AllProductsViewController-->
         <scene sceneID="wLU-uZ-8jX">
@@ -356,7 +367,7 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaY-qu-3J9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-458" y="494"/>
+            <point key="canvasLocation" x="-207" y="550"/>
         </scene>
         <!--MyAccountScreen-->
         <scene sceneID="rQo-G0-N47">
@@ -366,7 +377,7 @@ Fashion </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXv-dp-FF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="552"/>
+            <point key="canvasLocation" x="330" y="550"/>
         </scene>
         <!--Home-->
         <scene sceneID="tcW-wc-51n">
