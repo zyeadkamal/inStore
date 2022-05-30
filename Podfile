@@ -11,6 +11,10 @@ target 'InStore' do
   pod 'lottie-ios'
   pod 'Toaster'
   pod 'Cosmos', '~> 23.0'
+  pod 'IBAnimatable'
+  pod 'UICheckbox'
+
+
 
 
   target 'InStoreTests' do

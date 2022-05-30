@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EE89E2844A062004ECD9A /* FilterCell.swift */; };
+		042EE8A12844A062004ECD9A /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042EE89F2844A062004ECD9A /* FilterCell.xib */; };
+		044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C2D552844DC8F00A4943F /* CheckboxButton.swift */; };
 		044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */; };
 		048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */; };
 		048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */; };
@@ -16,6 +19,9 @@
 		048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048B3F4D283CD23C00CEF8D0 /* Assets.xcassets */; };
 		048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048B3F4F283CD23C00CEF8D0 /* LaunchScreen.storyboard */; };
 		048B3F5C283CD23C00CEF8D0 /* InStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */; };
+		048C1E012842F91100E4F512 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C1E002842F91100E4F512 /* Constants.swift */; };
+		04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */; };
+		04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
 		595988362841556A00ACB869 /* MockOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595988352841556A00ACB869 /* MockOrder.swift */; };
 		596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */; };
@@ -71,6 +77,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042EE89E2844A062004ECD9A /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		042EE89F2844A062004ECD9A /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		044C2D552844DC8F00A4943F /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
 		048B3F3E283CD23A00CEF8D0 /* InStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +93,9 @@
 		048B3F57283CD23C00CEF8D0 /* InStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InStoreTests.swift; sourceTree = "<group>"; };
 		048B3F5D283CD23C00CEF8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048C1E002842F91100E4F512 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +164,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042EE89D2844A038004ECD9A /* filterCell */ = {
+			isa = PBXGroup;
+			children = (
+				042EE89E2844A062004ECD9A /* FilterCell.swift */,
+				042EE89F2844A062004ECD9A /* FilterCell.xib */,
+			);
+			path = filterCell;
+			sourceTree = "<group>";
+		};
+		044C2D572844DCE000A4943F /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */,
+			);
+			path = FilterViewController;
+			sourceTree = "<group>";
+		};
 		044E7F18283DE5F60078CA50 /* UserAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,10 +322,38 @@
 		048B3F6F283CD88600CEF8D0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				048C1DFF2842F90400E4F512 /* Constants */,
+				04A7FD6C2842E302008467E2 /* VisualEffects */,
 				B656DFCE283EF38B0043FCF7 /* Animation */,
 				59F20655283E735D00E12D88 /* Extentions */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		048C1DFF2842F90400E4F512 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				048C1E002842F91100E4F512 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		04A7FD692842DF7E008467E2 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				59F0D5FA28419A56003F9C96 /* Products.storyboard */,
+				044C2D572844DCE000A4943F /* FilterViewController */,
+				042EE89D2844A038004ECD9A /* filterCell */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		04A7FD6C2842E302008467E2 /* VisualEffects */ = {
+			isa = PBXGroup;
+			children = (
+				04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */,
+			);
+			path = VisualEffects;
 			sourceTree = "<group>";
 		};
 		20679023F968D1D6DC36F69E /* Frameworks */ = {
@@ -421,9 +478,9 @@
 		59F0D5EF284198C4003F9C96 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				04A7FD692842DF7E008467E2 /* Filter */,
 				59F0D5F1284198E6003F9C96 /* ProductDetails */,
 				59F0D5F0284198D2003F9C96 /* AllProducts */,
-				59F0D5FA28419A56003F9C96 /* Products.storyboard */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -431,8 +488,8 @@
 		59F0D5F0284198D2003F9C96 /* AllProducts */ = {
 			isa = PBXGroup;
 			children = (
-				59F0D5F228419934003F9C96 /* AllProductsCollectionViewCell.swift */,
 				59F0D5F4284199C2003F9C96 /* AllProductsViewController.swift */,
+				59F0D5F228419934003F9C96 /* AllProductsCollectionViewCell.swift */,
 			);
 			path = AllProducts;
 			sourceTree = "<group>";
@@ -505,6 +562,7 @@
 			children = (
 				59F20656283E73BB00E12D88 /* UIView+Extention.swift */,
 				596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */,
+				044C2D552844DC8F00A4943F /* CheckboxButton.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -666,6 +724,7 @@
 				B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */,
 				59F0D5FB28419A56003F9C96 /* Products.storyboard in Resources */,
 				048B3F51283CD23C00CEF8D0 /* LaunchScreen.storyboard in Resources */,
+				042EE8A12844A062004ECD9A /* FilterCell.xib in Resources */,
 				59F20660283E7C6600E12D88 /* OnBoardingCollectionViewCell.xib in Resources */,
 				048B3F4E283CD23C00CEF8D0 /* Assets.xcassets in Resources */,
 				596F500B2840E04D008CA0E9 /* MyOrderTableViewCell.xib in Resources */,
@@ -767,6 +826,7 @@
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
 				596F4FF72840DEFE008CA0E9 /* OrderDetailsTableViewCell.swift in Sources */,
+				048C1E012842F91100E4F512 /* Constants.swift in Sources */,
 				59F0D5F928419A3F003F9C96 /* ProductPhotosCollectionViewCell.swift in Sources */,
 				595988362841556A00ACB869 /* MockOrder.swift in Sources */,
 				B656DFC6283EF1290043FCF7 /* CardViewController.swift in Sources */,
@@ -774,15 +834,19 @@
 				596F500A2840E04D008CA0E9 /* MyOrderTableViewCell.swift in Sources */,
 				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
 				B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */,
+				042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */,
 				B605160D28404D310035EFC4 /* AddAddressViewController.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
+				04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */,
 				B66901E728400BA900DD3F24 /* AddressesTableViewCell.swift in Sources */,
+				04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */,
 				596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,
 				59F0D5F5284199C2003F9C96 /* AllProductsViewController.swift in Sources */,
 				59F0D5F328419934003F9C96 /* AllProductsCollectionViewCell.swift in Sources */,
+				044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				596F4FFF2840DFC2008CA0E9 /* MyOrdersViewController.swift in Sources */,
 				B656DFC4283EF10D0043FCF7 /* ConfirmOrderViewController.swift in Sources */,

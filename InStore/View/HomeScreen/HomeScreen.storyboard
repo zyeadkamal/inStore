@@ -13,21 +13,21 @@
             <objects>
                 <viewController storyboardIdentifier="HomeScreenViewController" id="Y6W-OH-hqX" customClass="HomeScreenViewController" customModule="InStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1336"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ht-fx-h8P">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                 <color key="backgroundColor" name="PrimaryColor"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erB-m1-jTO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1165"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1165"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-KV-7yT" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1329"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_circle_top" translatesAutoresizingMaskIntoConstraints="NO" id="Kmv-hN-4Qg">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="534.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="499"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUGGESTED FOR YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjz-aR-def">
                                                 <rect key="frame" x="31" y="14" width="176" height="21"/>
@@ -101,7 +101,6 @@ Fashion </string>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkX-Ng-DEV">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
-                                                        <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="onWomenCategoryClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BJn-mn-RXu"/>
                                                         </connections>
@@ -142,7 +141,6 @@ Fashion </string>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-zt-WQo">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
-                                                        <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="kidsCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Q2-Dd-8Yx"/>
                                                         </connections>
@@ -183,7 +181,6 @@ Fashion </string>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-5z-GTb">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
-                                                        <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="menCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iq4-Ig-3pQ"/>
                                                         </connections>
@@ -222,7 +219,6 @@ Fashion </string>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-a4-4Ke">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
-                                                        <state key="normal" title="Button"/>
                                                         <connections>
                                                             <action selector="offersCategoryPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uRq-AD-tQC"/>
                                                         </connections>
@@ -348,10 +344,10 @@ Fashion </string>
             </objects>
             <point key="canvasLocation" x="891" y="542"/>
         </scene>
-        <!--AllProductsViewController-->
+        <!--Products-->
         <scene sceneID="wLU-uZ-8jX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Products" referencedIdentifier="AllProductsViewController" id="GKQ-YT-FSj" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Products" id="GKQ-YT-FSj" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="fKv-Fj-WVd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaY-qu-3J9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -374,12 +370,19 @@ Fashion </string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OzS-VS-oMp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="9FY-OW-LuA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="71R-Dy-10b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="71R-Dy-10b">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="white"/>
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="PrimaryColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

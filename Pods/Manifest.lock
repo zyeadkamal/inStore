@@ -1,34 +1,42 @@
 PODS:
   - Alamofire (4.9.1)
   - Cosmos (23.0.0)
+  - IBAnimatable (6.1.0)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.3.0)
   - Toaster (2.3.0)
+  - UICheckbox (0.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - Cosmos (~> 23.0)
+  - IBAnimatable
   - Kingfisher (~> 5.0)
   - lottie-ios
   - Toaster
+  - UICheckbox
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Cosmos
+    - IBAnimatable
     - Kingfisher
     - lottie-ios
     - Toaster
+    - UICheckbox
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  IBAnimatable: 99dddd4c0625884a301ba3ecbc1615f8a390368e
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+  UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: 1f8ee8c957dfc6b10b300b332574a203e1fe9704
+PODFILE CHECKSUM: 79b9835d9ec9cde283b6467ddf8e39d423a19a91
 
 COCOAPODS: 1.11.2

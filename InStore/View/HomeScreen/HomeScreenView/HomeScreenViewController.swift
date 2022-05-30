@@ -28,6 +28,9 @@ class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionViews()
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
     }
     
     private func configureCollectionViews(){
