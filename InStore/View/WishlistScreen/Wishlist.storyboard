@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-cP-mTF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                <color key="backgroundColor" name="PrimaryColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="VHz-p4-0HZ"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xe7-Uj-1iT" userLabel="scrollContainer">
                                 <rect key="frame" x="0.0" y="88" width="414" height="829"/>
                                 <subviews>
@@ -84,7 +91,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayw-0A-Tg9">
                                                                 <rect key="frame" x="283.5" y="0.0" width="90.5" height="30"/>
                                                                 <state key="normal" title="SEE ALL">
-                                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="titleColor" name="PrimaryColor"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -150,10 +157,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Gyh-cP-mTF" firstAttribute="leading" secondItem="iGT-Dj-Csz" secondAttribute="leading" id="1Ej-gY-AzJ"/>
                             <constraint firstItem="hm4-kn-mH8" firstAttribute="bottom" secondItem="xe7-Uj-1iT" secondAttribute="bottom" id="8cf-vj-nlR"/>
                             <constraint firstItem="hm4-kn-mH8" firstAttribute="trailing" secondItem="xe7-Uj-1iT" secondAttribute="trailing" id="9Aj-WD-81z"/>
                             <constraint firstItem="xe7-Uj-1iT" firstAttribute="top" secondItem="hm4-kn-mH8" secondAttribute="top" id="fOI-9n-52V"/>
                             <constraint firstItem="xe7-Uj-1iT" firstAttribute="leading" secondItem="hm4-kn-mH8" secondAttribute="leading" id="h6c-K4-CKP"/>
+                            <constraint firstItem="Gyh-cP-mTF" firstAttribute="top" secondItem="iGT-Dj-Csz" secondAttribute="top" id="qMa-6T-gaj"/>
+                            <constraint firstAttribute="trailing" secondItem="Gyh-cP-mTF" secondAttribute="trailing" id="t1G-a8-uBj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hm4-kn-mH8"/>
                     </view>
@@ -173,7 +183,7 @@
         <scene sceneID="FCP-VN-vKg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AqN-R2-r5t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorte" image="heart" catalog="system" selectedImage="heart" id="L36-Bf-Uup"/>
+                    <tabBarItem key="tabBarItem" title="Favorte" image="heart.fill" catalog="system" selectedImage="heart.fill" id="L36-Bf-Uup"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Lx-Gv-Axg">
@@ -196,7 +206,7 @@
     </scenes>
     <resources>
         <image name="card_top" width="375" height="314"/>
-        <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="noWishlist" width="295" height="158"/>
         <namedColor name="PrimaryColor">
             <color red="0.89411764705882357" green="0.36862745098039218" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

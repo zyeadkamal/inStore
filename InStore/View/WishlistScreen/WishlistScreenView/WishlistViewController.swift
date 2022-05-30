@@ -26,6 +26,7 @@ class WishlistViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
         registerWishlistCell()
         configureWishlistTableView()
         registerSuggestedCollectionView()
@@ -54,6 +55,10 @@ class WishlistViewController: UIViewController {
         self.suggestedCollectionView.register(UINib(nibName: "SuggestedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
     }
 
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
     /*
     // MARK: - Navigation
 

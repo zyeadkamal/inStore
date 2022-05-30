@@ -28,6 +28,7 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
         configureCardTableView()
         self.totalAmountPriceLbl.text = "$165.78"
     }
@@ -48,6 +49,11 @@ class CardViewController: UIViewController {
     func configureCardTableView(){
         cardTableView.delegate = self
         cardTableView.dataSource = self
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     /*
     // MARK: - Navigation

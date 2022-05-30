@@ -23,6 +23,7 @@ class AddressesViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
         configureAddressesTableView()
     }
     
@@ -39,6 +40,11 @@ class AddressesViewController: UIViewController {
     func configureAddressesTableView(){
         addressesTableView.delegate = self
         addressesTableView.dataSource = self
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     /*

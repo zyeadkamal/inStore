@@ -24,6 +24,7 @@ class AddAddressViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
     }
     
     //MARK: -- IBActions
@@ -32,7 +33,10 @@ class AddAddressViewController: UIViewController {
     
     
     //MARK: -- Functions
-    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
 
     /*
     // MARK: - Navigation

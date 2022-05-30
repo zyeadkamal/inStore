@@ -23,6 +23,7 @@ class ConfirmOrderViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
         configureConfirmAnimation()
         
     }
@@ -41,6 +42,11 @@ class ConfirmOrderViewController: UIViewController {
         view.addSubview(confirmAnimationView!)
         confirmAnimationView?.play()
         view.sendSubviewToBack(confirmAnimationView!)
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     /*

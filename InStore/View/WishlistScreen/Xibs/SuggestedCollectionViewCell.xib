@@ -113,7 +113,7 @@
                                             <constraint firstAttribute="height" constant="40" id="D7b-3N-CMi"/>
                                         </constraints>
                                         <color key="tintColor" name="black"/>
-                                        <state key="normal" image="heart.fill" catalog="system"/>
+                                        <state key="normal" image="heart" catalog="system"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
@@ -183,7 +183,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="kid_shoes" width="226" height="223"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
         <namedColor name="PrimaryColor">
