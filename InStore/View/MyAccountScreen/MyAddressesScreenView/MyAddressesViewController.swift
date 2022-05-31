@@ -15,7 +15,9 @@ class MyAddressesViewController: UIViewController {
     var addresses = ["6 october","giza"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         configureTableView()
         // Do any additional setup after loading the view.
     }
@@ -34,6 +36,11 @@ class MyAddressesViewController: UIViewController {
     }
 
     @IBAction func AddNewAddressPressed(_ sender: Any) {
+        //AddAddressViewController
+        let viewController = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: String(describing: AddAddressViewController.self)) as! AddAddressViewController
+//          self.navigationController?.pushViewController(viewController, animated: true)
+               viewController.modalPresentationStyle = .fullScreen
+               self.present(viewController, animated: true, completion: nil)
     }
 
 

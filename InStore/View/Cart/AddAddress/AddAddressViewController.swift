@@ -29,6 +29,9 @@ class AddAddressViewController: UIViewController {
     
     //MARK: -- IBActions
     @IBAction func didPressAddAddress(_ sender: UIButton) {
+//        let viewController = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
+//        viewController.modalPresentationStyle = .fullScreen
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -38,14 +41,5 @@ class AddAddressViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

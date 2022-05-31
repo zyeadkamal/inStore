@@ -64,11 +64,12 @@
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIY-nY-e1g">
                                 <rect key="frame" x="24" y="771" width="366" height="51"/>
+                                <color key="backgroundColor" name="PrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="m3h-nN-Ibs"/>
                                 </constraints>
-                                <color key="tintColor" name="primaryColor"/>
-                                <state key="normal" title="Button"/>
+                                <color key="tintColor" name="white"/>
+                                <state key="normal" title="Next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
@@ -93,7 +94,7 @@
                                     <constraint firstAttribute="width" constant="70" id="Qm8-Wj-iVA"/>
                                 </constraints>
                                 <color key="tintColor" name="black"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Skip"/>
                                 <connections>
                                     <action selector="onSkipBtnClick:" destination="pCr-H6-xSL" eventType="touchUpInside" id="b6U-Jg-MAO"/>
                                 </connections>
@@ -177,15 +178,20 @@ cherry on top!</string>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyj-y5-KSP">
                                         <rect key="frame" x="24" y="704" width="366" height="51"/>
+                                        <color key="backgroundColor" name="PrimaryColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="IV0-eD-5HL"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <color key="tintColor" name="white"/>
+                                        <state key="normal" title="Sign me up!"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signMeUpButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="rhw-ho-FqY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-dJ-heL">
                                         <rect key="frame" x="24" y="771" width="366" height="51"/>
@@ -193,10 +199,10 @@ cherry on top!</string>
                                             <constraint firstAttribute="height" constant="51" id="ZdW-ig-UEt"/>
                                         </constraints>
                                         <color key="tintColor" name="primaryColor"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Already have an account"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primaryColor"/>
+                                                <color key="value" name="PrimaryColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="2"/>
@@ -205,6 +211,9 @@ cherry on top!</string>
                                                 <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="alreadyHaveAnAcountButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="tDi-lX-QBt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -227,9 +236,10 @@ cherry on top!</string>
                                     <constraint firstAttribute="width" constant="70" id="Gm3-hg-cp2"/>
                                 </constraints>
                                 <color key="tintColor" name="black"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Skip"/>
                                 <connections>
                                     <action selector="onSkipBtnClick:" destination="pCr-H6-xSL" eventType="touchUpInside" id="McM-qe-xA4"/>
+                                    <action selector="skipButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="fu8-p6-Ei2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_colored" translatesAutoresizingMaskIntoConstraints="NO" id="c7s-aE-C9j">
@@ -262,11 +272,17 @@ cherry on top!</string>
     <resources>
         <image name="final_step_onboarding" width="388" height="450"/>
         <image name="logo_colored" width="147.5" height="41.5"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.89411764705882357" green="0.36862745098039218" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="black">
             <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryColor">
             <color red="0.89411764705882357" green="0.36862745098039218" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

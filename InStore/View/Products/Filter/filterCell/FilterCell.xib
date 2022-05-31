@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="CAIRO-BOLD.TTF">
+            <string>Cairo-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PriceCollectionViewCell" id="gTV-IL-0wX" customClass="FilterCell" customModule="InStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="275" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="275" height="66"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-2J-J7s">
+                        <rect key="frame" x="4" y="0.5" width="267" height="61.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Peq-jc-A2w">
+                                <rect key="frame" x="8" y="8" width="251" height="45.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price: Low to High" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cax-c4-yvj">
+                                        <rect key="frame" x="12" y="8" width="227" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cax-c4-yvj" firstAttribute="top" secondItem="Peq-jc-A2w" secondAttribute="top" constant="8" id="9mE-jM-iDq"/>
+                                    <constraint firstAttribute="trailing" secondItem="cax-c4-yvj" secondAttribute="trailing" constant="12" id="h76-r6-Kty"/>
+                                    <constraint firstAttribute="bottom" secondItem="cax-c4-yvj" secondAttribute="bottom" constant="8" id="msQ-zN-jhB"/>
+                                    <constraint firstItem="cax-c4-yvj" firstAttribute="leading" secondItem="Peq-jc-A2w" secondAttribute="leading" constant="12" id="t6J-qw-WgH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_animationType" value="wobble"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Peq-jc-A2w" secondAttribute="bottom" constant="8" id="BYb-5l-dhW"/>
+                            <constraint firstItem="Peq-jc-A2w" firstAttribute="leading" secondItem="Ejx-2J-J7s" secondAttribute="leading" constant="8" id="JPA-Gu-EVG"/>
+                            <constraint firstItem="Peq-jc-A2w" firstAttribute="top" secondItem="Ejx-2J-J7s" secondAttribute="top" constant="8" id="LRT-XP-LcF"/>
+                            <constraint firstAttribute="trailing" secondItem="Peq-jc-A2w" secondAttribute="trailing" constant="8" id="lud-gs-ITQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Ejx-2J-J7s" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="0.40000000000000002" id="FbR-Ox-7KO"/>
+                <constraint firstAttribute="trailing" secondItem="Ejx-2J-J7s" secondAttribute="trailing" constant="4" id="QUl-p1-LMx"/>
+                <constraint firstItem="Ejx-2J-J7s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ght-cG-lAx"/>
+                <constraint firstAttribute="bottom" secondItem="Ejx-2J-J7s" secondAttribute="bottom" constant="4" id="tcg-0i-6tM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="275" height="66"/>
+            <connections>
+                <outlet property="name" destination="cax-c4-yvj" id="X2V-E7-Ntg"/>
+                <outlet property="viewCell" destination="Peq-jc-A2w" id="fqR-tU-LgD"/>
+            </connections>
+            <point key="canvasLocation" x="300.72463768115944" y="107.14285714285714"/>
+        </collectionViewCell>
+    </objects>
+</document>
