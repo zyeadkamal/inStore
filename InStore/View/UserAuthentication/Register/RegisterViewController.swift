@@ -18,7 +18,17 @@ class RegisterViewController: UIViewController {
 
     }
     
-
-   
+    @IBAction func getStartedButtonPressed(_ sender: UIButton) {
+        let viewController = UIStoryboard(name: "UserAuthentication", bundle: nil).instantiateViewController(withIdentifier: String(describing: LoginViewController.self)) as! LoginViewController
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let viewController = UIStoryboard(name: "UserAuthentication", bundle: nil).instantiateViewController(withIdentifier: String(describing: LoginViewController.self)) as! LoginViewController
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
 
 }

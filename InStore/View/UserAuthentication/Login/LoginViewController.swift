@@ -19,6 +19,16 @@ class LoginViewController: UIViewController {
         
     }
 
-
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let viewController = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        let viewController = UIStoryboard(name: "UserAuthentication", bundle: nil).instantiateViewController(withIdentifier: String(describing: RegisterViewController.self)) as! RegisterViewController
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
 }
 

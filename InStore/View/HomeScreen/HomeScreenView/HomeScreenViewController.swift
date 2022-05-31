@@ -28,9 +28,7 @@ class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionViews()
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-
+        setNavControllerTransparent()
     }
     
     private func configureCollectionViews(){
@@ -46,6 +44,11 @@ class HomeScreenViewController: UIViewController {
         let slideNib = UINib(nibName: String(describing: BrandsCollectionViewCell.self), bundle: nil)
         BrandsCollectionView.register(slideNib, forCellWithReuseIdentifier: String(describing: BrandsCollectionViewCell.self) )
     
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func onWomenCategoryClick(_ sender: Any) {

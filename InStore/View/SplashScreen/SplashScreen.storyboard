@@ -189,6 +189,9 @@ cherry on top!</string>
                                                 <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signMeUpButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="rhw-ho-FqY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-dJ-heL">
                                         <rect key="frame" x="24" y="771" width="366" height="51"/>
@@ -208,6 +211,9 @@ cherry on top!</string>
                                                 <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="alreadyHaveAnAcountButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="tDi-lX-QBt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -233,6 +239,7 @@ cherry on top!</string>
                                 <state key="normal" title="Skip"/>
                                 <connections>
                                     <action selector="onSkipBtnClick:" destination="pCr-H6-xSL" eventType="touchUpInside" id="McM-qe-xA4"/>
+                                    <action selector="skipButtonPressed:" destination="m0M-1c-3II" eventType="touchUpInside" id="fu8-p6-Ei2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_colored" translatesAutoresizingMaskIntoConstraints="NO" id="c7s-aE-C9j">

@@ -14,20 +14,34 @@ class CardViewController: UIViewController {
     @IBOutlet weak var cardTableView: UITableView!
     @IBOutlet weak var totalAmountPriceLbl: UILabel!
     @IBOutlet weak var checkoutBtn: UIButton!
+    @IBOutlet weak var emptyCartImg: UIImageView!
+    @IBOutlet weak var containerStack: UIStackView!
     
     //MARK: -- Properties
+    var hasAddress = false
+    
+    // ay list just for testing UI
+    var cartList : [String] = [""]
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
         configureCardTableView()
         self.totalAmountPriceLbl.text = "$165.78"
     }
     
     //MARK: -- IBActions
     @IBAction func didPressCheckout(_ sender: UIButton) {
+        if hasAddress {
+            var addressesVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddressesViewController.self)) as! AddressesViewController
+            navigationController?.pushViewController(addressesVC, animated: true)
+        }else{
+            var addAddressVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddAddressViewController.self)) as! AddAddressViewController
+            navigationController?.pushViewController(addAddressVC, animated: true)
+        }
     }
     
 
@@ -35,6 +49,11 @@ class CardViewController: UIViewController {
     func configureCardTableView(){
         cardTableView.delegate = self
         cardTableView.dataSource = self
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     /*
     // MARK: - Navigation
@@ -50,7 +69,15 @@ class CardViewController: UIViewController {
 
 extension CardViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        //return 10
+        if (cartList.isEmpty){
+            emptyCartImg.isHidden = false
+            containerStack.isHidden = true
+        }else{
+            emptyCartImg.isHidden = true
+            containerStack.isHidden = false
+        }
+        return cartList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
