@@ -1,34 +1,60 @@
 PODS:
   - Alamofire (4.9.1)
   - Cosmos (23.0.0)
+  - IBAnimatable (6.1.0)
+  - IQKeyboardManagerSwift (6.5.9)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.3.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - Toaster (2.3.0)
+  - UICheckbox (0.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - Cosmos (~> 23.0)
+  - IBAnimatable (= 6.1.0)
+  - IQKeyboardManagerSwift (= 6.5.9)
   - Kingfisher (~> 5.0)
-  - lottie-ios
-  - Toaster
+  - lottie-ios (= 3.3.0)
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
+  - Toaster (= 2.3.0)
+  - UICheckbox (= 0.0.2)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Cosmos
+    - IBAnimatable
+    - IQKeyboardManagerSwift
     - Kingfisher
     - lottie-ios
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Toaster
+    - UICheckbox
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  IBAnimatable: 99dddd4c0625884a301ba3ecbc1615f8a390368e
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+  UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: 1f8ee8c957dfc6b10b300b332574a203e1fe9704
+PODFILE CHECKSUM: 0c18a457f343c711246041d809317cba41149150
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.8.4

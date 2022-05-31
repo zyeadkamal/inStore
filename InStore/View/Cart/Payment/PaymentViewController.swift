@@ -30,6 +30,7 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavControllerTransparent()
     }
     
     //MARK: -- IBActions
@@ -49,6 +50,15 @@ class PaymentViewController: UIViewController {
     }
     
     @IBAction func didPressPayNowBtn(_ sender: Any) {
+        let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to Confirm the order?", preferredStyle: .alert)
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
+            let confirmationVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ConfirmOrderViewController.self)) as! ConfirmOrderViewController
+            self.navigationController?.pushViewController(confirmationVC, animated: true)
+        }))
+        
+        
+        self.present(confirmationAlert, animated: true, completion: nil)
     }
     
     
@@ -62,6 +72,10 @@ class PaymentViewController: UIViewController {
         }
     }
     
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
     /*
     // MARK: - Navigation
 
