@@ -7,71 +7,92 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MyOrdersViewController: UIViewController {
+    
+    //MARK: - IBOutlet
+    
     @IBOutlet weak var noOrdersImage: UIImageView!
     @IBOutlet weak var ordersTableView: UITableView!
     
-    let orders = [MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "bata shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150")]
+    //MARK: - Properties
+    private var myOrdersViewModel:MyOrdersViewModelType?
+    private var bag = DisposeBag()
     
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavControllerTransparent()
+        configureTableView()
+        myOrdersViewModel?.getData()
+        
+        
+    }
+    
+    //MARK: - Methodes
+    
+    private func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        configureTableView()
-        // Do any additional setup after loading the view.
     }
+    
     private func configureTableView(){
         registerCellsForTableView()
-        setupTableViewDataSource()
+        bindOrders()
+    }
+    private func bindOrders(){
+        ordersTableView.rx.itemSelected.subscribe(onNext: openOrderDetails).disposed(by: bag)
+        
+        
+//                ordersTableView.rowHeight = UITableView.automaticDimension
+//                ordersTableView.estimatedRowHeight = ordersTableView.frame.height/8
+        
+        myOrdersViewModel?.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asDriver(onErrorJustReturn: [])
+            .drive( ordersTableView.rx.items(cellIdentifier: String(describing: MyOrderTableViewCell.self),cellType: MyOrderTableViewCell.self) ){( row, order, cell) in
+                print("data")
+                cell.setupCell(order: order)
+            }.disposed(by: bag)
+        
+        
+        myOrdersViewModel?.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { orders in
+
+            if (orders.isEmpty)
+            {
+                self.noOrdersImage.isHidden = false
+                self.ordersTableView.isHidden = true
+                
+            }else{
+                self.noOrdersImage.isHidden = true
+                self.ordersTableView.isHidden = false
+            }
+        })
     }
     
-    private func setupTableViewDataSource(){
-        ordersTableView.dataSource = self
-        ordersTableView.delegate   = self
-    }
+    private func openOrderDetails(_ indexPath: IndexPath) {
     
-    
-    private func registerCellsForTableView(){
-        let ordersNib = UINib(nibName: String(describing: MyOrderTableViewCell.self), bundle: nil)
-        ordersTableView.register(ordersNib, forCellReuseIdentifier: String(describing: MyOrderTableViewCell.self))
-
-    }
-
-
-}
-extension MyOrdersViewController : UITableViewDataSource,UITableViewDelegate{
-    
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (orders.isEmpty){
-            noOrdersImage.isHidden = false
-            ordersTableView.isHidden = true
-        }else{
-            noOrdersImage.isHidden = true
-            ordersTableView.isHidden = false
-        }
-        return orders.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MyOrderTableViewCell.self), for: indexPath) as! MyOrderTableViewCell
-        cell.setupCell(order: orders[indexPath.row])
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return ((ordersTableView.frame.height/8))
-
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: OrderDetailsViewController.self)) as! OrderDetailsViewController
-    
-        viewController.order = orders[indexPath.row]
+        viewController.order = myOrdersViewModel?.orderList[indexPath.row]
         ordersTableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    private func registerCellsForTableView(){
+        let ordersNib = UINib(nibName: String(describing: MyOrderTableViewCell.self), bundle: nil)
+        ordersTableView.register(ordersNib, forCellReuseIdentifier: String(describing: MyOrderTableViewCell.self))
+    }
+    
+    
+    func injectOrdersViewModel(myOrdersViewModel:MyOrdersViewModelType){
+        self.myOrdersViewModel = myOrdersViewModel
+    }
+    
+    
 }
+
+
+
 

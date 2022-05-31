@@ -34,6 +34,7 @@
 		04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */; };
 		04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
+		594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */; };
 		595988362841556A00ACB869 /* MockOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595988352841556A00ACB869 /* MockOrder.swift */; };
 		596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */; };
 		596F4FC5283FB872008CA0E9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC4283FB872008CA0E9 /* HomeScreenViewController.swift */; };
@@ -117,6 +118,7 @@
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		595988352841556A00ACB869 /* MockOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockOrder.swift; path = InStore/MockOrder.swift; sourceTree = SOURCE_ROOT; };
 		596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extention.swift"; sourceTree = "<group>"; };
 		596F4FC4283FB872008CA0E9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		048B3F67283CD28900CEF8D0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				594C4CE12846C17500EE2BB9 /* MyAccountScreen */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -453,6 +456,22 @@
 				1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		594C4CE12846C17500EE2BB9 /* MyAccountScreen */ = {
+			isa = PBXGroup;
+			children = (
+				594C4CE22846C18700EE2BB9 /* MyOrderScreenViewModel */,
+			);
+			path = MyAccountScreen;
+			sourceTree = "<group>";
+		};
+		594C4CE22846C18700EE2BB9 /* MyOrderScreenViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */,
+			);
+			path = MyOrderScreenViewModel;
 			sourceTree = "<group>";
 		};
 		596F4FC3283FB84A008CA0E9 /* HomeScreenView */ = {
@@ -880,6 +899,7 @@
 			files = (
 				04716B1A2845295E00472C58 /* WishlistTableViewCell.swift in Sources */,
 				596F4FCC283FBF94008CA0E9 /* Brand.swift in Sources */,
+				594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */,
 				04716B0B284525D500472C58 /* AddressesTableViewCell.swift in Sources */,
 				048B3F4C283CD23A00CEF8D0 /* InStore.xcdatamodeld in Sources */,
 				596F4FFD2840DFAD008CA0E9 /* MyAccountViewController.swift in Sources */,

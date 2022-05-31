@@ -47,8 +47,9 @@ class MyAccountViewController: UIViewController {
     
     @IBAction func seeMoreOrdersPressed(_ sender: Any) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyOrdersViewController.self)) as! MyOrdersViewController
+
+        viewController.injectOrdersViewModel(myOrdersViewModel: MyOrdersViewModel())
     
-       // viewController.brand = brands[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
