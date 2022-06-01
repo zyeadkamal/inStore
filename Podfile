@@ -6,7 +6,7 @@ target 'InStore' do
   use_frameworks!
 
   # Pods for InStore
-  pod 'Alamofire', '~> 4.9.1'
+  pod 'Alamofire', '~> 5.0.0'
   pod 'Kingfisher', '~> 5.0'
   pod 'lottie-ios', '3.3.0'
   pod 'Toaster', '2.3.0'
