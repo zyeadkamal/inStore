@@ -34,6 +34,11 @@
 		04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */; };
 		04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
+		592229E22847AF170057CCCB /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229E12847AF170057CCCB /* ApiClient.swift */; };
+		592229E62847AF260057CCCB /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229E32847AF260057CCCB /* EndPoint.swift */; };
+		592229E72847AF260057CCCB /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229E42847AF260057CCCB /* APIConstants.swift */; };
+		592229E82847AF260057CCCB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229E52847AF260057CCCB /* ApiError.swift */; };
+		592229EA2847AF6A0057CCCB /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229E92847AF6A0057CCCB /* Customer.swift */; };
 		594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */; };
 		595988362841556A00ACB869 /* MockOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595988352841556A00ACB869 /* MockOrder.swift */; };
 		596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */; };
@@ -118,6 +123,11 @@
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		592229E12847AF170057CCCB /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = Service/ApiClient.swift; sourceTree = SOURCE_ROOT; };
+		592229E32847AF260057CCCB /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndPoint.swift; path = Service/EndPoint.swift; sourceTree = SOURCE_ROOT; };
+		592229E42847AF260057CCCB /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIConstants.swift; path = Service/APIConstants.swift; sourceTree = SOURCE_ROOT; };
+		592229E52847AF260057CCCB /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiError.swift; path = Service/ApiError.swift; sourceTree = SOURCE_ROOT; };
+		592229E92847AF6A0057CCCB /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customer.swift; path = Model/Customer.swift; sourceTree = SOURCE_ROOT; };
 		594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		595988352841556A00ACB869 /* MockOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockOrder.swift; path = InStore/MockOrder.swift; sourceTree = SOURCE_ROOT; };
 		596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extention.swift"; sourceTree = "<group>"; };
@@ -353,6 +363,7 @@
 		048B3F68283CD29400CEF8D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				592229E92847AF6A0057CCCB /* Customer.swift */,
 				59F20658283E798E00E12D88 /* OnboardingSlide.swift */,
 				596F4FCB283FBF94008CA0E9 /* Brand.swift */,
 				595988352841556A00ACB869 /* MockOrder.swift */,
@@ -374,6 +385,10 @@
 		048B3F6C283CD79D00CEF8D0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				592229E42847AF260057CCCB /* APIConstants.swift */,
+				592229E52847AF260057CCCB /* ApiError.swift */,
+				592229E32847AF260057CCCB /* EndPoint.swift */,
+				592229E12847AF170057CCCB /* ApiClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -899,6 +914,7 @@
 			files = (
 				04716B1A2845295E00472C58 /* WishlistTableViewCell.swift in Sources */,
 				596F4FCC283FBF94008CA0E9 /* Brand.swift in Sources */,
+				592229E72847AF260057CCCB /* APIConstants.swift in Sources */,
 				594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */,
 				04716B0B284525D500472C58 /* AddressesTableViewCell.swift in Sources */,
 				048B3F4C283CD23A00CEF8D0 /* InStore.xcdatamodeld in Sources */,
@@ -908,6 +924,8 @@
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
 				04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */,
+				592229E22847AF170057CCCB /* ApiClient.swift in Sources */,
+				592229E62847AF260057CCCB /* EndPoint.swift in Sources */,
 				04716B0E2845261900472C58 /* ConfirmOrderViewController.swift in Sources */,
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
@@ -921,6 +939,7 @@
 				04716B20284529C500472C58 /* SuggestedCollectionViewCell.swift in Sources */,
 				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
 				B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */,
+				592229EA2847AF6A0057CCCB /* Customer.swift in Sources */,
 				042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
@@ -931,6 +950,7 @@
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,
 				59F0D5F5284199C2003F9C96 /* AllProductsViewController.swift in Sources */,
 				59F0D5F328419934003F9C96 /* AllProductsCollectionViewCell.swift in Sources */,
+				592229E82847AF260057CCCB /* ApiError.swift in Sources */,
 				044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				04716B062845257D00472C58 /* AddAddressViewController.swift in Sources */,

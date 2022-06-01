@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.0.5)
   - Cosmos (23.0.0)
   - IBAnimatable (6.1.0)
   - IQKeyboardManagerSwift (6.5.9)
@@ -17,7 +17,7 @@ PODS:
   - UICheckbox (0.0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.9.1)
+  - Alamofire (~> 5.0.0)
   - Cosmos (~> 23.0)
   - IBAnimatable (= 6.1.0)
   - IQKeyboardManagerSwift (= 6.5.9)
@@ -43,7 +43,7 @@ SPEC REPOS:
     - UICheckbox
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   IBAnimatable: 99dddd4c0625884a301ba3ecbc1615f8a390368e
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: 0c18a457f343c711246041d809317cba41149150
+PODFILE CHECKSUM: 9dbe6b5831f25a112d0e2c0e82f0ff9109f01c36
 
 COCOAPODS: 1.11.2
