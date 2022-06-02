@@ -39,11 +39,17 @@ class CardViewController: UIViewController {
             var addressesVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddressesViewController.self)) as! AddressesViewController
             navigationController?.pushViewController(addressesVC, animated: true)
         }else{
-            var addAddressVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddAddressViewController.self)) as! AddAddressViewController
+            guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
+                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: ApiClient())!))
+            }) else { return }
             navigationController?.pushViewController(addAddressVC, animated: true)
         }
     }
     
+//    guard let vc = self.storyboard?.instantiateViewController(identifier: "SecondViewController", creator: { (coder) -> SecondViewController? in
+//        SecondViewController(coder: coder, name: "ahmed")
+//    }) else {return}
+//    self.navigationController?.pushViewController(vc, animated: true)
 
     //MARK: -- Functions
     func configureCardTableView(){

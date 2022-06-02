@@ -29,3 +29,26 @@ struct Address: Codable {
     var country: String?
     var phone : String?
 }
+
+struct NewAddress : Codable{
+    var customer_address : Address?
+}
+
+struct CustomerAddress: Codable {
+    var addresses: [Address]?
+}
+
+
+struct PutAddress: Codable {
+    let customer: CustomerAddress?
+}
+
+extension Encodable {
+  func asDictionary() throws -> [String: Any] {
+    let data = try JSONEncoder().encode(self)
+    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+      throw NSError()
+    }
+    return dictionary
+  }
+}

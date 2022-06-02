@@ -76,16 +76,32 @@ class Repository: RepositoryProtocol {
         return orders
     }
     
-    func addAddress(customer: NewCustomer) -> Observable<NewCustomer>? {
-        var address : Observable<NewCustomer>?
+    // /admin/api/2021-10/customers/207119551/addresses.json
+    ///customers/207119551.json
+    func addAddress(address : Address) -> Observable<NewCustomer>? {
+        var newAddress : Observable<NewCustomer>?
          do{
-             let postBody = try JSONEncoder().encode(customer)
-             address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((customer.customer.id)!).json")
-         }catch{}
+            let customer = CustomerAddress(addresses: [address])
+            let putObject = PutAddress(customer: customer)
+            let postBody = try JSONSerialization.data(withJSONObject: putObject.asDictionary(), options: .prettyPrinted)
+            print(postBody)
+            newAddress = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((address.customer_id)!).json")
+         }catch let error as NSError{
+             print("\(error) can't add address, something error")
+         }
         
-         return address
+         return newAddress
     }
-    
+//    func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>? {
+//
+//        var address : Observable<NewCustomer>?
+//        do{
+//            let postBody = try JSONEncoder().encode(customer)
+//            address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((customer.customer.id)!).json")
+//        }catch{}
+//
+//        return address
+//    }
     func addToCart(product: Product) {
         localDataSource?.addToCart(product: product)
     }

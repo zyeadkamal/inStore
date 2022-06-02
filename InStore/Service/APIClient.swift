@@ -25,23 +25,27 @@ class ApiClient: APIClientProtocol {
     
     func postRequest<T: Decodable>(fromEndpoint: EndPoint, httpBody: Data?, httpMethod : HTTPMethod , ofType : T.Type, json: String) -> Observable<T> {
         
+        
         return Observable<T>.create { observer in
-            guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)") else {
+            guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)\(json)") else {
                 observer.onError(NSError(domain: "", code: 500, userInfo: nil))
                 return Disposables.create {}
             }
+            print("url for adding address is --> \(url)")
             var request = URLRequest(url: url)
             request.httpMethod = httpMethod.rawValue
             request.httpShouldHandleCookies = false
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpBody = httpBody
+            print(request)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error{
                     print(error)
                     observer.onError(error)
                 }else{
                     if let data = data {
+                        print(String(decoding: data, as: UTF8.self))
                         do{
                             let jsonDecoder = JSONDecoder()
                             let result = try jsonDecoder.decode(T.self, from: data)
