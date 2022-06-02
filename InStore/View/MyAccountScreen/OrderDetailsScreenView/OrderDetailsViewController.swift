@@ -7,29 +7,59 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class OrderDetailsViewController: UIViewController {
 
+    //MARK: - IBOutlets
+
     @IBOutlet weak var orderID: UILabel!
     @IBOutlet weak var orderedAtLabel: UILabel!
-    
     @IBOutlet weak var totalAmountLabel: UILabel!
-    
     @IBOutlet weak var orderDetailsTableView: UITableView!
     
-    var order: MockOrder?
     
+    //MARK: - Properties
+    
+    private var orderViewModel:MyAccountViewModelType
+    private var bag = DisposeBag()
+    private var index : Int
+    
+    //MARK: - Init
+    
+    
+    init?(coder: NSCoder ,orderViewModel:MyAccountViewModelType, index :IndexPath ) {
+        self.orderViewModel = orderViewModel
+        self.index = index.row
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    //MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        setNavControllerTransparent()
         configureTableView()
+        setOrderDetails()
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - Methodes
+
     private func configureTableView(){
         registerCellsForTableView()
         setupTableViewDataSource()
+    }
+    
+    private func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func setupTableViewDataSource(){
@@ -37,6 +67,12 @@ class OrderDetailsViewController: UIViewController {
         orderDetailsTableView.delegate   = self
     }
     
+    private func setOrderDetails(){
+        
+        orderID.text = String("\((orderViewModel.orderList[index].id)!)")
+        orderedAtLabel.text = orderViewModel.orderList[index].created_at?.getNamedDayNamedMonthYear()
+        totalAmountLabel.text = String("\((orderViewModel.orderList[index].currency)!)\((orderViewModel.orderList[index].current_total_price)!)")
+    }
 
     private func registerCellsForTableView(){
         let ordersNib = UINib(nibName: String(describing: OrderDetailsTableViewCell.self), bundle: nil)
@@ -44,29 +80,23 @@ class OrderDetailsViewController: UIViewController {
 
     }
 
-    
 }
+
+//MARK: - UITableViewDelegate
+
 extension OrderDetailsViewController : UITableViewDataSource,UITableViewDelegate{
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return order?.line_items.count ?? 0
+        return orderViewModel.orderList[index].line_items.count
     }
 
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderDetailsTableViewCell.self), for: indexPath) as! OrderDetailsTableViewCell
-        cell.setupCell(orderItem: (order?.line_items[indexPath.row])!)
+        cell.setupCell(orderItem: (orderViewModel.orderList[index].line_items[indexPath.row]))
     
     
         return cell
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return ((orderDetailsTableView.frame.height/8))
-//
-//
-//    }
     
 }
 
