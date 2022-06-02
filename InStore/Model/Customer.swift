@@ -27,4 +27,5 @@ struct Address: Codable {
     var customer_id : Int?
     var address1, city: String?
     var country: String?
+    var phone : String?
 }
