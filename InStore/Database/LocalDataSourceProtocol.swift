@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 protocol LocalDataSourceProtocol {
-    
+    // cart functions
+    func addToCart(product: Product)
+    func fetchProductsFromCart() -> [CartProduct]?
+    func deleteProductFromCart(deletedProductId: Int32)
+    func editProductAmountInCart(productId : Int32, amount : Int16)
 }
