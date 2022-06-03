@@ -14,9 +14,7 @@ class GetStartedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(brand?.name)
-        
+                
         // Do any additional setup after loading the view.
     }
     

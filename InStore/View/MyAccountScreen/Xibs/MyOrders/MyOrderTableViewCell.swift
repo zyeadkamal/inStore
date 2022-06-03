@@ -21,7 +21,7 @@ class MyOrderTableViewCell: UITableViewCell {
 
     func setupCell(order:MockOrder) {
         orderTotal.text = String("\(order.currency ?? "$")\(order.current_total_price ?? "0")")
-        orderedAt.text = order.created_at ?? "27-06-1998"
+        orderedAt.text = order.created_at?.getNamedDayNamedMonthYear() ?? "27-06-1998"
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

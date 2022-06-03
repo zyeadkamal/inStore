@@ -5,7 +5,6 @@
 //  Created by mac on 6/1/22.
 //  Copyright © 2022 mac. All rights reserved.
 //
-
 import Foundation
 
 struct NewCustomer: Codable {
@@ -38,6 +37,9 @@ struct CustomerAddress: Codable {
     var addresses: [Address]?
 }
 
+struct Addresses: Codable {
+    var addresses: Address
+}
 
 struct PutAddress: Codable {
     let customer: CustomerAddress?
