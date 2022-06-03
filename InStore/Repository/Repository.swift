@@ -15,12 +15,12 @@ class Repository: RepositoryProtocol {
     private var localDataSource: LocalDataSourceProtocol?
     private var apiClient: APIClientProtocol?
     
-    private init(localDataSource : LocalDataSourceProtocol, apiClient : APIClientProtocol) {
+    private init(localDataSource : LocalDataSourceProtocol = LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient : APIClientProtocol) {
         self.localDataSource = localDataSource
         self.apiClient = apiClient
     }
     
-    static func shared(localDataSource: LocalDataSourceProtocol, apiClient: APIClientProtocol) -> RepositoryProtocol? {
+    static func shared(localDataSource: LocalDataSourceProtocol = LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: APIClientProtocol) -> RepositoryProtocol? {
         if repo == nil {
             repo = Repository(localDataSource: localDataSource, apiClient: apiClient)
         }
@@ -76,8 +76,6 @@ class Repository: RepositoryProtocol {
         return orders
     }
     
-    // /admin/api/2021-10/customers/207119551/addresses.json
-    ///customers/207119551.json
     func addAddress(address : Address) -> Observable<NewCustomer>? {
         var newAddress : Observable<NewCustomer>?
          do{
@@ -92,16 +90,14 @@ class Repository: RepositoryProtocol {
         
          return newAddress
     }
-//    func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>? {
-//
-//        var address : Observable<NewCustomer>?
-//        do{
-//            let postBody = try JSONEncoder().encode(customer)
-//            address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((customer.customer.id)!).json")
-//        }catch{}
-//
-//        return address
-//    }
+
+    // admin/api/2021-10/customers/207119551/addresses.json
+    func getAllAddresses(customerId: Int) -> Observable<CustomerAddress>? {
+        let allAddresses = apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: [:],ofType: CustomerAddress.self,json: "/\(customerId)/\(EndPoint.addresses).json")
+        
+        return allAddresses
+    }
+    
     func addToCart(product: Product) {
         localDataSource?.addToCart(product: product)
     }

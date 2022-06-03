@@ -74,9 +74,12 @@ class AddAddressViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func navigateToAddresses(){
-        let addressesVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddressesViewController.self)) as! AddressesViewController
+        guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+        }) else { return }
         navigationController?.pushViewController(addressesVC, animated: true)
     }
+    
     func isValidTF() -> Bool{
         if(countryTF.text != "" && cityTF.text != "" && addressTF.text != "" && phoneTF.text != ""){
             return true

@@ -27,3 +27,10 @@ struct Errors: Codable {
     
 //    let addresses:[AddressResponse]?
 }
+
+public enum State {
+    case loading
+    case error
+    case empty
+    case populated
+}

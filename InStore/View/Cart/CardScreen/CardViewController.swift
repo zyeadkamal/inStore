@@ -18,7 +18,7 @@ class CardViewController: UIViewController {
     @IBOutlet weak var containerStack: UIStackView!
     
     //MARK: -- Properties
-    var hasAddress = false
+    var hasAddress = true
     
     // ay list just for testing UI
     var cartList : [String] = [""]
@@ -36,11 +36,13 @@ class CardViewController: UIViewController {
     //MARK: -- IBActions
     @IBAction func didPressCheckout(_ sender: UIButton) {
         if hasAddress {
-            var addressesVC = storyboard?.instantiateViewController(withIdentifier: String(describing: AddressesViewController.self)) as! AddressesViewController
+            guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
+                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+            }) else { return }
             navigationController?.pushViewController(addressesVC, animated: true)
         }else{
             guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: ApiClient())!))
+                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
             }) else { return }
             navigationController?.pushViewController(addAddressVC, animated: true)
         }
