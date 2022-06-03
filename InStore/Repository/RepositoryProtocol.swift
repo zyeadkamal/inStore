@@ -15,9 +15,10 @@ protocol RepositoryProtocol {
     func login() -> Observable<LoginResponse>?
     func register(customer: NewCustomer) -> Observable<NewCustomer>?
     func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>?
-    func deleteAddress(customer: NewCustomer,index:Int) -> Observable<NewCustomer>?
+    func deleteAddress(customerId: Int,addressID:Int) -> Observable<NewCustomer>?
     func getOrders(userId:Int) -> Observable<Orders>?
     func addAddress(customer : NewCustomer) -> Observable<NewCustomer>?
+    func getAddresses(userId:Int) -> Observable<CustomerAddress>?
     
     
     

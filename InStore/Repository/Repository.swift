@@ -62,10 +62,10 @@ class Repository: RepositoryProtocol {
     }
     
     
-    func deleteAddress(customer: NewCustomer,index:Int) -> Observable<NewCustomer>? {
+    func deleteAddress(customerId: Int,addressID:Int) -> Observable<NewCustomer>? {
        
-        let address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: nil, httpMethod: .delete, ofType: NewCustomer.self,json: "/\((customer.customer.id)!)/\((EndPoint.addresses))/\((customer.customer.addresses![index].id)!).json")
-        
+        let address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: nil, httpMethod: .delete, ofType: NewCustomer.self,json: "/\(customerId)/\((EndPoint.addresses))/\(addressID).json")
+    
         return address
     }
     
@@ -84,6 +84,14 @@ class Repository: RepositoryProtocol {
          }catch{}
         
          return address
+    }
+    //customers/6246222299371/addresses.json
+    
+    func getAddresses(userId:Int) -> Observable<CustomerAddress>?{
+       
+        let addresses = apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: [:],ofType: CustomerAddress.self,json: "/\(userId)/\(EndPoint.addresses).json")
+        
+        return addresses
     }
     
     func addToCart(product: Product) {
