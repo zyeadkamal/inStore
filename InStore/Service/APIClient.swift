@@ -94,7 +94,9 @@ class ApiClient: APIClientProtocol {
                     observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 }
                 guard let data = response.data else { return }
-                
+               
+                print(String(decoding: data, as: UTF8.self))
+
                 do {
                     let response = try JSONDecoder().decode(T.self, from: data)
                     observer.onNext( response )

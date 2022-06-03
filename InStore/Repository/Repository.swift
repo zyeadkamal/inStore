@@ -100,6 +100,21 @@ class Repository: RepositoryProtocol {
         return addresses
     }
     
+    
+    func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
+        
+        let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
+        return discountCodes
+        
+    }
+    
+    func getBrands() -> Observable<Smart_collections>?{
+        
+        let brands = apiClient?.getRequest(fromEndpoint: EndPoint.smart_collections, httpMethod: .get, parameters: [:],ofType: Smart_collections.self, json: ".json")
+        
+        return brands
+    }
+    
     func addToCart(product: Product) {
         localDataSource?.addToCart(product: product)
     }
@@ -115,4 +130,7 @@ class Repository: RepositoryProtocol {
     func editProductAmountInCart(productId: Int32, amount: Int16) {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
     }
+    
+    
+    
 }
