@@ -30,7 +30,7 @@ class RegisterViewModel: RegisterViewModelProtocol {
         }
     }
     
-    init(repository: RepositoryProtocol? = Repository.shared(localDataSource: LocalDataSource(),apiClient: ApiClient())) {
+    init(repository: RepositoryProtocol?) {
         self.repository = repository
         self.successfullRegisterObservable = successfullRegisterSubject.asObservable()
         self.errorMessageObservable = errorMessageSubject.asObservable()

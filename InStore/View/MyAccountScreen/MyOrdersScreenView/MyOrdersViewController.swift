@@ -83,7 +83,7 @@ class MyOrdersViewController: UIViewController {
                 self.noOrdersImage.isHidden = true
                 self.ordersTableView.isHidden = false
             }
-        })
+            }).disposed(by: bag)
     }
     private func openOrderDetails(_ indexPath: IndexPath) {
         

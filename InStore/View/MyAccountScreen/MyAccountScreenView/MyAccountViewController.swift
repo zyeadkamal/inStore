@@ -98,7 +98,7 @@ class MyAccountViewController: UIViewController {
 
                 })
             }
-        })
+            }).disposed(by: bag)
     }
     
     private func openOrderDetails(_ indexPath: IndexPath) {

@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
     
-    private lazy var viewModel: RegisterViewModelProtocol = RegisterViewModel()
+    private lazy var viewModel: RegisterViewModelProtocol = RegisterViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()))
     let bag = DisposeBag()
     
     override func viewDidLoad() {

@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    private var viewModel: LoginViewModelProtocol = LoginViewModel()
+    private var viewModel: LoginViewModelProtocol = LoginViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()))
     private var bag = DisposeBag()
     
     override func viewDidLoad() {

@@ -30,7 +30,7 @@ class LoginViewModel: LoginViewModelProtocol {
         }
     }
     
-    init(repository: RepositoryProtocol? = Repository.shared(localDataSource: LocalDataSource(),apiClient: ApiClient())) {
+    init(repository: RepositoryProtocol?) {
         self.repository = repository
         self.errorMessageObservable = errorMessageSubject.asObservable()
         self.successfullLoginObservable = successfullLoginSubject.asObservable()
