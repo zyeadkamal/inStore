@@ -11,8 +11,7 @@ import RxSwift
 
 protocol RepositoryProtocol {
     
-    //remote functions
-    func login() -> Observable<LoginResponse>?
+    func login(email: String) -> Observable<LoginResponse>?
     func register(customer: NewCustomer) -> Observable<NewCustomer>?
     func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>?
     func deleteAddress(customerId: Int,addressID:Int) -> Observable<NewCustomer>?

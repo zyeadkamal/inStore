@@ -29,9 +29,9 @@ class Repository: RepositoryProtocol {
     
     
     
-    func login() -> Observable<LoginResponse>? {
+    func login(email: String) -> Observable<LoginResponse>? {
         
-        let customer = apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: ["email":"yalhwaaaaaaaay@gmail.com"],ofType: LoginResponse.self, json: ".json")
+        let customer = apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: ["email":email],ofType: LoginResponse.self, json: ".json")
         
         return customer
     }

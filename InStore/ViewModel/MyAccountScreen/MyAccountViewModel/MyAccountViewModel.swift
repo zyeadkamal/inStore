@@ -16,12 +16,13 @@ protocol MyAccountViewModelType{
     var orderObservable: Observable<[MockOrder]> {get set}
     var orderList : [MockOrder]{get}
     var showLoadingObservable: Observable<State> { get set }
-
+    
 }
 
 
 class MyAccountViewModel: MyAccountViewModelType{
     
+    private var bag = DisposeBag()
     private(set) var orderList : [MockOrder] = [MockOrder]()
     private var repo : RepositoryProtocol
     var orderObservable: Observable<[MockOrder]>
@@ -57,29 +58,20 @@ class MyAccountViewModel: MyAccountViewModelType{
     
     func getData() {
         state = .loading
-        getOrders(userId:6232280301803).observe(on: MainScheduler.instance).subscribe { orders in
+        getOrders(userId:6232280301803).observe(on: MainScheduler.instance).subscribe(onNext: { (orders) in
             self.orders = orders.orders
             if(orders.orders.isEmpty){
                 self.state = .empty
             }else {
                 self.state = .populated
             }
+        }, onError: { (error) in
             
-        } onError: { error in
-            switch error {
-            case ApiError.conflict:
-                print("Conflict error")
-            case ApiError.forbidden:
-                print("Forbidden error")
-            case ApiError.notFound:
-                print("Not found error")
-            default:
-                print("Unknown error:", error.localizedDescription)
-            }
             self.state = .error
-        }
+            }).disposed(by: bag)
         
     }
     
     
 }
+

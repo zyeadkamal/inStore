@@ -22,6 +22,7 @@ protocol MyAddressViewModelType{
 
 class MyAddressViewModel: MyAddressViewModelType{
     
+    private let bag = DisposeBag()
     var addressesList : [Address] = [Address]()
     private var repo : RepositoryProtocol
     var addressObservable: Observable<[Address]>
@@ -67,20 +68,7 @@ class MyAddressViewModel: MyAddressViewModelType{
     func deleteData( index:Int){
        // state = .loading
         
-        deleteAddress(userId:6246222299371, index:index).observe(on: MainScheduler.instance).subscribe { _ in
-            
-            
-        } onError: { error in
-            switch error {
-            case ApiError.conflict:
-                print("Conflict error")
-            case ApiError.forbidden:
-                print("Forbidden error")
-            case ApiError.notFound:
-                print("Not found error")
-            default:
-                print("Unknown error:", error.localizedDescription)
-            }
+        deleteAddress(userId:6246222299371, index:index).observe(on: MainScheduler.instance).subscribe(onError: { (error) in
             //self.state = .error
             self.addresses.remove(at: index)
 
@@ -89,7 +77,7 @@ class MyAddressViewModel: MyAddressViewModelType{
             }else {
                 self.state = .populated
             }
-        }
+            }).disposed(by: bag)
 
     }
     
@@ -97,29 +85,20 @@ class MyAddressViewModel: MyAddressViewModelType{
     
     func getData() {
         state = .loading
-        getAddress(userId:6246222299371).observe(on: MainScheduler.instance).subscribe { address in
+        getAddress(userId:6246222299371).observe(on: MainScheduler.instance).subscribe(onNext: { (address) in
             self.addresses = address.addresses ?? []
             if(self.addresses.isEmpty){
                 self.state = .empty
             }else {
                 self.state = .populated
             }
-
-        } onError: { error in
-            switch error {
-            case ApiError.conflict:
-                print("Conflict error")
-            case ApiError.forbidden:
-                print("Forbidden error")
-            case ApiError.notFound:
-                print("Not found error")
-            default:
-                print("Unknown error:", error.localizedDescription)
-            }
+        }, onError: { (error) in
             self.state = .error
-        }
+            }).disposed(by: bag)
         
     }
     
     
 }
+
+

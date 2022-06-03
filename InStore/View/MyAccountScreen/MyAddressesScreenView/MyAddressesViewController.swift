@@ -101,7 +101,7 @@ class MyAddressesViewController: UIViewController {
                 self.addressesTableView.reloadData()
             }
            
-        })
+            }).disposed(by: bag)
     }
     
     private func openOrderDetails(_ indexPath: IndexPath) {
