@@ -91,12 +91,6 @@ class Repository: RepositoryProtocol {
          return newAddress
     }
 
-    // admin/api/2021-10/customers/207119551/addresses.json
-    func getAllAddresses(customerId: Int) -> Observable<CustomerAddress>? {
-        let allAddresses = apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: [:],ofType: CustomerAddress.self,json: "/\(customerId)/\(EndPoint.addresses).json")
-        
-        return allAddresses
-    }
     //customers/6246222299371/addresses.json
     
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?{

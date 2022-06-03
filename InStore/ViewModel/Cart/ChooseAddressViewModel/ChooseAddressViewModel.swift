@@ -47,7 +47,7 @@ class ChooseAddressViewModel : ChooseAddressViewModelType{
      
     private func getAllAddresses(customerId : Int) -> Observable<CustomerAddress>{
          var addresses : Observable<CustomerAddress>?
-         addresses = repo.getAllAddresses(customerId: customerId)
+         addresses = repo.getAddresses(userId: customerId)
          return addresses!
          
      }
@@ -65,16 +65,16 @@ class ChooseAddressViewModel : ChooseAddressViewModelType{
             }
             
          }, onError: { error in
-             switch error {
-             case ApiError.conflict:
-                 print("Conflict error")
-             case ApiError.forbidden:
-                 print("Forbidden error")
-             case ApiError.notFound:
-                 print("Not found error")
-             default:
-                 print("Unknown error:", error.localizedDescription)
-             }
+//             switch error {
+//             case ApiError.conflict:
+//                 print("Conflict error")
+//             case ApiError.forbidden:
+//                 print("Forbidden error")
+//             case ApiError.notFound:
+//                 print("Not found error")
+//             default:
+//                 print("Unknown error:", error.localizedDescription)
+//             }
              self.state = .error
             })
         
