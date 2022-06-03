@@ -26,10 +26,11 @@ class ApiClient: APIClientProtocol {
     func postRequest<T: Decodable>(fromEndpoint: EndPoint, httpBody: Data?, httpMethod : HTTPMethod , ofType : T.Type, json: String) -> Observable<T> {
         
         return Observable<T>.create { observer in
-            guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)") else {
+            guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)\(json)") else {
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 return Disposables.create {}
             }
+            print(url)
             var request = URLRequest(url: url)
             request.httpMethod = httpMethod.rawValue
             request.httpShouldHandleCookies = false
@@ -43,6 +44,8 @@ class ApiClient: APIClientProtocol {
                 }else{
                     if let data = data {
                         do{
+                            print(String(decoding: data, as: UTF8.self))
+
                             let jsonDecoder = JSONDecoder()
                             let result = try jsonDecoder.decode(T.self, from: data)
                             observer.onNext( result )

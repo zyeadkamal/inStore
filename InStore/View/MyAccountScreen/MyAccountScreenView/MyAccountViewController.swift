@@ -7,94 +7,156 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MyAccountViewController: UIViewController {
-
+    
+    //MARK: - IBOutlet
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noOrdersImage: UIImageView!
     @IBOutlet weak var ordersTableView: UITableView!
     
-    let orders = [MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100"),OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150"),MockOrder(line_items: [OrderItem(variant_id: 1, quantity: 3, name: "nike shoes", price:"100")], customer: OrderCustomer(id: 0, first_name: "mohamed"), financial_status: "Paid", created_at: "27-06-2022", id: 1, currency: "$", current_total_price: "150")]
+    //MARK: - Properties
     
+    private var myAccountViewModel = MyAccountViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
 
+    
+    private var bag = DisposeBag()
+    
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        setNavControllerTransparent()
         configureCollectionViews()
+        myAccountViewModel.getData()
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - Methodes
+    
+    private func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     private func configureCollectionViews(){
         registerCellsForTableView()
-        setupTableViewDataSource()
+        ordersTableView
+            .rx.setDelegate(self)
+            .disposed(by: bag)
+        bindOrders()
     }
-    
-    private func setupTableViewDataSource(){
-        ordersTableView.dataSource = self
-        ordersTableView.delegate   = self
-    }
-    
     
     private func registerCellsForTableView(){
         let ordersNib = UINib(nibName: String(describing: MyOrderTableViewCell.self), bundle: nil)
         ordersTableView.register(ordersNib, forCellReuseIdentifier: String(describing: MyOrderTableViewCell.self))
+        
+    }
+    private func bindOrders(){
+        ordersTableView.rx.itemSelected.subscribe(onNext: openOrderDetails).disposed(by: bag)
+        
+        myAccountViewModel.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asDriver(onErrorJustReturn: [])
+            .drive( ordersTableView.rx.items(cellIdentifier: String(describing: MyOrderTableViewCell.self),cellType: MyOrderTableViewCell.self) ){( row, order, cell) in
+                print("data")
+                cell.setupCell(order: order)
+            }.disposed(by: bag)
+        
+        myAccountViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { state in
+            
+            switch state {
+            case .error:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.ordersTableView.alpha = 0.0
+                    self.noOrdersImage.alpha = 1.0
+                    self.activityIndicator.alpha = 0.0
 
+                })
+            case .empty:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.ordersTableView.alpha = 0.0
+                    self.noOrdersImage.alpha = 1.0
+                    self.activityIndicator.alpha = 0.0
+
+                })
+            case .loading:
+                self.activityIndicator.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.ordersTableView.alpha = 0.0
+                    self.noOrdersImage.alpha = 0.0
+                })
+            case .populated:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.ordersTableView.alpha = 1.0
+                    self.noOrdersImage.alpha = 0.0
+                    self.activityIndicator.alpha = 0.0
+
+                })
+            }
+        })
     }
     
+    private func openOrderDetails(_ indexPath: IndexPath) {
+        
+        ordersTableView.deselectRow(at: indexPath, animated: true)
+
+        guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: OrderDetailsViewController.self), creator: { (coder) -> OrderDetailsViewController? in
+            OrderDetailsViewController(coder: coder, orderViewModel: self.myAccountViewModel , index:indexPath)
+        }) else {return}
+
+        self.navigationController?.pushViewController(vc, animated: true)
+    
+    }
+    
+    
+    //MARK: - IBActions
+    
     @IBAction func logoutPressed(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: String(describing: LoginViewController.self)) as! LoginViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
     @IBAction func seeMoreOrdersPressed(_ sender: Any) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyOrdersViewController.self)) as! MyOrdersViewController
-
-        viewController.injectOrdersViewModel(myOrdersViewModel: MyOrdersViewModel())
-    
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: MyOrdersViewController.self), creator: { (coder) -> MyOrdersViewController? in
+            MyOrdersViewController(coder: coder, myOrdersViewModel: self.myAccountViewModel)
+        }) else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func CurrencyPressed(_ sender: Any) {
     }
-
-    @IBAction func AddressesPressed(_ sender: Any) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
     
-       // viewController.brand = brands[indexPath.row]
-        self.navigationController?.pushViewController(viewController, animated: true)
+    @IBAction func AddressesPressed(_ sender: Any) {
+        guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: MyAddressesViewController.self), creator: { (coder) -> MyAddressesViewController? in
+            MyAddressesViewController (coder: coder, myAddressViewModel: MyAddressViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!))
+        }) else {return}
+
+        self.navigationController?.pushViewController(vc, animated: true)
+//
+//        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
+//
+//        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
 }
-extension MyAccountViewController : UITableViewDataSource,UITableViewDelegate{
+extension MyAccountViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (orders.isEmpty){
-            noOrdersImage.isHidden = false
-
-            ordersTableView.isHidden = true
-            return orders.count
-        }
-        noOrdersImage.isHidden = true
-        ordersTableView.isHidden = false
         return 2
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MyOrderTableViewCell.self), for: indexPath) as! MyOrderTableViewCell
-        cell.setupCell(order: orders[indexPath.row])
-        return cell
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ((ordersTableView.frame.height/2))
-
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: OrderDetailsViewController.self)) as! OrderDetailsViewController
-    
-        viewController.order = orders[indexPath.row]
-        ordersTableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
-    
     
 }

@@ -51,7 +51,9 @@
 		04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */; };
 		04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
-		594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */; };
+		592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229EE2848B0330057CCCB /* MyAccountViewModel.swift */; };
+		592229F12848D1A50057CCCB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229F02848D1A50057CCCB /* State.swift */; };
+		592229F4284901B60057CCCB /* MyAddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229F3284901B60057CCCB /* MyAddressesViewModel.swift */; };
 		596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */; };
 		596F4FC5283FB872008CA0E9 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC4283FB872008CA0E9 /* HomeScreenViewController.swift */; };
 		596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F4FC7283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift */; };
@@ -85,6 +87,7 @@
 		B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */; };
 		B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCB283EF1C20043FCF7 /* Card.storyboard */; };
 		B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */; };
+		B6C78E532848A056002810FD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E522848A056002810FD /* Product.swift */; };
 		B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +152,9 @@
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
-		594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
+		592229EE2848B0330057CCCB /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		592229F02848D1A50057CCCB /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		592229F3284901B60057CCCB /* MyAddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesViewModel.swift; sourceTree = "<group>"; };
 		596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extention.swift"; sourceTree = "<group>"; };
 		596F4FC4283FB872008CA0E9 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		596F4FC7283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -184,6 +189,7 @@
 		B656DFC7283EF1600043FCF7 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		B656DFCB283EF1C20043FCF7 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
 		B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm_order_anim.json; sourceTree = "<group>"; };
+		B6C78E522848A056002810FD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B6CD9732284149C3001E7FF5 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		B6EC19162844AB6300D4007B /* SuggestedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedCollectionViewCell.xib; sourceTree = "<group>"; };
 		B6EDC3F52844164200BE0193 /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
@@ -297,6 +303,8 @@
 				04530B8D2847BC380064149C /* OnboardingSlide.swift */,
 				04530B902847BC600064149C /* Brand.swift */,
 				04530B922847BC920064149C /* MockOrder.swift */,
+				592229F02848D1A50057CCCB /* State.swift */,
+				B6C78E522848A056002810FD /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -523,20 +531,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		592229ED2848B01F0057CCCB /* MyAccountViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				592229EE2848B0330057CCCB /* MyAccountViewModel.swift */,
+			);
+			path = MyAccountViewModel;
+			sourceTree = "<group>";
+		};
+		592229F2284901A20057CCCB /* MyAddressesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				592229F3284901B60057CCCB /* MyAddressesViewModel.swift */,
+			);
+			path = MyAddressesViewModel;
+			sourceTree = "<group>";
+		};
 		594C4CE12846C17500EE2BB9 /* MyAccountScreen */ = {
 			isa = PBXGroup;
 			children = (
-				594C4CE22846C18700EE2BB9 /* MyOrderScreenViewModel */,
+				592229F2284901A20057CCCB /* MyAddressesViewModel */,
+				592229ED2848B01F0057CCCB /* MyAccountViewModel */,
 			);
 			path = MyAccountScreen;
-			sourceTree = "<group>";
-		};
-		594C4CE22846C18700EE2BB9 /* MyOrderScreenViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				594C4CDF28465CB100EE2BB9 /* MyOrdersViewModel.swift */,
-			);
-			path = MyOrderScreenViewModel;
 			sourceTree = "<group>";
 		};
 		596F4FC3283FB84A008CA0E9 /* HomeScreenView */ = {
@@ -790,7 +807,7 @@
 				048B3F3A283CD23A00CEF8D0 /* Sources */,
 				048B3F3B283CD23A00CEF8D0 /* Frameworks */,
 				048B3F3C283CD23A00CEF8D0 /* Resources */,
-				FF6705EFE956F4E798E6119B /* [CP] Embed Pods Frameworks */,
+				50F6F35B7EBE40B61D38A4CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -917,6 +934,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		50F6F35B7EBE40B61D38A4CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EAC61C6CC1B29BDA103E98B5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -939,23 +973,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FF6705EFE956F4E798E6119B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InStore/Pods-InStore-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -964,15 +981,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				04716B1A2845295E00472C58 /* WishlistTableViewCell.swift in Sources */,
-				594C4CE028465CB100EE2BB9 /* MyOrdersViewModel.swift in Sources */,
 				04716B0B284525D500472C58 /* AddressesTableViewCell.swift in Sources */,
 				048B3F4C283CD23A00CEF8D0 /* InStore.xcdatamodeld in Sources */,
 				596F4FFD2840DFAD008CA0E9 /* MyAccountViewController.swift in Sources */,
 				04530BA62847C2B20064149C /* RepositoryProtocol.swift in Sources */,
+				592229F4284901B60057CCCB /* MyAddressesViewModel.swift in Sources */,
+				592229F12848D1A50057CCCB /* State.swift in Sources */,
 				04716B14284528EB00472C58 /* WishlistViewController.swift in Sources */,
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
+				592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */,
 				04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */,
 				04530BA22847C2370064149C /* LocalDataSource.swift in Sources */,
 				04716B0E2845261900472C58 /* ConfirmOrderViewController.swift in Sources */,
@@ -1013,6 +1032,7 @@
 				044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				04716B062845257D00472C58 /* AddAddressViewController.swift in Sources */,
+				B6C78E532848A056002810FD /* Product.swift in Sources */,
 				596F4FFF2840DFC2008CA0E9 /* MyOrdersViewController.swift in Sources */,
 				04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
