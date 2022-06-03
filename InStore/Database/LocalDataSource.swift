@@ -12,7 +12,7 @@ import CoreData
 class LocalDataSource: LocalDataSourceProtocol {
     
     private static var local : LocalDataSourceProtocol?
-    private var managedContext : NSManagedObjectContext!
+    private var managedContext : NSManagedObjectContext?
     
     private init(managedContext : NSManagedObjectContext){
         self.managedContext = managedContext
@@ -25,7 +25,7 @@ class LocalDataSource: LocalDataSourceProtocol {
         return local
     }
     func addToCart(product: Product) {
-        let cartEntity = CartProduct(context: self.managedContext)
+        let cartEntity = CartProduct(context: self.managedContext!)
         cartEntity.productId = Int32(product.id)
         cartEntity.productTitle = product.title
         cartEntity.productImg = product.images[0].src
@@ -34,7 +34,7 @@ class LocalDataSource: LocalDataSourceProtocol {
         cartEntity.customerEmail = "mando@ggg.com"
         do{
             print("Product Saved Successfully")
-            try managedContext.save()
+            try managedContext?.save()
         }catch let error as NSError{
             print("\(error) in saving data to cart entity")
         }
@@ -54,7 +54,7 @@ class LocalDataSource: LocalDataSourceProtocol {
 //                    cartElements.append(product)
 //                }
 //            }
-            cartElements = try managedContext.fetch(fetchReq) as! [CartProduct]
+            cartElements = try managedContext?.fetch(fetchReq) as! [CartProduct]
             return cartElements
         }catch let error as NSError{
             print("\(error) in retreiving data from cart entity")
@@ -66,11 +66,11 @@ class LocalDataSource: LocalDataSourceProtocol {
         let retreivedProducts = fetchProductsFromCart()
         retreivedProducts?.forEach({ (product) in
             if product.value(forKey: "productId") as! Int32 == deletedProductId{
-                managedContext.delete(product)
+                managedContext?.delete(product)
             }
         })
         do{
-            try managedContext.save()
+            try managedContext?.save()
         }catch let error as NSError{
             print("\(error) in deleting products from cart entity")
         }
@@ -82,7 +82,7 @@ class LocalDataSource: LocalDataSourceProtocol {
             if product.value(forKey: "productId") as! Int16 == productId{
                 product.productAmount = amount
                 do{
-                    try managedContext.save()
+                    try managedContext?.save()
                 }catch let error as NSError{
                     print("\(error) in editing products in cart entity")
                 }

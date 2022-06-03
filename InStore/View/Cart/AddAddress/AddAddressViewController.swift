@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddAddressViewController: UIViewController {
 
     //MARK: -- IBOutlets
-    @IBOutlet weak var countryTF: UITextField!
-    @IBOutlet weak var cityTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
-    @IBOutlet weak var phoneTF: UITextField!
-    @IBOutlet weak var addAddressBtn: UIButton!
+    @IBOutlet weak private var countryTF: UITextField!
+    @IBOutlet weak private var cityTF: UITextField!
+    @IBOutlet weak private var addressTF: UITextField!
+    @IBOutlet weak private var phoneTF: UITextField!
+    @IBOutlet weak private var addAddressBtn: UIButton!
     
     //MARK: -- Properties
+    private var addAddressVM : AddAddressViewModelType?
+    var disposeBag = DisposeBag()
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -25,13 +29,36 @@ class AddAddressViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setNavControllerTransparent()
+        
+    }
+    
+    init?(coder: NSCoder, addAddressVM : AddAddressViewModelType) {
+        self.addAddressVM = addAddressVM
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been initialized")
     }
     
     //MARK: -- IBActions
     @IBAction func didPressAddAddress(_ sender: UIButton) {
-//        let viewController = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
-//        viewController.modalPresentationStyle = .fullScreen
-        self.dismiss(animated: true, completion: nil)
+        if isValidTF(){
+            addAddressVM?.addAddressForCurrentCustomer(address: Address(customer_id: 6246222299371, address1: addressTF.text, city: cityTF.text, country: countryTF.text , phone: phoneTF.text))?.subscribe( on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { customer in
+                print("on next address \(customer)")
+                self.showAlert(alertTitle: "Added Successfully", alertMsg: "Address Added Succssefully", handler: { _ in
+                    self.clearTextFields()
+                    self.navigateToAddresses()
+                })
+            }, onError: { error in
+                print("on error address \(error)")
+                self.showAlert(alertTitle: "Error", alertMsg: "Error in adding address", handler: nil)
+            }, onCompleted: {
+                print("completed")
+                }).disposed(by: disposeBag)
+        }else{
+            self.showAlert(alertTitle: "Invalid Inputs", alertMsg: "Please Enter Valid Inputs", handler: nil)
+        }
     }
     
     
@@ -41,5 +68,29 @@ class AddAddressViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
+    func showAlert(alertTitle : String, alertMsg: String, handler : ((UIAlertAction) -> Void)?){
+        let alert = UIAlertController(title: alertTitle, message: alertMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func navigateToAddresses(){
+        guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+        }) else { return }
+        navigationController?.pushViewController(addressesVC, animated: true)
+    }
+    
+    func isValidTF() -> Bool{
+        if(countryTF.text != "" && cityTF.text != "" && addressTF.text != "" && phoneTF.text != ""){
+            return true
+        }
+        return false
+    }
+    func clearTextFields(){
+        countryTF.text = ""
+        cityTF.text = ""
+        addressTF.text = ""
+        phoneTF.text = ""
+    }
 
 }

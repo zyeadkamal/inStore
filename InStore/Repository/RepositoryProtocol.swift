@@ -16,7 +16,7 @@ protocol RepositoryProtocol {
     func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>?
     func deleteAddress(customerId: Int,addressID:Int) -> Observable<NewCustomer>?
     func getOrders(userId:Int) -> Observable<Orders>?
-    func addAddress(customer : NewCustomer) -> Observable<NewCustomer>?
+    func addAddress(address : Address) -> Observable<NewCustomer>?
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?
     
     

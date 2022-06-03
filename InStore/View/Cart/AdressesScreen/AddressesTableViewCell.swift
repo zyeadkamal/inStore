@@ -12,11 +12,14 @@ class AddressesTableViewCell: UITableViewCell {
     
     //MARK: -- IBOutlets
     @IBOutlet weak var selectAddressBtn: UIButton!
-    @IBOutlet weak var addressTitle: UILabel!
+    @IBOutlet weak private var addressTitle: UILabel!
     
     //MARK: -- Properties
-    
-    
+    var addressName : String? {
+        didSet{
+            addressTitle.text = addressName
+        }
+    }
     //MARK: -- Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()

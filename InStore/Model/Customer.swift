@@ -29,8 +29,6 @@ struct Address: Codable {
     var phone : String?
 }
 
-
-
 struct NewAddress : Codable{
     var customer_address : Address?
 }

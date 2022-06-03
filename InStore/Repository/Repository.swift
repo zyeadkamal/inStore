@@ -15,12 +15,12 @@ class Repository: RepositoryProtocol {
     private var localDataSource: LocalDataSourceProtocol?
     private var apiClient: APIClientProtocol?
     
-    private init(localDataSource : LocalDataSourceProtocol, apiClient : APIClientProtocol) {
+    private init(localDataSource : LocalDataSourceProtocol = LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient : APIClientProtocol) {
         self.localDataSource = localDataSource
         self.apiClient = apiClient
     }
     
-    static func shared(localDataSource: LocalDataSourceProtocol, apiClient: APIClientProtocol) -> RepositoryProtocol? {
+    static func shared(localDataSource: LocalDataSourceProtocol = LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: APIClientProtocol) -> RepositoryProtocol? {
         if repo == nil {
             repo = Repository(localDataSource: localDataSource, apiClient: apiClient)
         }
@@ -76,15 +76,21 @@ class Repository: RepositoryProtocol {
         return orders
     }
     
-    func addAddress(customer: NewCustomer) -> Observable<NewCustomer>? {
-        var address : Observable<NewCustomer>?
+    func addAddress(address : Address) -> Observable<NewCustomer>? {
+        var newAddress : Observable<NewCustomer>?
          do{
-             let postBody = try JSONEncoder().encode(customer)
-             address = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((customer.customer.id)!).json")
-         }catch{}
+            let customer = CustomerAddress(addresses: [address])
+            let putObject = PutAddress(customer: customer)
+            let postBody = try JSONSerialization.data(withJSONObject: putObject.asDictionary(), options: .prettyPrinted)
+            print(postBody)
+            newAddress = apiClient?.postRequest(fromEndpoint: EndPoint.customers , httpBody: postBody, httpMethod: .put, ofType: NewCustomer.self,json: "/\((address.customer_id)!).json")
+         }catch let error as NSError{
+             print("\(error) can't add address, something error")
+         }
         
-         return address
+         return newAddress
     }
+
     //customers/6246222299371/addresses.json
     
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?{

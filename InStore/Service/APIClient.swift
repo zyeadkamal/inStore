@@ -25,6 +25,7 @@ class ApiClient: APIClientProtocol {
     
     func postRequest<T: Decodable>(fromEndpoint: EndPoint, httpBody: Data?, httpMethod : HTTPMethod , ofType : T.Type, json: String) -> Observable<T> {
         
+        
         return Observable<T>.create { observer in
             guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)\(json)") else {
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
@@ -37,12 +38,14 @@ class ApiClient: APIClientProtocol {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpBody = httpBody
+            print(request)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error{
                     print(error)
                     observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 }else{
                     if let data = data {
+                        print(String(decoding: data, as: UTF8.self))
                         do{
                             print(String(decoding: data, as: UTF8.self))
 
