@@ -3,7 +3,7 @@
     <entity name="CartProduct" representedClassName="CartProduct" syncable="YES" codeGenerationType="class">
         <attribute name="customerEmail" optional="YES" attributeType="String"/>
         <attribute name="productAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="productId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productImg" optional="YES" attributeType="String"/>
         <attribute name="productPrice" optional="YES" attributeType="String"/>
         <attribute name="productTitle" optional="YES" attributeType="String"/>

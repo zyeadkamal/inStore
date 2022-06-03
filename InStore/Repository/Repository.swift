@@ -104,15 +104,15 @@ class Repository: RepositoryProtocol {
         localDataSource?.addToCart(product: product)
     }
     
-    func fetchProductsFromCart() -> [CartProduct]? {
+    func fetchProductsFromCart() -> Observable<[CartProduct]>? {
         return localDataSource?.fetchProductsFromCart()
     }
     
-    func deleteProductFromCart(deletedProductId: Int32) {
+    func deleteProductFromCart(deletedProductId: Int64) {
         localDataSource?.deleteProductFromCart(deletedProductId: deletedProductId)
     }
     
-    func editProductAmountInCart(productId: Int32, amount: Int16) {
+    func editProductAmountInCart(productId: Int64, amount: Int16) {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
     }
 }

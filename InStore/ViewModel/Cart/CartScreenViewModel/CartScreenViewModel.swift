@@ -7,29 +7,59 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol CartViewModelType {
-    func updateProductAmount(productId : Int32, amount: Int16)
-    func fetchAllSavedProducts() -> [CartProduct]?
+    var products : [CartProduct]{get set}
+    var cartObservable : Observable<[CartProduct]>{get set}
+    func addProductToCart(product : Product) 
+    func updateProductAmount(productId : Int64, amount: Int16)
+    func fetchAllSavedProducts() -> Observable<[CartProduct]>?
+    func deleteProduct(productId : Int64)
+    func getLocalProducts()
 }
 
 
 class CartViewModel: CartViewModelType {
-     
+    
     var repo : RepositoryProtocol?
+    var products : [CartProduct] = [CartProduct]()
+    var cartObservable : Observable<[CartProduct]>
+    private var cartSubject : PublishSubject = PublishSubject<[CartProduct]>()
+    private var cartProducts: [CartProduct] = []{
+        didSet{
+            self.products = cartProducts
+            print(products.count)
+            cartSubject.onNext(cartProducts)
+        }
+    }
+    
     
     init(repo : RepositoryProtocol) {
         self.repo = repo
+        cartObservable = cartSubject.asObserver()
     }
     
-    func updateProductAmount(productId : Int32, amount: Int16) {
+    func addProductToCart(product : Product) {
+        repo?.addToCart(product: product)
+    }
+    
+    func updateProductAmount(productId : Int64, amount: Int16) {
         repo?.editProductAmountInCart(productId: productId, amount: amount)
     }
     
-    func fetchAllSavedProducts() -> [CartProduct]? {
+    internal func fetchAllSavedProducts() -> Observable<[CartProduct]>? {
         return repo?.fetchProductsFromCart()
     }
     
-   
+    func deleteProduct(productId : Int64){
+        repo?.deleteProductFromCart(deletedProductId: productId)
+    }
+    
+    func getLocalProducts(){
+        fetchAllSavedProducts()?.observe(on: MainScheduler.instance).subscribe(onNext: { productsList in
+            self.cartProducts = productsList
+            }).disposed(by: DisposeBag())
+    }
     
 }

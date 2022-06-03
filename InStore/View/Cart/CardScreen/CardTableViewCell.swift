@@ -7,19 +7,46 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CardTableViewCell: UITableViewCell {
 
     //MARK: -- IBOutlets
-    @IBOutlet weak var productCardTitle: UILabel!
-    @IBOutlet weak var productCardPrice: UILabel!
-    @IBOutlet weak var productCardImage: UIImageView!
-    @IBOutlet weak var productCardAmount: UILabel!
-    @IBOutlet weak var productMinusBtn: UIButton!
-    @IBOutlet weak var productPlusBtn: UIButton!
+    @IBOutlet weak private var productCardTitle: UILabel!
+    @IBOutlet weak private var productCardPrice: UILabel!
+    @IBOutlet weak private var productCardImage: UIImageView!
+    @IBOutlet weak private var productCardAmount: UILabel!
+    @IBOutlet weak private var productMinusBtn: UIButton!
+    @IBOutlet weak private var productPlusBtn: UIButton!
     
     
     //MARK: -- Properties
+    var updateProduct : (( Int16 ) -> Void) = {amount in }
+    var deleteProduct : (() -> ()) = {}
+    var count : Int16 = 1
+    var productTitle : String?{
+        didSet{
+            productCardTitle.text = productTitle
+        }
+    }
+    
+    var productPrice : String?{
+        didSet{
+            productCardPrice.text = productPrice
+        }
+    }
+    var productAmount : String?{
+        didSet{
+            productAmount = String(count)
+            productCardAmount.text = productAmount
+        }
+    }
+    
+    var productImg : String?{
+        didSet{
+            productCardImage.kf.setImage(with: URL(string: productImg ?? "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png"))
+        }
+    }
     
     //MARK: -- Lifecycle
     override func awakeFromNib() {
@@ -35,11 +62,24 @@ class CardTableViewCell: UITableViewCell {
     
     //MARK: -- IBActions
     @IBAction func didPressMinusBtn(_ sender: UIButton) {
+        if count > 1{
+            count -= 1
+            self.updateProduct(count)
+        }else{
+            deleteProduct()
+            productMinusBtn.isHidden = true
+        }
     }
     
     
     
     @IBAction func didPressPlusBtn(_ sender: UIButton) {
+        if count >= 1{
+            count += 1
+            self.updateProduct(count)
+        }else{
+            productMinusBtn.isHidden = true
+        }
     }
     //MARK: -- Functions
 
