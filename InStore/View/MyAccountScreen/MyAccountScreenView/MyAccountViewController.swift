@@ -20,7 +20,9 @@ class MyAccountViewController: UIViewController {
     
     //MARK: - Properties
     
-    private var myAccountViewModel = MyAccountViewModel(repo: Repository.shared(localDataSource: LocalDataSource(), apiClient: ApiClient())!)
+    private var myAccountViewModel = MyAccountViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
+
+    
     private var bag = DisposeBag()
     
     //MARK: - Life Cycle
@@ -62,8 +64,6 @@ class MyAccountViewController: UIViewController {
                 cell.setupCell(order: order)
             }.disposed(by: bag)
         
-        
-        
         myAccountViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { state in
             
             switch state {
@@ -99,8 +99,6 @@ class MyAccountViewController: UIViewController {
                 })
             }
         })
-        
-        
     }
     
     private func openOrderDetails(_ indexPath: IndexPath) {
@@ -138,9 +136,15 @@ class MyAccountViewController: UIViewController {
     }
     
     @IBAction func AddressesPressed(_ sender: Any) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
-        
-        self.navigationController?.pushViewController(viewController, animated: true)
+        guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: MyAddressesViewController.self), creator: { (coder) -> MyAddressesViewController? in
+            MyAddressesViewController (coder: coder, myAddressViewModel: MyAddressViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!))
+        }) else {return}
+
+        self.navigationController?.pushViewController(vc, animated: true)
+//
+//        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
+//
+//        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
 }

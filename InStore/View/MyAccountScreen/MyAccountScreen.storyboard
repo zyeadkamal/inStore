@@ -317,14 +317,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuO-YQ-I5q">
                                 <rect key="frame" x="0.0" y="139" width="414" height="723"/>
                                 <subviews>
-                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="SOW-ti-9Fy">
-                                        <rect key="frame" x="16" y="16" width="382" height="707"/>
+                                    <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="SOW-ti-9Fy">
+                                        <rect key="frame" x="16" y="16" width="382" height="624"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no_address" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-Ib-RSV">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" image="no_address" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-Ib-RSV">
                                         <rect key="frame" x="16" y="16" width="382" height="691"/>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cxm-m1-3yZ">
+                                        <rect key="frame" x="188.5" y="343" width="37" height="37"/>
+                                        <color key="color" name="PrimaryColor"/>
+                                    </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQp-KM-ADx">
                                         <rect key="frame" x="24" y="652" width="366" height="51"/>
                                         <color key="backgroundColor" name="PrimaryColor"/>
@@ -354,7 +358,9 @@
                                     <constraint firstItem="SOW-ti-9Fy" firstAttribute="top" secondItem="nuO-YQ-I5q" secondAttribute="top" constant="16" id="TcV-DN-rWh"/>
                                     <constraint firstAttribute="bottom" secondItem="DQp-KM-ADx" secondAttribute="bottom" constant="20" id="cr1-jQ-qOz"/>
                                     <constraint firstAttribute="trailing" secondItem="DQp-KM-ADx" secondAttribute="trailing" constant="24" id="gvj-J7-g65"/>
-                                    <constraint firstAttribute="bottom" secondItem="SOW-ti-9Fy" secondAttribute="bottom" id="hO3-J7-Qp6"/>
+                                    <constraint firstItem="cxm-m1-3yZ" firstAttribute="centerX" secondItem="nuO-YQ-I5q" secondAttribute="centerX" id="gzl-rX-95M"/>
+                                    <constraint firstItem="DQp-KM-ADx" firstAttribute="top" secondItem="SOW-ti-9Fy" secondAttribute="bottom" constant="12" id="hO3-J7-Qp6"/>
+                                    <constraint firstItem="cxm-m1-3yZ" firstAttribute="centerY" secondItem="nuO-YQ-I5q" secondAttribute="centerY" id="heX-th-o0w"/>
                                     <constraint firstItem="SOW-ti-9Fy" firstAttribute="leading" secondItem="nuO-YQ-I5q" secondAttribute="leading" constant="16" id="i1l-eK-aJz"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -386,6 +392,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Addresses" id="Re0-Kw-QQj"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cxm-m1-3yZ" id="WHe-RG-NN7"/>
                         <outlet property="addressesTableView" destination="SOW-ti-9Fy" id="PXR-Np-53h"/>
                         <outlet property="noAddressesImage" destination="ee1-Ib-RSV" id="FrC-Bp-ota"/>
                     </connections>

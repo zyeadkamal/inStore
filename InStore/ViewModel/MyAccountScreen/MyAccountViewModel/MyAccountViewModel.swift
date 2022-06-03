@@ -9,7 +9,6 @@
 import Foundation
 
 import RxSwift
-import RxRelay
 
 
 protocol MyAccountViewModelType{
