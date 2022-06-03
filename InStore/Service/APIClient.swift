@@ -27,7 +27,7 @@ class ApiClient: APIClientProtocol {
         
         return Observable<T>.create { observer in
             guard let url = URL(string: "\(APIConstants.baseUrl)\(fromEndpoint)") else {
-                observer.onError(NSError(domain: "", code: 500, userInfo: nil))
+                observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 return Disposables.create {}
             }
             var request = URLRequest(url: url)
@@ -39,7 +39,7 @@ class ApiClient: APIClientProtocol {
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error{
                     print(error)
-                    observer.onError(error)
+                    observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 }else{
                     if let data = data {
                         do{
@@ -47,7 +47,7 @@ class ApiClient: APIClientProtocol {
                             let result = try jsonDecoder.decode(T.self, from: data)
                             observer.onNext( result )
                         }catch{
-                            observer.onError(error)
+                            observer.onError(NSError(domain: ApiError.DuplicateEmail.rawValue, code: 500, userInfo: nil))
                             
                         }
                     }
@@ -81,11 +81,11 @@ class ApiClient: APIClientProtocol {
                 }
                 
                 guard let urlResponse = response.response else {
-                    observer.onError(ApiError.notFound)
+                    observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                     return
                 }
                 if !(200..<300).contains(urlResponse.statusCode) {
-                    observer.onError(ApiError.forbidden)
+                    observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 }
                 guard let data = response.data else { return }
                 
@@ -95,7 +95,7 @@ class ApiClient: APIClientProtocol {
                     
                 } catch {
                     debugPrint("Could not translate the data to the requested type. Reason: \(error.localizedDescription)")
-                    observer.onError(ApiError.conflict)
+                    observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 }
                 
             }

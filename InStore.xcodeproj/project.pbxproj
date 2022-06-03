@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04071ED62848B13900942AE2 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04071ED52848B13900942AE2 /* RegisterViewModel.swift */; };
+		04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */; };
+		040B39A0284A1CDD000EA9FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B399F284A1CDD000EA9FE /* LoginViewModel.swift */; };
+		040B39A3284A1CFD000EA9FE /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */; };
 		042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EE89E2844A062004ECD9A /* FilterCell.swift */; };
 		042EE8A12844A062004ECD9A /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042EE89F2844A062004ECD9A /* FilterCell.xib */; };
 		044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C2D552844DC8F00A4943F /* CheckboxButton.swift */; };
@@ -95,6 +99,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04071ED52848B13900942AE2 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelProtocol.swift; sourceTree = "<group>"; };
+		040B399F284A1CDD000EA9FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
 		042EE89E2844A062004ECD9A /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		042EE89F2844A062004ECD9A /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		044C2D552844DC8F00A4943F /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
@@ -126,7 +134,7 @@
 		048B3F3E283CD23A00CEF8D0 /* InStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/View/UserAuthentication/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/View/UserAuthentication/Login/View/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		048B3F48283CD23A00CEF8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		048B3F4B283CD23A00CEF8D0 /* InStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InStore.xcdatamodel; sourceTree = "<group>"; };
 		048B3F4D283CD23C00CEF8D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +211,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04071ED32848B10D00942AE2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04716B2228452E0600472C58 /* RegisterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04071ED42848B11600942AE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04071ED52848B13900942AE2 /* RegisterViewModel.swift */,
+				04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		040B399D284A1CBB000EA9FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		040B399E284A1CC1000EA9FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				040B399F284A1CDD000EA9FE /* LoginViewModel.swift */,
+				040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		042EE89D2844A038004ECD9A /* filterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +275,8 @@
 		044E7F1B283DE64A0078CA50 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
+				040B399D284A1CBB000EA9FE /* View */,
+				040B399E284A1CC1000EA9FE /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -241,7 +284,8 @@
 		044E7F1C283DE6540078CA50 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				04716B2228452E0600472C58 /* RegisterViewController.swift */,
+				04071ED32848B10D00942AE2 /* View */,
+				04071ED42848B11600942AE2 /* ViewModel */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -939,6 +983,7 @@
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
 				04530B912847BC600064149C /* Brand.swift in Sources */,
 				596F4FF72840DEFE008CA0E9 /* OrderDetailsTableViewCell.swift in Sources */,
+				040B39A0284A1CDD000EA9FE /* LoginViewModel.swift in Sources */,
 				048C1E012842F91100E4F512 /* Constants.swift in Sources */,
 				59F0D5F928419A3F003F9C96 /* ProductPhotosCollectionViewCell.swift in Sources */,
 				B656DFC6283EF1290043FCF7 /* CardViewController.swift in Sources */,
@@ -957,16 +1002,19 @@
 				04530B932847BC920064149C /* MockOrder.swift in Sources */,
 				04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */,
 				04530B8E2847BC380064149C /* OnboardingSlide.swift in Sources */,
+				040B39A3284A1CFD000EA9FE /* LoginViewModelProtocol.swift in Sources */,
 				596F4FC2283FA43B008CA0E9 /* UITextField+Extention.swift in Sources */,
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
 				04530B9B2847BD3F0064149C /* APIClient.swift in Sources */,
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,
 				59F0D5F5284199C2003F9C96 /* AllProductsViewController.swift in Sources */,
+				04071ED62848B13900942AE2 /* RegisterViewModel.swift in Sources */,
 				59F0D5F328419934003F9C96 /* AllProductsCollectionViewCell.swift in Sources */,
 				044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				04716B062845257D00472C58 /* AddAddressViewController.swift in Sources */,
 				596F4FFF2840DFC2008CA0E9 /* MyOrdersViewController.swift in Sources */,
+				04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
 				04530B952847BCEC0064149C /* APIConstants.swift in Sources */,
 				04716B09284525B800472C58 /* AddressesViewController.swift in Sources */,
