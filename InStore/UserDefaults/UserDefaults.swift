@@ -16,6 +16,7 @@ enum Keys:String {
     case id = "id"
     case hasAddress = "hasAddress"
     case currency = "currency"
+    case discountCode = "discountCode"
 }
 
 class MyUserDefaults {

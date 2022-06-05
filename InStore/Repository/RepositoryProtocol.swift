@@ -20,6 +20,7 @@ protocol RepositoryProtocol {
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?
     func getAllProducts() -> Observable<AllProducts>?
     
+    func getCodes(priceRuleID: String) -> Observable<DiscountCodes>?
     
     func getBrands() -> Observable<Smart_collections>?
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?
