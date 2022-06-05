@@ -9,7 +9,17 @@
         <attribute name="productTitle" optional="YES" attributeType="String"/>
         <attribute name="vartiantId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Favourites" representedClassName="Favourites" syncable="YES" codeGenerationType="class">
+        <attribute name="descreption" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="productType" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="vendor" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="CartProduct" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Favourites" positionX="-63" positionY="36" width="128" height="148"/>
     </elements>
 </model>
