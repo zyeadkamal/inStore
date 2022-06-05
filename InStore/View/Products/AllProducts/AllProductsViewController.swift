@@ -104,6 +104,7 @@ extension AllProductsViewController : UICollectionViewDelegateFlowLayout {
 extension AllProductsViewController: ShowTabBarProtocol {
     
     private func initViews() {
+        searchController.searchResultsUpdater = self
         searchController.searchBar.searchTextField.backgroundColor = .white
         searchController.automaticallyShowsCancelButton = false
         searchController.searchBar.backgroundColor = .clear
@@ -188,5 +189,18 @@ extension AllProductsViewController {
             .subscribe(onNext: { [weak self] (allProducts) in
                 self?.AllProductsCollcectionView.reloadData()
             }).disposed(by: bag)
+    }
+}
+
+//MARK:- UISearchController Delegate
+extension AllProductsViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        var filteredProduct = [Product]()
+        guard let allProduct = viewModel.allProducts else { return }
+        for product in allProduct {
+//            if product.title.lowercased().contains(searchController.searchBar.text?.lowercased()){
+//                filteredProduct.append(product)
+//            }
+        }
     }
 }
