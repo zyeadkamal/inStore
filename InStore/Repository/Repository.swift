@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class Repository: RepositoryProtocol {
-    
+ 
     private static var repo: RepositoryProtocol?
     private var localDataSource: LocalDataSourceProtocol?
     private var apiClient: APIClientProtocol?
@@ -115,4 +115,11 @@ class Repository: RepositoryProtocol {
     func editProductAmountInCart(productId: Int32, amount: Int16) {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
     }
+    
+    func getAllProducts() -> Observable<AllProducts>? {
+        let allProducts = apiClient?.getRequest(fromEndpoint: .products, httpMethod: .get, parameters: [:], ofType: AllProducts.self, json: ".json")
+        return allProducts
+     }
+     
+     
 }

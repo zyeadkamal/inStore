@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class LoginViewModel: LoginViewModelProtocol {
- 
+    
     private let bag = DisposeBag()
     private var repository: RepositoryProtocol?
     
@@ -37,24 +37,25 @@ class LoginViewModel: LoginViewModelProtocol {
     }
     
     func login(email: String, password: String) {
-        repository?.login(email: email)?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { (loginResponse) in
-            print(loginResponse)
-            if loginResponse.customers.count == 0 {
-                self.errorMessage = "Wrong email or password"
-                return
-            }
-            if let safePassword = loginResponse.customers[0].tags {
-                if safePassword == password {
-                    self.successfullLogin = loginResponse
-
-                }else {
-                    self.errorMessage = "Wrong email or password"
-
+        repository?.login(email: email)?
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (loginResponse) in
+                if loginResponse.customers.count == 0 {
+                    self?.errorMessage = "Wrong email or password"
+                    return
                 }
-            }
-        }, onError: { (error) in
-            self.errorMessage = "Wrong password"
+                if let safePassword = loginResponse.customers[0].tags {
+                    if safePassword == password {
+                        self?.successfullLogin = loginResponse
+                    }else {
+                        self?.errorMessage = "Wrong email or password"
+                        
+                    }
+                }
+            }, onError: { [weak self] (error) in
+                self?.errorMessage = "Wrong password"
             }).disposed(by: bag)
-     }
+    }
     
 }

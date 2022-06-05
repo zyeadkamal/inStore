@@ -18,6 +18,7 @@ protocol RepositoryProtocol {
     func getOrders(userId:Int) -> Observable<Orders>?
     func addAddress(address : Address) -> Observable<NewCustomer>?
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?
+    func getAllProducts() -> Observable<AllProducts>?
     
     
     

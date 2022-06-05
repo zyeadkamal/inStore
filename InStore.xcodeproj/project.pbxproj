@@ -13,6 +13,7 @@
 		040B39A3284A1CFD000EA9FE /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */; };
 		042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EE89E2844A062004ECD9A /* FilterCell.swift */; };
 		042EE8A12844A062004ECD9A /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042EE89F2844A062004ECD9A /* FilterCell.xib */; };
+		043702EE284ACC730071C9C1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043702ED284ACC730071C9C1 /* UILabel+Extension.swift */; };
 		044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C2D552844DC8F00A4943F /* CheckboxButton.swift */; };
 		044E7F20283DE7E80078CA50 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */; };
 		04530B8C2847BC040064149C /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04530B8B2847BC040064149C /* Customer.swift */; };
@@ -39,6 +40,10 @@
 		04716B20284529C500472C58 /* SuggestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04716B1E284529C500472C58 /* SuggestedCollectionViewCell.swift */; };
 		04716B21284529C500472C58 /* SuggestedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04716B1F284529C500472C58 /* SuggestedCollectionViewCell.xib */; };
 		04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04716B2228452E0600472C58 /* RegisterViewController.swift */; };
+		0476F03A284ADB45006EEDE2 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F039284ADB45006EEDE2 /* ProductDetailsViewModel.swift */; };
+		0476F03C284ADB50006EEDE2 /* ProductDetailsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F03B284ADB50006EEDE2 /* ProductDetailsViewModelProtocol.swift */; };
+		04889DBC284A993D00992A74 /* AllProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04889DBB284A993D00992A74 /* AllProductsViewModel.swift */; };
+		04889DBE284A994900992A74 /* AllProductsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04889DBD284A994900992A74 /* AllProductsViewModelProtocol.swift */; };
 		048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */; };
 		048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */; };
 		048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */; };
@@ -112,6 +117,7 @@
 		040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
 		042EE89E2844A062004ECD9A /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		042EE89F2844A062004ECD9A /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		043702ED284ACC730071C9C1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		044C2D552844DC8F00A4943F /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		044E7F1F283DE7E80078CA50 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
 		04530B8B2847BC040064149C /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -138,10 +144,14 @@
 		04716B1E284529C500472C58 /* SuggestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedCollectionViewCell.swift; sourceTree = "<group>"; };
 		04716B1F284529C500472C58 /* SuggestedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedCollectionViewCell.xib; sourceTree = "<group>"; };
 		04716B2228452E0600472C58 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0476F039284ADB45006EEDE2 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
+		0476F03B284ADB50006EEDE2 /* ProductDetailsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModelProtocol.swift; sourceTree = "<group>"; };
+		04889DBB284A993D00992A74 /* AllProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsViewModel.swift; sourceTree = "<group>"; };
+		04889DBD284A994900992A74 /* AllProductsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsViewModelProtocol.swift; sourceTree = "<group>"; };
 		048B3F3E283CD23A00CEF8D0 /* InStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048B3F41283CD23A00CEF8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048B3F43283CD23A00CEF8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/View/UserAuthentication/Login/View/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = InStore/View/UserAuthentication/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		048B3F48283CD23A00CEF8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		048B3F4B283CD23A00CEF8D0 /* InStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InStore.xcdatamodel; sourceTree = "<group>"; };
 		048B3F4D283CD23C00CEF8D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -225,40 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04071ED32848B10D00942AE2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				04716B2228452E0600472C58 /* RegisterViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		04071ED42848B11600942AE2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				04071ED52848B13900942AE2 /* RegisterViewModel.swift */,
-				04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		040B399D284A1CBB000EA9FE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		040B399E284A1CC1000EA9FE /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				040B399F284A1CDD000EA9FE /* LoginViewModel.swift */,
-				040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		042EE89D2844A038004ECD9A /* filterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,8 +265,7 @@
 		044E7F1B283DE64A0078CA50 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				040B399D284A1CBB000EA9FE /* View */,
-				040B399E284A1CC1000EA9FE /* ViewModel */,
+				048B3F45283CD23A00CEF8D0 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -298,8 +273,7 @@
 		044E7F1C283DE6540078CA50 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				04071ED32848B10D00942AE2 /* View */,
-				04071ED42848B11600942AE2 /* ViewModel */,
+				04716B2228452E0600472C58 /* RegisterViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -401,6 +375,51 @@
 			path = Xibs;
 			sourceTree = "<group>";
 		};
+		0476F038284ADB2D006EEDE2 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0476F039284ADB45006EEDE2 /* ProductDetailsViewModel.swift */,
+				0476F03B284ADB50006EEDE2 /* ProductDetailsViewModelProtocol.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		04889DB7284A983800992A74 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				04071ED52848B13900942AE2 /* RegisterViewModel.swift */,
+				04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		04889DB8284A984400992A74 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				040B399F284A1CDD000EA9FE /* LoginViewModel.swift */,
+				040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		04889DB9284A990B00992A74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0476F038284ADB2D006EEDE2 /* ProductDetails */,
+				04889DBA284A991800992A74 /* AllProducts */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		04889DBA284A991800992A74 /* AllProducts */ = {
+			isa = PBXGroup;
+			children = (
+				04889DBB284A993D00992A74 /* AllProductsViewModel.swift */,
+				04889DBD284A994900992A74 /* AllProductsViewModelProtocol.swift */,
+			);
+			path = AllProducts;
+			sourceTree = "<group>";
+		};
 		048B3F35283CD23A00CEF8D0 = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +488,8 @@
 		048B3F67283CD28900CEF8D0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				04889DB9284A990B00992A74 /* Products */,
+				04DCCB6C284A59A1006BD498 /* UserAuthentication */,
 				B6C78E542848CC8E002810FD /* Cart */,
 				594C4CE12846C17500EE2BB9 /* MyAccountScreen */,
 			);
@@ -519,6 +540,15 @@
 				B6EDC3FA284435DA00BE0193 /* WishlistTableViewCell.xib */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		04DCCB6C284A59A1006BD498 /* UserAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				04889DB8284A984400992A74 /* Login */,
+				04889DB7284A983800992A74 /* Register */,
+			);
+			path = UserAuthentication;
 			sourceTree = "<group>";
 		};
 		20679023F968D1D6DC36F69E /* Frameworks */ = {
@@ -755,6 +785,7 @@
 				596F4FC1283FA43B008CA0E9 /* UITextField+Extention.swift */,
 				044C2D552844DC8F00A4943F /* CheckboxButton.swift */,
 				04530BA728480EE50064149C /* String+Extension.swift */,
+				043702ED284ACC730071C9C1 /* UILabel+Extension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1036,6 +1067,7 @@
 				048B3F46283CD23A00CEF8D0 /* LoginViewController.swift in Sources */,
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
+				04889DBC284A993D00992A74 /* AllProductsViewModel.swift in Sources */,
 				592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */,
 				04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */,
 				04530BA22847C2370064149C /* LocalDataSource.swift in Sources */,
@@ -1046,6 +1078,7 @@
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,
 				04530BA02847BF590064149C /* Repository.swift in Sources */,
 				59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */,
+				0476F03A284ADB45006EEDE2 /* ProductDetailsViewModel.swift in Sources */,
 				04530B912847BC600064149C /* Brand.swift in Sources */,
 				596F4FF72840DEFE008CA0E9 /* OrderDetailsTableViewCell.swift in Sources */,
 				040B39A0284A1CDD000EA9FE /* LoginViewModel.swift in Sources */,
@@ -1064,6 +1097,7 @@
 				B6C78E572848CCCD002810FD /* AddAddressViewModel.swift in Sources */,
 				59F2064E283E6CD000E12D88 /* SplashScreenViewController.swift in Sources */,
 				04530BA42847C2730064149C /* LocalDataSourceProtocol.swift in Sources */,
+				0476F03C284ADB50006EEDE2 /* ProductDetailsViewModelProtocol.swift in Sources */,
 				04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */,
 				04530B932847BC920064149C /* MockOrder.swift in Sources */,
 				04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */,
@@ -1077,11 +1111,13 @@
 				04071ED62848B13900942AE2 /* RegisterViewModel.swift in Sources */,
 				59F0D5F328419934003F9C96 /* AllProductsCollectionViewCell.swift in Sources */,
 				044C2D562844DC8F00A4943F /* CheckboxButton.swift in Sources */,
+				04889DBE284A994900992A74 /* AllProductsViewModelProtocol.swift in Sources */,
 				B6C78E5C28495AD6002810FD /* ChooseAddressViewModel.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				04716B062845257D00472C58 /* AddAddressViewController.swift in Sources */,
 				B6C78E532848A056002810FD /* Product.swift in Sources */,
 				596F4FFF2840DFC2008CA0E9 /* MyOrdersViewController.swift in Sources */,
+				043702EE284ACC730071C9C1 /* UILabel+Extension.swift in Sources */,
 				04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */,
 				048B3F44283CD23A00CEF8D0 /* SceneDelegate.swift in Sources */,
 				04530B952847BCEC0064149C /* APIConstants.swift in Sources */,
