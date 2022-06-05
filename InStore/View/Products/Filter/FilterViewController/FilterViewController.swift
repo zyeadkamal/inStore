@@ -220,6 +220,7 @@ extension FilterViewController {
         viewModel.priceRange = priceRange
         viewModel.sortMechanism = sort
         viewModel.getAllProducts()
+        showTabBarProtocol?.showTabBar()
         dismiss(animated: true, completion: nil)
     }
     
