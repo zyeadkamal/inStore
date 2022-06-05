@@ -41,24 +41,6 @@ struct PostNewOrder:Codable {
     }
 }
 
-////struct Codes:Codable {
-////    let codes : [Code]
-////}
-//
-//struct Code:Codable {
-//
-//    var code : String?
-//    var ammount : String = "10.00"
-//    var type : String = "percentage"
-//
-//    enum CodingKeys: String, CodingKey {
-//        case code
-//        case ammount = "amount"
-//        case type
-//    }
-//
-//}
-
 struct MyCustomer: Codable {
     var id: Int?
 }

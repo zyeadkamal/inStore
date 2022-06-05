@@ -93,7 +93,7 @@ class AddressesViewController: UIViewController {
         addressesTableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             self?.addressesTableView.deselectRow(at: indexPath, animated: true)
             let cell = self?.addressesTableView.cellForRow(at: indexPath) as? AddressesTableViewCell
-            self?.addressesVM.order?.order?.default_address = Address(customer_id: 6246222299371, address1: cell?.addressName, city: cell?.addressName, country: "Egypt")
+            self?.addressesVM.order?.order?.default_address = Address(customer_id: 6036098154668, address1: cell?.addressName, city: cell?.addressName, country: "Egypt")
             print("address selected is : \(self?.addressesVM.order?.order?.default_address)")
             self?.selectedIndex = indexPath
             self?.addressesTableView.reloadData()

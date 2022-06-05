@@ -80,6 +80,9 @@ class HomeScreenViewModel : HomeScreenViewModelType{
                 guard let self = self else{return}
             
             self.adsList = ($0).discount_codes
+                Constants.discountCodes = self.adsList ?? []
+                MyUserDefaults.add(val: self.adsList?[0].code, key: .discountCode)
+                print("discounts in user : \(MyUserDefaults.getValue(forKey: .discountCode))")
             self.brandsList = ($1).smart_collections
            
                 //            if(self.adsList!.isEmpty && self.brandsList!.isEmpty){
