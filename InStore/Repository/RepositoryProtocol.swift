@@ -20,9 +20,12 @@ protocol RepositoryProtocol {
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?
     func getBrands() -> Observable<Smart_collections>?
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?
+    func postOrder(order : PostOrderRequest) -> Observable<PostOrderRequest>?
+    //func checkCouponExistance(coupon : String, priceRoleID: String) -> Bool 
+    
     //local data functions
     func addToCart(product: Product)
-    func fetchProductsFromCart() -> [CartProduct]?
-    func deleteProductFromCart(deletedProductId: Int32)
-    func editProductAmountInCart(productId : Int32, amount : Int16)
+    func fetchProductsFromCart() -> Observable<[CartProduct]>?
+    func deleteProductFromCart(deletedProductId: Int64)
+    func editProductAmountInCart(productId : Int64, amount : Int16)
 }

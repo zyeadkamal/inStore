@@ -75,7 +75,7 @@ class AddAddressViewController: UIViewController {
     }
     func navigateToAddresses(){
         guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: self.addAddressVM?.order ?? PostOrderRequest()))
         }) else { return }
         navigationController?.pushViewController(addressesVC, animated: true)
     }
