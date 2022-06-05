@@ -8,25 +8,48 @@
 
 import UIKit
 import Lottie
+import RxSwift
 
 class SplashScreenViewController: UIViewController {
     
+    //MARK: - @IBOutlet
+
     @IBOutlet weak var animationVC: UIView!
-    
     @IBOutlet weak var logo: UIImageView!
+    
+    //MARK: - Properties
+    
     private var animationView: AnimationView?
+
+    private var splashScreenViewModel = SplashScreenViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
+    
+    private var bag = DisposeBag()
+    
+    
+    //MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playSplashAnimation()
+        //MyUserDefaults.getValue(forKey: .email)
         
-
+        splashScreenViewModel.fetchFavourites(customerEmail: "mando@ggg.com")
+        bindFavouritesList()
     }
     
+    //MARK: - Methods
+
+    private func bindFavouritesList(){
+        splashScreenViewModel.favouritesObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: {[weak self] favourites in
+            guard let self = self else{return}
+            
+            self.playSplashAnimation()
+            Constants.favoriteProducts = favourites
+        })
+    }
     private func playSplashAnimation(){
         
-        UIView.animate(withDuration: 3) {
+        UIView.animate(withDuration: 2.5) {
                self.logo.alpha = 1.0
             self.animationVC.alpha = 1.0
             
