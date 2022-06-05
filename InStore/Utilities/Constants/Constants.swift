@@ -14,5 +14,6 @@ class Constants {
     static var productRatings = [4.3,4.5,3.0,4.8,5.0,3.1,3.9]
     static var favoriteProducts = [Product]()
     static var adsArr = ["vouchers" , "banner2" , "banner3"]
+    static var discountCodes = [DiscountCode]()
 
 }

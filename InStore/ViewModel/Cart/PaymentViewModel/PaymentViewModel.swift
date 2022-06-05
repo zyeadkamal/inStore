@@ -10,17 +10,28 @@ import Foundation
 import RxSwift
 
 protocol PaymentViewModelType {
-    var myOrder : PostOrderRequest? {get set}
+    
     var isExists : Bool? {get set}
-    func checkCouponExistance(coupon : String, priceRoleID: String)
+    var discountCodes : [DiscountCode] {get set}
+    var myOrder : PostOrderRequest? {get set}
     func postOrder(order : PostOrderRequest) -> Observable<PostOrderRequest>?
+    func checkCouponExistance(coupon : String)
 }
 
 
 class PaymentViewModel : PaymentViewModelType{
+    
     private var repo : RepositoryProtocol?
     var myOrder : PostOrderRequest?
     var isExists: Bool?
+    var discountCodes: [DiscountCode] = []
+    
+    private var discountCodesList : [DiscountCode] = []{
+        didSet{
+            self.discountCodes = discountCodesList
+            print(discountCodes.count)
+        }
+    }
     
     init(repo : RepositoryProtocol, myOrder : PostOrderRequest) {
         self.repo = repo
@@ -31,19 +42,24 @@ class PaymentViewModel : PaymentViewModelType{
         return repo?.postOrder(order: order)
     }
     
-    func checkCouponExistance(coupon : String, priceRoleID: String){
-        
-        print("coupoun is : \(coupon) id is : \(priceRoleID)")
-        repo?.getDiscountCodes(priceRuleID: priceRoleID)?.observe(on: MainScheduler.instance).subscribe(onNext: { (discountCodes) in
-            print("code iiiiiiiiii \(discountCodes.discount_codes[0].code)")
-            discountCodes.discount_codes.forEach { (discount) in
-                print("code iiiiiiiiii \(discount.code)")
-                if(discount.code == coupon.trimmingCharacters(in: .whitespacesAndNewlines)){
-                    self.isExists = true
-                }else{
-                    self.isExists = false
-                }
+    //    private func getDiscountCodes() -> Observable<DiscountCodes>?{
+    //        return repo?.getDiscountCodes(priceRuleID: "1027348594860")
+    //    }
+    
+    
+    
+    func checkCouponExistance(coupon : String){
+        var coupons = Constants.discountCodes
+        for code in coupons{
+            print("\(code.code) and     \(coupon)")
+            if code.code.lowercased() == coupon.lowercased(){
+                isExists = true
+                break
+            }else{
+                isExists = false
             }
-        }).disposed(by: DisposeBag())
+        }
+        
     }
 }
+
