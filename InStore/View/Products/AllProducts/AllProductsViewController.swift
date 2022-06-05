@@ -15,8 +15,6 @@ class AllProductsViewController: UIViewController {
     @IBOutlet weak var noResultImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var searchController = UISearchController()
-    
     private lazy var viewModel: AllProductsViewModelProtocol = AllProductsViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()))
     private let bag = DisposeBag()
     
@@ -26,11 +24,13 @@ class AllProductsViewController: UIViewController {
         hideNavigationBarShadow()
         bindActivityIndicatorState()
         bindToProductList()
+        bindToProductCount()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.getAllProducts()
+        print("zhraaaaat")
     }
     
 }
@@ -104,11 +104,7 @@ extension AllProductsViewController : UICollectionViewDelegateFlowLayout {
 extension AllProductsViewController: ShowTabBarProtocol {
     
     private func initViews() {
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.automaticallyShowsCancelButton = false
-        searchController.searchBar.backgroundColor = .clear
-        self.navigationItem.searchController = searchController
+        searchBar.delegate = self
         AllProductsCollcectionView.delegate = self
         AllProductsCollcectionView.dataSource = self
     }
@@ -129,13 +125,16 @@ extension AllProductsViewController {
     
     @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
         
-        let filterVC = storyboard?.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
-        filterVC.modalPresentationStyle = .overCurrentContext
-        filterVC.modalTransitionStyle = .crossDissolve
-        filterVC.showTabBarProtocol = self
+        let filterVC = storyboard?.instantiateViewController(identifier: "FilterViewController", creator: { (coder) -> FilterViewController? in
+            FilterViewController(coder: coder, viewModel: self.viewModel)
+        })
+        filterVC?.modalPresentationStyle = .overCurrentContext
+        filterVC?.modalTransitionStyle = .crossDissolve
+        filterVC?.showTabBarProtocol = self
         self.tabBarController?.tabBar.isHidden = true
-        present(filterVC, animated: true)
-        
+        if let filterVC = filterVC {
+            present(filterVC, animated: true)
+        }
     }
     
 }
@@ -190,17 +189,40 @@ extension AllProductsViewController {
                 self?.AllProductsCollcectionView.reloadData()
             }).disposed(by: bag)
     }
+    
+    func bindToProductCount() {
+        viewModel.productCountObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { (count) in
+                if count == 0 {
+                    self.noResultImageView.isHidden = false
+                    self.noResultImageView.alpha = 1.0
+
+                    print("el sooraa feeen")
+                }else{
+                    self.noResultImageView.isHidden = true
+                    self.noResultImageView.alpha = 0.0
+
+                }
+            })
+    }
 }
 
-//MARK:- UISearchController Delegate
-extension AllProductsViewController: UISearchResultsUpdating{
-    func updateSearchResults(for searchController: UISearchController) {
-        var filteredProduct = [Product]()
-        guard let allProduct = viewModel.allProducts else { return }
-        for product in allProduct {
-//            if product.title.lowercased().contains(searchController.searchBar.text?.lowercased()){
-//                filteredProduct.append(product)
-//            }
+//MARK:- UISearchBar Delegate
+extension AllProductsViewController: UISearchBarDelegate{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filteredProduct.removeAll()
+        if searchText == "" {
+            viewModel.allProducts = viewModel.cashAllProduct
+        }else {
+            guard let allProduct = viewModel.allProducts else { return }
+            for product in allProduct {
+                if product.title.lowercased().contains(searchText.lowercased()){
+                    viewModel.filteredProduct.append(product)
+                }
+            }
+            viewModel.allProducts = viewModel.filteredProduct
         }
     }
 }

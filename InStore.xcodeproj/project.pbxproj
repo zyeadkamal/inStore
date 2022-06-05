@@ -11,6 +11,8 @@
 		04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */; };
 		040B39A0284A1CDD000EA9FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B399F284A1CDD000EA9FE /* LoginViewModel.swift */; };
 		040B39A3284A1CFD000EA9FE /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */; };
+		0419CF77284D32A4004F8410 /* SortMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419CF76284D32A4004F8410 /* SortMechanism.swift */; };
+		0419CF79284D32F5004F8410 /* PriceRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419CF78284D32F5004F8410 /* PriceRange.swift */; };
 		042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EE89E2844A062004ECD9A /* FilterCell.swift */; };
 		042EE8A12844A062004ECD9A /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042EE89F2844A062004ECD9A /* FilterCell.xib */; };
 		043702EE284ACC730071C9C1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043702ED284ACC730071C9C1 /* UILabel+Extension.swift */; };
@@ -124,6 +126,8 @@
 		04071ED72848B16100942AE2 /* RegisterViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelProtocol.swift; sourceTree = "<group>"; };
 		040B399F284A1CDD000EA9FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		040B39A2284A1CFD000EA9FE /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
+		0419CF76284D32A4004F8410 /* SortMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMechanism.swift; sourceTree = "<group>"; };
+		0419CF78284D32F5004F8410 /* PriceRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRange.swift; sourceTree = "<group>"; };
 		042EE89E2844A062004ECD9A /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		042EE89F2844A062004ECD9A /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		043702ED284ACC730071C9C1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 				59BE6E5A284AA72F002FAAFC /* HomeResponse.swift */,
 				B69EF919284ADEA200A7D7EC /* Order.swift */,
 				B6943D5D284B74F8008315DA /* DiscountCodes.swift */,
+				0419CF76284D32A4004F8410 /* SortMechanism.swift */,
+				0419CF78284D32F5004F8410 /* PriceRange.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1131,6 +1137,7 @@
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
 				04889DBC284A993D00992A74 /* AllProductsViewModel.swift in Sources */,
+				0419CF79284D32F5004F8410 /* PriceRange.swift in Sources */,
 				592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */,
 				59BE6E5E284B6EBB002FAAFC /* UserDefaults.swift in Sources */,
 				04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */,
@@ -1138,6 +1145,7 @@
 				04716B0E2845261900472C58 /* ConfirmOrderViewController.swift in Sources */,
 				59BE6E5B284AA72F002FAAFC /* HomeResponse.swift in Sources */,
 				04530B972847BD070064149C /* APIError.swift in Sources */,
+				0419CF77284D32A4004F8410 /* SortMechanism.swift in Sources */,
 				B6C78E5928491DEE002810FD /* ErrorModel.swift in Sources */,
 				04530B992847BD200064149C /* EndPoint.swift in Sources */,
 				596F50032840DFEC008CA0E9 /* OrderDetailsViewController.swift in Sources */,

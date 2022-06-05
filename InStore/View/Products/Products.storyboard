@@ -774,6 +774,9 @@
                                                                 <real key="value" value="15"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="showResultButtonPressed:" destination="De0-E0-twV" eventType="touchUpInside" id="Thl-vo-oU3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -853,8 +856,14 @@
                     </view>
                     <size key="freeformSize" width="414" height="1300"/>
                     <connections>
+                        <outlet property="accessoriesCheckBox" destination="fcI-No-7PV" id="rhL-0k-Pw8"/>
+                        <outlet property="clothesCheckBox" destination="dcd-KT-L5l" id="zwk-p9-Wce"/>
                         <outlet property="filterCollectionVieww" destination="UeD-5P-e6g" id="P3C-q2-ru0"/>
+                        <outlet property="kidsCheckBox" destination="paS-E4-h9e" id="XUs-gQ-BPV"/>
+                        <outlet property="menCheckBox" destination="pJZ-OT-Wbu" id="kww-hV-CK6"/>
                         <outlet property="pricesRangeCollectionView" destination="aQJ-hR-QC7" id="NmY-qg-YOJ"/>
+                        <outlet property="shoesCheckBox" destination="wEN-Il-ASd" id="cjh-ls-WJN"/>
+                        <outlet property="womenCheckBox" destination="cz1-UI-urX" id="Be1-KY-mLC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W7a-MW-pJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

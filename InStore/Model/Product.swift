@@ -14,9 +14,17 @@ struct AllProducts:Codable{
         case products = "products"
     }
 }
-struct Product:Codable, Equatable {
+struct Product:Codable, Equatable, Comparable, Hashable {
+    static func < (lhs: Product, rhs: Product) -> Bool {
+        (Double(lhs.varients?[0].price ?? "200.0")!) < (Double(rhs.varients?[0].price ?? "200.0")!)
+    }
+    
     static func == (lhs: Product, rhs: Product) -> Bool {
         lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
     }
     
     var id:Int
@@ -27,21 +35,23 @@ struct Product:Codable, Equatable {
     var images:[ProductImage]
     var options:[OptionList]?
     var varients:[Varient]?
+    var tag: String?
     var count: Int = 0
     var isFavourite: Bool = false
     
     enum CodingKeys : String , CodingKey {
-            case id = "id"
-            case title = "title"
-            case description = "body_html"
-            case vendor = "vendor"
-            case productType = "product_type"
-            case images = "images"
-            case options = "options"
-            case varients = "variants"
-
-        }
-      
+        case id = "id"
+        case title = "title"
+        case description = "body_html"
+        case vendor = "vendor"
+        case productType = "product_type"
+        case images = "images"
+        case options = "options"
+        case varients = "variants"
+        case tag = "tags"
+        
+    }
+    
 }
 struct ProductImage:Codable {
     var id:Int
@@ -52,17 +62,17 @@ struct ProductImage:Codable {
     var src:String
     var graphQlID:String
     
-   enum CodingKeys : String , CodingKey {
-          
-          case id = "id"
-          case productID = "product_id"
-          case position = "position"
-          case width = "width"
-          case height = "height"
-          case src = "src"
-          case graphQlID = "admin_graphql_api_id"
-
-      }
+    enum CodingKeys : String , CodingKey {
+        
+        case id = "id"
+        case productID = "product_id"
+        case position = "position"
+        case width = "width"
+        case height = "height"
+        case src = "src"
+        case graphQlID = "admin_graphql_api_id"
+        
+    }
     
 }
 struct OptionList:Codable{
@@ -74,14 +84,14 @@ struct OptionList:Codable{
     var values:[String]?
     
     enum CodingKeys : String , CodingKey {
-          
-          case id = "id"
-          case productID = "product_id"
-          case name = "name"
-          case position = "position"
-          case values = "values"
-          
-      }
+        
+        case id = "id"
+        case productID = "product_id"
+        case name = "name"
+        case position = "position"
+        case values = "values"
+        
+    }
     
 }
 struct Varient:Codable {
@@ -91,11 +101,11 @@ struct Varient:Codable {
     var price :String
     
     enum CodingKeys : String , CodingKey {
-            
-            case id = "id"
-            case productID = "product_id"
-            case title = "title"
-            case price = "price"
-            
-        }
+        
+        case id = "id"
+        case productID = "product_id"
+        case title = "title"
+        case price = "price"
+        
+    }
 }
