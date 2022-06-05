@@ -8,13 +8,17 @@
 
 import Foundation
 
-struct Brand :Codable{
+struct Smart_collection :Codable{
     let id:Int
-    let name: String
+    let title: String
     let image: BrandImage?
     
 }
 struct BrandImage :Codable {
 
     let src:String
+}
+
+struct Smart_collections :Codable{
+    let smart_collections : [Smart_collection]
 }

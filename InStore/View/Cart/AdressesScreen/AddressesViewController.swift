@@ -42,8 +42,13 @@ class AddressesViewController: UIViewController {
     //MARK: -- IBActions
     
     @IBAction func didPressContinuePayment(_ sender: UIButton) {
-        let paymentVC = storyboard?.instantiateViewController(withIdentifier: String(describing: PaymentViewController.self)) as! PaymentViewController
+        guard let paymentVC = storyboard?.instantiateViewController(identifier: String(describing: PaymentViewController.self), creator: { (coder) in
+            PaymentViewController(coder: coder, paymentVM: PaymentViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: ((UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext))!, apiClient: ApiClient())!, myOrder: self.addressesVM.order ?? PostOrderRequest()))
+            
+        }) else {return}
+        print(" order object in addresses screen --> \(addressesVM.order ?? PostOrderRequest())")
         navigationController?.pushViewController(paymentVC, animated: true)
+        
     }
     
     //MARK: -- Functions
@@ -83,10 +88,13 @@ class AddressesViewController: UIViewController {
                 self.addressesTableView.reloadData()
             }
            
-        })
+            }).disposed(by: disposeBag)
         
         addressesTableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             self?.addressesTableView.deselectRow(at: indexPath, animated: true)
+            let cell = self?.addressesTableView.cellForRow(at: indexPath) as? AddressesTableViewCell
+            self?.addressesVM.order?.order?.default_address = Address(customer_id: 6246222299371, address1: cell?.addressName, city: cell?.addressName, country: "Egypt")
+            print("address selected is : \(self?.addressesVM.order?.order?.default_address)")
             self?.selectedIndex = indexPath
             self?.addressesTableView.reloadData()
             }).disposed(by: disposeBag)

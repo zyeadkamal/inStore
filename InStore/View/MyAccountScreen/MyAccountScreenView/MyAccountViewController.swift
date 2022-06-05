@@ -21,12 +21,22 @@ class MyAccountViewController: UIViewController {
     //MARK: - Properties
     
     private var myAccountViewModel = MyAccountViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
+    
+    let items: Observable<[String]> = Observable.of(["EGP", "USD"])
 
     
     private var bag = DisposeBag()
     
     //MARK: - Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(self.isLoggedIn()){
+            let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self))
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavControllerTransparent()
@@ -36,6 +46,10 @@ class MyAccountViewController: UIViewController {
     }
     
     //MARK: - Methodes
+    
+    func isLoggedIn() -> Bool  {
+        return (MyUserDefaults.getValue(forKey: .loggedIn) == nil)
+    }
     
     private func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -60,12 +74,12 @@ class MyAccountViewController: UIViewController {
         
         myAccountViewModel.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asDriver(onErrorJustReturn: [])
             .drive( ordersTableView.rx.items(cellIdentifier: String(describing: MyOrderTableViewCell.self),cellType: MyOrderTableViewCell.self) ){( row, order, cell) in
-                print("data")
                 cell.setupCell(order: order)
             }.disposed(by: bag)
         
-        myAccountViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { state in
-            
+        myAccountViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: {
+            [weak self] state in
+            guard let self = self else{return}
             switch state {
             case .error:
                 self.activityIndicator.stopAnimating()
@@ -73,7 +87,7 @@ class MyAccountViewController: UIViewController {
                     self.ordersTableView.alpha = 0.0
                     self.noOrdersImage.alpha = 1.0
                     self.activityIndicator.alpha = 0.0
-
+                    
                 })
             case .empty:
                 self.activityIndicator.stopAnimating()
@@ -81,13 +95,14 @@ class MyAccountViewController: UIViewController {
                     self.ordersTableView.alpha = 0.0
                     self.noOrdersImage.alpha = 1.0
                     self.activityIndicator.alpha = 0.0
-
                 })
             case .loading:
                 self.activityIndicator.startAnimating()
                 UIView.animate(withDuration: 0.2, animations: {
                     self.ordersTableView.alpha = 0.0
                     self.noOrdersImage.alpha = 0.0
+                    self.activityIndicator.alpha = 1.0
+
                 })
             case .populated:
                 self.activityIndicator.stopAnimating()
@@ -95,33 +110,69 @@ class MyAccountViewController: UIViewController {
                     self.ordersTableView.alpha = 1.0
                     self.noOrdersImage.alpha = 0.0
                     self.activityIndicator.alpha = 0.0
-
+                    
                 })
             }
-            }).disposed(by: bag)
+        }).disposed(by: bag)
     }
     
     private func openOrderDetails(_ indexPath: IndexPath) {
         
         ordersTableView.deselectRow(at: indexPath, animated: true)
-
+        
         guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: OrderDetailsViewController.self), creator: { (coder) -> OrderDetailsViewController? in
             OrderDetailsViewController(coder: coder, orderViewModel: self.myAccountViewModel , index:indexPath)
         }) else {return}
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
+    func emptyUserDefaults(){
+        MyUserDefaults.add(val: false, key: .loggedIn)
+        MyUserDefaults.add(val: "", key: .email)
+        MyUserDefaults.add(val: "", key: .username)
+        MyUserDefaults.add(val: "", key: .id)
+        MyUserDefaults.add(val: false, key: .hasAddress)
+    }
+    
+    func showPickerView(){
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 100))
+        items.bind(to: pickerView.rx.itemTitles) { (row, element) in
+            return element
+        }
+        .disposed(by: bag)
+        
+        pickerView.rx.itemSelected
+            .subscribe { (event) in
+                switch event {
+                case .next(let selected):
+                    MyUserDefaults.add(val: selected.row, key: .currency)
+                    print("You selected #\(selected.row)")
+                default:
+                    break
+                }
+            }
+            .disposed(by: bag)
     }
     
     
     //MARK: - IBActions
     
     @IBAction func logoutPressed(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: String(describing: LoginViewController.self)) as! LoginViewController
+        //        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
+        //        //homeScreenViewModel.getBrandAtIndex(indexPath: indexPath)
+        //
+        //
+        //       // viewController.brand = brands[indexPath.row]
+        //        self.navigationController?.pushViewController(viewController, animated: true)
+        let vc = UIStoryboard(name: "UserAuthentication",bundle: nil).instantiateViewController(identifier: String(describing: LoginViewController.self)) as! LoginViewController
+    
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         
     }
+    
     
     @IBAction func seeMoreOrdersPressed(_ sender: Any) {
         
@@ -133,18 +184,42 @@ class MyAccountViewController: UIViewController {
     }
     
     @IBAction func CurrencyPressed(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Choose Currency", message: nil, preferredStyle: .actionSheet)
+        
+        let usd  = UIAlertAction(title: "USD", style: .default) { (UIAlertAction) in
+            MyUserDefaults.add(val: "USD", key: .currency)
+        }
+        let egp  = UIAlertAction(title: "EGP", style: .default) { (UIAlertAction) in
+            
+            MyUserDefaults.add(val: "EGP", key: .currency)
+
+        }
+        
+        let cancel  = UIAlertAction(title: "Cancel", style: .destructive) { (UIAlertAction) in
+            
+            alert.dismiss(animated: true)
+
+        }
+        
+        alert.addAction(usd)
+        alert.addAction(egp)
+        alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
     }
+    
     
     @IBAction func AddressesPressed(_ sender: Any) {
         guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: MyAddressesViewController.self), creator: { (coder) -> MyAddressesViewController? in
             MyAddressesViewController (coder: coder, myAddressViewModel: MyAddressViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!))
         }) else {return}
-
+        
         self.navigationController?.pushViewController(vc, animated: true)
-//
-//        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
-//
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        //
+        //        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
+        //
+        //        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
 }

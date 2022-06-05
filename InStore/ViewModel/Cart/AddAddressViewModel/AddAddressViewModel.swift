@@ -14,6 +14,7 @@ protocol AddAddressViewModelType {
     var cityTFPublishSubject : PublishSubject<String> {get set}
     var addressTFPublishSubject : PublishSubject<String> {get set}
     var phoneTFPublishSubject : PublishSubject<String> {get set}
+    var order : PostOrderRequest? {get set}
     func validateAddress() -> Observable<Bool>
     func addAddressForCurrentCustomer(address : Address) -> Observable<NewCustomer>?
 }
@@ -27,9 +28,13 @@ class AddAddressViewModel : AddAddressViewModelType{
     var addressTFPublishSubject = PublishSubject<String>()
     var phoneTFPublishSubject = PublishSubject<String>()
     private var repo : RepositoryProtocol?
+    var myOrder : PostOrderRequest?
+    var order: PostOrderRequest?
     
-    init(repo : RepositoryProtocol) {
+    init(repo : RepositoryProtocol, myOrder : PostOrderRequest) {
         self.repo = repo
+        self.myOrder = myOrder
+        self.order = myOrder
     }
     
     func validateAddress() -> Observable<Bool> {

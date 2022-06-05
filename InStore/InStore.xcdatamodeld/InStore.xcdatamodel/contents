@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CartProduct" representedClassName="CartProduct" syncable="YES" codeGenerationType="class">
         <attribute name="customerEmail" optional="YES" attributeType="String"/>
         <attribute name="productAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="productId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productImg" optional="YES" attributeType="String"/>
         <attribute name="productPrice" optional="YES" attributeType="String"/>
         <attribute name="productTitle" optional="YES" attributeType="String"/>
+        <attribute name="vartiantId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="CartProduct" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="CartProduct" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

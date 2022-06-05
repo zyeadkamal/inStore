@@ -65,8 +65,10 @@ class MyAddressesViewController: UIViewController {
     }
     private func bindAddresses(){
 
-        myAddressViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { state in
-            print(state)
+        myAddressViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: {
+            [weak self] state in
+            guard let self = self else{return}
+            
             switch state {
             case .error:
                 self.activityIndicator.stopAnimating()

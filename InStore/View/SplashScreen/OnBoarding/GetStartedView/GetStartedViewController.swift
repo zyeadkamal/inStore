@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedViewController: UIViewController {
     
-    var brand : Brand?
+    //var brand : Brand?
     
     override func viewDidLoad() {
         super.viewDidLoad()
