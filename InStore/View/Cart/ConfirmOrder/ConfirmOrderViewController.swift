@@ -30,6 +30,10 @@ class ConfirmOrderViewController: UIViewController {
     
     //MARK: -- IBActions
     @IBAction func didPressContinueConfirm(_ sender: UIButton) {
+        let homeStoryboard = UIStoryboard(name: "HomeScreen", bundle: nil)
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
+        homeVC.modalPresentationStyle = .fullScreen
+        self.present(homeVC, animated: true, completion: nil)
     }
     
     //MARK: -- Functions

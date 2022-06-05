@@ -25,4 +25,6 @@ protocol AllProductsViewModelProtocol {
     var accessoriesCategory: Bool?{get set}
     var productCountObservable: Observable<Int?>{get set}
     func getAllProducts()
+    func addToFavourite(product: Product , customerEmail: String)
+    func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)
 }

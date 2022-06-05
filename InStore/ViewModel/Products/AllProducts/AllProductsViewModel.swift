@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 class AllProductsViewModel: AllProductsViewModelProtocol {
+   
     
     private var bag = DisposeBag()
     private var repository: RepositoryProtocol?
@@ -71,6 +72,15 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
                     self?.state = .error
             }).disposed(by: bag)
     }
+    
+    func addToFavourite(product: Product , customerEmail: String) {
+        repository?.addToFavourite(product: product,customerEmail: customerEmail)
+    }
+    
+    func removeProductFromFavourites(customerEmail: String, deletedProductId: Int64) {
+        repository?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
+    }
+    
     
     
     private func applyFilters( products: [Product]) {

@@ -16,4 +16,10 @@ protocol LocalDataSourceProtocol {
     func fetchProductsFromCart() -> Observable<[CartProduct]>?
     func deleteProductFromCart(deletedProductId: Int64)
     func editProductAmountInCart(productId : Int64, amount : Int16)
+    func fetchProductsFromFavourites(customerEmail:String) -> Observable<[Favourites]>?
+    func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)
+    func addToFavourite(product: Product , customerEmail: String)
+    func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?
+    
 }
+

@@ -111,12 +111,17 @@ class Repository: RepositoryProtocol {
         return addresses
     }
     
-    
+     //https://5d028b96729c6d9493e99c6962b8193b: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@MAD-SV20221.myshopify.com/admin/api/2022-04/price_rules/1027348594860/discount_codes.json
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
         
         let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
         return discountCodes
         
+    }
+    
+    func getCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
+        let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
+        return discountCodes
     }
     
     func getBrands() -> Observable<Smart_collections>?{
@@ -146,6 +151,22 @@ class Repository: RepositoryProtocol {
         let allProducts = apiClient?.getRequest(fromEndpoint: .products, httpMethod: .get, parameters: [:], ofType: AllProducts.self, json: ".json")
         return allProducts
      }
-     
+    func addToFavourite(product: Product , customerEmail: String){
+        localDataSource?.addToFavourite(product: product,customerEmail: customerEmail)
+        
+    }
+    func fetchProductsFromFavourites(customerEmail:String) -> Observable<[Favourites]>?{
+        let favourites = localDataSource?.fetchProductsFromFavourites(customerEmail: customerEmail)
+        return favourites
+    }
+    func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64){
+        localDataSource?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
+    }
+
+    func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?{
+        return localDataSource?.checkIfProductAddedToCart(customerEmail: customerEmail, productId: productId)
+    }
+    
+
      
 }

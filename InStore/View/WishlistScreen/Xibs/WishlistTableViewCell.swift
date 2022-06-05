@@ -19,11 +19,23 @@ class WishlistTableViewCell: UITableViewCell {
     
     //MARK: -- Properties
     
-    
+    var addToCart: () -> Void =  {}
+    var isAddedToCart = false
+
     //MARK: -- Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      
+    }
+    
+    func changeButtonUI(){
+        if (isAddedToCart){
+            addToCartBtn.setTitle("Remove From Cart", for: .normal)
+        }
+        else {
+            addToCartBtn.setTitle("Add To Cart", for: .normal)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,9 +44,17 @@ class WishlistTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(favourite:Favourites)
+    {
+        wishlistProductPrice.text = favourite.price
+        wishlistProductTitle.text = favourite.title
+        wishlistCellImg.kf.setImage(with: URL(string:favourite.image ?? "https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg" ))
+    }
+
     
     //MARK: -- IBActions
     @IBAction func didPressAddToCart(_ sender: UIButton) {
+        addToCart()
     }
     //MARK: -- Functions
     
