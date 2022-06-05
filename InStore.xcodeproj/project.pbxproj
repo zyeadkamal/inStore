@@ -70,7 +70,6 @@
 		596F500E2840E064008CA0E9 /* MyAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F500C2840E064008CA0E9 /* MyAddressTableViewCell.swift */; };
 		596F500F2840E064008CA0E9 /* MyAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596F500D2840E064008CA0E9 /* MyAddressTableViewCell.xib */; };
 		59BE6E55284A8E09002FAAFC /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E54284A8E09002FAAFC /* HomeScreenViewModel.swift */; };
-		59BE6E57284A9043002FAAFC /* DiscountCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E56284A9043002FAAFC /* DiscountCodes.swift */; };
 		59BE6E59284A9BF5002FAAFC /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E58284A9BF5002FAAFC /* Categories.swift */; };
 		59BE6E5B284AA72F002FAAFC /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E5A284AA72F002FAAFC /* HomeResponse.swift */; };
 		59BE6E5E284B6EBB002FAAFC /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E5D284B6EBB002FAAFC /* UserDefaults.swift */; };
@@ -544,6 +543,7 @@
 				B6EDC3F52844164200BE0193 /* Wishlist.storyboard */,
 				B6EC19162844AB6300D4007B /* SuggestedCollectionViewCell.xib */,
 				B6EDC3FA284435DA00BE0193 /* WishlistTableViewCell.xib */,
+				59BE6E56284A9043002FAAFC /* DiscountCodes.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1149,7 +1149,6 @@
 				B6C78E5C28495AD6002810FD /* ChooseAddressViewModel.swift in Sources */,
 				B656DFC8283EF1600043FCF7 /* CardTableViewCell.swift in Sources */,
 				04716B062845257D00472C58 /* AddAddressViewController.swift in Sources */,
-				59BE6E57284A9043002FAAFC /* DiscountCodes.swift in Sources */,
 				B6C78E532848A056002810FD /* Product.swift in Sources */,
 				596F4FFF2840DFC2008CA0E9 /* MyOrdersViewController.swift in Sources */,
 				04071ED82848B16100942AE2 /* RegisterViewModelProtocol.swift in Sources */,
