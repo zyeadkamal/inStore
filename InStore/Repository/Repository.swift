@@ -76,6 +76,17 @@ class Repository: RepositoryProtocol {
         return orders
     }
     
+    func postOrder(order : PostOrderRequest) -> Observable<PostOrderRequest>?{
+        var newOrder: Observable<PostOrderRequest>?
+        do{
+            let postBody = try JSONSerialization.data(withJSONObject: order.asDictionary(), options: .prettyPrinted)
+            newOrder = apiClient?.postRequest(fromEndpoint: EndPoint.orders, httpBody: postBody, httpMethod: .post, ofType: PostOrderRequest.self, json: ".json")
+        }catch let error as NSError{
+            print("\(error) can't add order, something error")
+        }
+        return newOrder
+    }
+    
     func addAddress(address : Address) -> Observable<NewCustomer>? {
         var newAddress : Observable<NewCustomer>?
          do{
@@ -91,7 +102,7 @@ class Repository: RepositoryProtocol {
          return newAddress
     }
 
-    //customers/6246222299371/addresses.json
+    //customers/6246222299371.json
     
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?{
        
@@ -100,19 +111,29 @@ class Repository: RepositoryProtocol {
         return addresses
     }
     
+    
+    //https://4a798eacca0d39cc2048369ad2025b47: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@mad-sv.myshopify.com/admin/api/2022-04/price_rules/1185721155819/discount_codes.json
+    func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
+        
+        let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
+        return discountCodes
+        
+    }
+    
+    
     func addToCart(product: Product) {
         localDataSource?.addToCart(product: product)
     }
     
-    func fetchProductsFromCart() -> [CartProduct]? {
+    func fetchProductsFromCart() -> Observable<[CartProduct]>? {
         return localDataSource?.fetchProductsFromCart()
     }
     
-    func deleteProductFromCart(deletedProductId: Int32) {
+    func deleteProductFromCart(deletedProductId: Int64) {
         localDataSource?.deleteProductFromCart(deletedProductId: deletedProductId)
     }
     
-    func editProductAmountInCart(productId: Int32, amount: Int16) {
+    func editProductAmountInCart(productId: Int64, amount: Int16) {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
     }
 }

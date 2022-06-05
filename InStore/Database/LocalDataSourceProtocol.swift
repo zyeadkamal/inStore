@@ -8,11 +8,12 @@
 
 import Foundation
 import CoreData
+import RxSwift
 
 protocol LocalDataSourceProtocol {
     // cart functions
     func addToCart(product: Product)
-    func fetchProductsFromCart() -> [CartProduct]?
-    func deleteProductFromCart(deletedProductId: Int32)
-    func editProductAmountInCart(productId : Int32, amount : Int16)
+    func fetchProductsFromCart() -> Observable<[CartProduct]>?
+    func deleteProductFromCart(deletedProductId: Int64)
+    func editProductAmountInCart(productId : Int64, amount : Int16)
 }

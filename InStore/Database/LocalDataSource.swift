@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import RxSwift
 
 class LocalDataSource: LocalDataSourceProtocol {
     
@@ -26,67 +27,87 @@ class LocalDataSource: LocalDataSourceProtocol {
     }
     func addToCart(product: Product) {
         let cartEntity = CartProduct(context: self.managedContext!)
-        cartEntity.productId = Int32(product.id)
+        cartEntity.productId = Int64(product.id)
         cartEntity.productTitle = product.title
         cartEntity.productImg = product.images[0].src
         cartEntity.productPrice = product.varients?[0].price
         cartEntity.productAmount = 1
         cartEntity.customerEmail = "mando@ggg.com"
+        cartEntity.vartiantId = Int64(product.varients?[0].id ?? 0)
         do{
             print("Product Saved Successfully")
+            print(cartEntity)
             try managedContext?.save()
         }catch let error as NSError{
             print("\(error) in saving data to cart entity")
         }
     }
     
-    func fetchProductsFromCart() -> [CartProduct]? {
-        let currentUserEmail = "mando@ggg.com"
-        var cartElements = [CartProduct]()
-        let fetchReq = CartProduct.fetchRequest() as! NSFetchRequest
-        let emailPredicate = NSPredicate(format: "customerEmail == %@", currentUserEmail)
-        fetchReq.predicate = emailPredicate
-        do{
-            print("Products Fetched Successfully")
-//            let allProductsInCart = try managedContext.fetch(fetchReq) as! [CartProduct]
-//            allProductsInCart.forEach { (product) in
-//                if product.customerEmail == currentUserEmail{
-//                    cartElements.append(product)
-//                }
-//            }
-            cartElements = try managedContext?.fetch(fetchReq) as! [CartProduct]
-            return cartElements
-        }catch let error as NSError{
-            print("\(error) in retreiving data from cart entity")
-            return nil
+
+    
+    func fetchProductsFromCart() -> Observable<[CartProduct]>? {
+        return Observable<[CartProduct]>.create { (observer) -> Disposable in
+                let currentUserEmail = "mando@ggg.com"
+                    var cartElements = [CartProduct]()
+                    let fetchReq = CartProduct.fetchRequest() as! NSFetchRequest
+                    let emailPredicate = NSPredicate(format: "customerEmail == %@", currentUserEmail)
+                    fetchReq.predicate = emailPredicate
+                    do{
+                        print("Products Fetched Successfully")
+                        
+            //            let allProductsInCart = try managedContext.fetch(fetchReq) as! [CartProduct]
+            //            allProductsInCart.forEach { (product) in
+            //                if product.customerEmail == currentUserEmail{
+            //                    cartElements.append(product)
+            //                }
+            //            }
+                        cartElements = try self.managedContext?.fetch(fetchReq) as! [CartProduct]
+                        cartElements.forEach { (product) in
+                            print("for product amount in local \(product.productAmount)")
+                        }
+                        print(cartElements.count)
+                        observer.onNext(cartElements)
+                    }catch let error as NSError{
+                        print("\(error) in retreiving data from cart entity")
+                        return Disposables.create {}
+                    }
+            return Disposables.create()
         }
     }
     
-    func deleteProductFromCart(deletedProductId: Int32) {
+    func deleteProductFromCart(deletedProductId: Int64) {
         let retreivedProducts = fetchProductsFromCart()
-        retreivedProducts?.forEach({ (product) in
-            if product.value(forKey: "productId") as! Int32 == deletedProductId{
-                managedContext?.delete(product)
+        retreivedProducts?.subscribe(onNext: { products in
+            products.forEach({ (product) in
+                if product.value(forKey: "productId") as! Int64 == deletedProductId{
+                    self.managedContext?.delete(product)
+                }
+            })
+            do{
+                try self.managedContext?.save()
+            }catch let error as NSError{
+                print("\(error) in deleting products from cart entity")
             }
-        })
-        do{
-            try managedContext?.save()
-        }catch let error as NSError{
-            print("\(error) in deleting products from cart entity")
-        }
+            }).disposed(by: DisposeBag())
     }
     
-    func editProductAmountInCart(productId : Int32, amount : Int16) {
+    
+
+    
+    func editProductAmountInCart(productId : Int64, amount : Int16) {
         guard let allProductsInCart = fetchProductsFromCart() else {return}
-        allProductsInCart.forEach { (product) in
-            if product.value(forKey: "productId") as! Int16 == productId{
-                product.productAmount = amount
-                do{
-                    try managedContext?.save()
-                }catch let error as NSError{
-                    print("\(error) in editing products in cart entity")
+        allProductsInCart.subscribe(onNext: { products in
+            products.forEach { (product) in
+                if product.value(forKey: "productId") as! Int64 == productId{
+                    product.productAmount = amount
+                    print("product amount local \(amount)")
+                    do{
+                        try self.managedContext?.save()
+                    }catch let error as NSError{
+                        print("\(error) in editing products in cart entity")
+                    }
                 }
             }
-        }
+            }).disposed(by: DisposeBag())
     }
 }
