@@ -14,4 +14,6 @@ protocol AllProductsViewModelProtocol {
     var showLoadingObservable: Observable<State>{get}
     var allProducts: [Product]?{get set}
     func getAllProducts()
+    func addToFavourite(product: Product , customerEmail: String)
+    func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)
 }

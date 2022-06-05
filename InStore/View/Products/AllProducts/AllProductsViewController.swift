@@ -58,11 +58,16 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
                         break
                     }
                 }
+                //MyUserDefaults.getValue(forKey: .email)
+
+                self.viewModel.removeProductFromFavourites(customerEmail: "mando@ggg.com", deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
+                
                 ///Remove from favourites
             }else {
                 cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
                 ///Add to favourites
+                self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: "mando@ggg.com")
             }
         }
         return cell

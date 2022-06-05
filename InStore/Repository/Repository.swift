@@ -151,6 +151,22 @@ class Repository: RepositoryProtocol {
         let allProducts = apiClient?.getRequest(fromEndpoint: .products, httpMethod: .get, parameters: [:], ofType: AllProducts.self, json: ".json")
         return allProducts
      }
-     
+    func addToFavourite(product: Product , customerEmail: String){
+        localDataSource?.addToFavourite(product: product,customerEmail: customerEmail)
+        
+    }
+    func fetchProductsFromFavourites(customerEmail:String) -> Observable<[Favourites]>?{
+        let favourites = localDataSource?.fetchProductsFromFavourites(customerEmail: customerEmail)
+        return favourites
+    }
+    func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64){
+        localDataSource?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
+    }
+
+    func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?{
+        return localDataSource?.checkIfProductAddedToCart(customerEmail: customerEmail, productId: productId)
+    }
+    
+
      
 }
