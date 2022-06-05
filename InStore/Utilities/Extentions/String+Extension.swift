@@ -32,4 +32,9 @@ extension String {
         return nil
     }
     
+    func contains(word : String) -> Bool
+    {
+        return self.range(of: "\\b\(word)\\b", options: .regularExpression) != nil
+    }
+    
 }
