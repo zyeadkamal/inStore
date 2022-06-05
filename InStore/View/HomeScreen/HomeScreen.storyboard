@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iA8-l7-rSF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iA8-l7-rSF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="1165"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SP8-3s-ClK" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1329"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1149"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_circle_top" translatesAutoresizingMaskIntoConstraints="NO" id="fo1-DD-LMa">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="534.5"/>
@@ -52,7 +53,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vouchers" translatesAutoresizingMaskIntoConstraints="NO" id="A5t-6t-iVd">
-                                                <rect key="frame" x="31" y="104" width="352" height="360"/>
+                                                <rect key="frame" x="31" y="104" width="352" height="180"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="KHD-mr-cCQ"/>
+                                                    <constraint firstAttribute="width" constant="352" id="jJ7-J0-bQq"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="15"/>
@@ -60,19 +65,19 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRANDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm2-Zb-K1q">
-                                                <rect key="frame" x="31" y="504" width="69" height="21"/>
+                                                <rect key="frame" x="31" y="324" width="69" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZO-ap-4Bh">
-                                                <rect key="frame" x="31" y="725" width="86" height="21"/>
+                                                <rect key="frame" x="31" y="545" width="86" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8dU-E8-6WJ">
-                                                <rect key="frame" x="30" y="555" width="384" height="140"/>
+                                                <rect key="frame" x="30" y="375" width="384" height="140"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="Y0Y-fK-EFg"/>
@@ -91,7 +96,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNz-5w-29C" userLabel="womenView">
-                                                <rect key="frame" x="31" y="776" width="173" height="240"/>
+                                                <rect key="frame" x="31" y="596" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="women" translatesAutoresizingMaskIntoConstraints="NO" id="b8K-rW-q5U">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -109,7 +114,7 @@ Fashion </string>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbG-w8-IA1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbG-w8-IA1">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
                                                         <connections>
                                                             <action selector="onWomenCategoryClick:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="yAe-BL-akd"/>
@@ -131,7 +136,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyo-aT-FtS" userLabel="kidsView">
-                                                <rect key="frame" x="224" y="776" width="159" height="240"/>
+                                                <rect key="frame" x="224" y="596" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kids" translatesAutoresizingMaskIntoConstraints="NO" id="CfY-ab-uxU">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
@@ -142,14 +147,14 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMN-m9-AsP">
-                                                        <rect key="frame" x="47" y="98.5" width="65.5" height="43"/>
+                                                        <rect key="frame" x="47" y="98.5" width="65" height="43"/>
                                                         <string key="text">Kids’
 Fashion </string>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3o-vI-1nS">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3o-vI-1nS">
                                                         <rect key="frame" x="0.0" y="0.0" width="159" height="224"/>
                                                         <connections>
                                                             <action selector="kidsCategoryPressed:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="Pc6-wt-79Y"/>
@@ -171,7 +176,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhi-lg-O1v" userLabel="menView">
-                                                <rect key="frame" x="31" y="1036" width="159" height="240"/>
+                                                <rect key="frame" x="31" y="856" width="159" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="sTj-rh-l9o">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
@@ -182,14 +187,14 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2i-ZS-ReH">
-                                                        <rect key="frame" x="47" y="98.5" width="65.5" height="43"/>
+                                                        <rect key="frame" x="47" y="98.5" width="65" height="43"/>
                                                         <string key="text">Men’s
 Fashion </string>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-fY-bVp">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-fY-bVp">
                                                         <rect key="frame" x="0.0" y="16" width="159" height="224"/>
                                                         <connections>
                                                             <action selector="menCategoryPressed:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="sRD-V4-fbZ"/>
@@ -211,7 +216,7 @@ Fashion </string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Weg-l3-bnl" userLabel="offerView">
-                                                <rect key="frame" x="210" y="1036" width="173" height="240"/>
+                                                <rect key="frame" x="210" y="856" width="173" height="240"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offers" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-J7-Qib">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
@@ -222,12 +227,12 @@ Fashion </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppe-9B-iNH">
-                                                        <rect key="frame" x="60" y="109.5" width="53.5" height="21.5"/>
+                                                        <rect key="frame" x="60" y="109.5" width="53" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buv-t1-4h1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buv-t1-4h1">
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="240"/>
                                                         <connections>
                                                             <action selector="offersCategoryPressed:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="BiL-fR-OWr"/>
@@ -248,17 +253,37 @@ Fashion </string>
                                                     <constraint firstItem="gZZ-J7-Qib" firstAttribute="leading" secondItem="Weg-l3-bnl" secondAttribute="leading" id="yWN-Sl-enD"/>
                                                 </constraints>
                                             </view>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fKh-89-sUi">
+                                                <rect key="frame" x="188.5" y="564" width="37" height="37"/>
+                                                <color key="color" name="PrimaryColor"/>
+                                            </activityIndicatorView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKa-KN-Bde">
+                                                <rect key="frame" x="31" y="104" width="352" height="180"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onAdsClick:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="vT0-gC-JbB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="A5t-6t-iVd" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="2aQ-co-ZrL"/>
                                             <constraint firstItem="JZO-ap-4Bh" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="89V-AY-Ykd"/>
                                             <constraint firstItem="4FJ-CS-FpJ" firstAttribute="top" secondItem="uoJ-Wh-b2R" secondAttribute="bottom" constant="8" id="93g-2x-w17"/>
+                                            <constraint firstItem="RKa-KN-Bde" firstAttribute="leading" secondItem="A5t-6t-iVd" secondAttribute="leading" id="C1M-kK-neo"/>
                                             <constraint firstAttribute="trailing" secondItem="Weg-l3-bnl" secondAttribute="trailing" constant="31" id="Ch5-vT-ZFQ"/>
                                             <constraint firstAttribute="trailing" secondItem="A5t-6t-iVd" secondAttribute="trailing" constant="31" id="FNk-1Y-kJU"/>
+                                            <constraint firstItem="RKa-KN-Bde" firstAttribute="top" secondItem="A5t-6t-iVd" secondAttribute="top" id="FjZ-oo-pWh"/>
                                             <constraint firstItem="rm2-Zb-K1q" firstAttribute="top" secondItem="A5t-6t-iVd" secondAttribute="bottom" constant="40" id="HjX-Ju-2Zx"/>
                                             <constraint firstAttribute="trailing" secondItem="fo1-DD-LMa" secondAttribute="trailing" id="IjV-6T-3jc"/>
                                             <constraint firstAttribute="trailing" secondItem="jyo-aT-FtS" secondAttribute="trailing" constant="31" id="J84-Dl-IqU"/>
                                             <constraint firstItem="uoJ-Wh-b2R" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="KDQ-Ba-ZU0"/>
+                                            <constraint firstItem="A5t-6t-iVd" firstAttribute="trailing" secondItem="RKa-KN-Bde" secondAttribute="trailing" id="LCw-gF-oRl"/>
                                             <constraint firstAttribute="trailing" secondItem="8dU-E8-6WJ" secondAttribute="trailing" id="LKU-C4-eK6"/>
                                             <constraint firstItem="Fhi-lg-O1v" firstAttribute="width" secondItem="SP8-3s-ClK" secondAttribute="width" multiplier="0.384058" id="Nlf-SO-Agw"/>
                                             <constraint firstItem="UNz-5w-29C" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="P5L-Ku-PJy"/>
@@ -280,12 +305,15 @@ Fashion </string>
                                             <constraint firstItem="rm2-Zb-K1q" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="u3a-e2-vX9"/>
                                             <constraint firstItem="4FJ-CS-FpJ" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="vV3-LA-fw6"/>
                                             <constraint firstItem="fo1-DD-LMa" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" id="wAu-Cs-cQQ"/>
+                                            <constraint firstItem="A5t-6t-iVd" firstAttribute="bottom" secondItem="RKa-KN-Bde" secondAttribute="bottom" id="wbZ-Jp-WYm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="SP8-3s-ClK" firstAttribute="height" secondItem="z8m-ZG-wTS" secondAttribute="height" priority="250" id="3Ll-lH-jXU"/>
                                     <constraint firstAttribute="bottom" secondItem="SP8-3s-ClK" secondAttribute="bottom" id="79q-Pw-FRv"/>
+                                    <constraint firstItem="fKh-89-sUi" firstAttribute="centerY" secondItem="z8m-ZG-wTS" secondAttribute="centerY" id="J82-6v-HUK"/>
+                                    <constraint firstItem="fKh-89-sUi" firstAttribute="centerX" secondItem="z8m-ZG-wTS" secondAttribute="centerX" id="NUi-jZ-UJM"/>
                                     <constraint firstItem="SP8-3s-ClK" firstAttribute="top" secondItem="z8m-ZG-wTS" secondAttribute="top" id="QI6-rX-hxp"/>
                                     <constraint firstItem="SP8-3s-ClK" firstAttribute="leading" secondItem="z8m-ZG-wTS" secondAttribute="leading" id="etK-nK-YmC"/>
                                     <constraint firstItem="SP8-3s-ClK" firstAttribute="width" secondItem="z8m-ZG-wTS" secondAttribute="width" id="mYr-2o-xjB"/>
@@ -295,6 +323,7 @@ Fashion </string>
                                 <viewLayoutGuide key="frameLayoutGuide" id="96d-dZ-hNY"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="c51-oM-Vod"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8Bk-qU-LXL" firstAttribute="top" secondItem="Odw-6s-nTp" secondAttribute="top" id="2RF-Ad-Ft0"/>
@@ -307,14 +336,18 @@ Fashion </string>
                             <constraint firstItem="z8m-ZG-wTS" firstAttribute="leading" secondItem="c51-oM-Vod" secondAttribute="leading" id="qfa-qi-iKN"/>
                             <constraint firstItem="z8m-ZG-wTS" firstAttribute="trailing" secondItem="c51-oM-Vod" secondAttribute="trailing" id="sSQ-Cp-p7v"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="c51-oM-Vod"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="gxf-YY-OqT"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1336"/>
                     <connections>
                         <outlet property="BrandsCollectionView" destination="8dU-E8-6WJ" id="Ucl-G9-769"/>
+                        <outlet property="activityIndicator" destination="fKh-89-sUi" id="TvQ-tV-Gpd"/>
                         <outlet property="adBanner" destination="A5t-6t-iVd" id="IOw-Rb-U9l"/>
+                        <outlet property="kidsView" destination="jyo-aT-FtS" id="ype-Wm-QXh"/>
+                        <outlet property="menView" destination="Fhi-lg-O1v" id="EBt-K8-iOp"/>
+                        <outlet property="offersView" destination="Weg-l3-bnl" id="qRH-lZ-ESb"/>
+                        <outlet property="womenView" destination="UNz-5w-29C" id="lE5-cU-V5K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WT4-kz-Yzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -410,11 +443,11 @@ Fashion </string>
     </scenes>
     <resources>
         <image name="home_circle_top" width="1125" height="1153"/>
-        <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="kids" width="159" height="219"/>
         <image name="men" width="159" height="219"/>
         <image name="offers" width="159" height="230"/>
-        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="vouchers" width="327" height="180"/>
         <image name="women" width="159" height="230"/>
         <namedColor name="PrimaryColor">
@@ -422,9 +455,6 @@ Fashion </string>
         </namedColor>
         <namedColor name="black">
             <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

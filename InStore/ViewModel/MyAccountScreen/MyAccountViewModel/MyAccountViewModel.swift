@@ -58,7 +58,9 @@ class MyAccountViewModel: MyAccountViewModelType{
     
     func getData() {
         state = .loading
-        getOrders(userId:6232280301803).observe(on: MainScheduler.instance).subscribe(onNext: { (orders) in
+        getOrders(userId:6035824083116).observe(on: MainScheduler.instance).subscribe(onNext: {
+            [weak self](orders) in
+            guard let self = self else{return}
             self.orders = orders.orders
             if(orders.orders.isEmpty){
                 self.state = .empty
@@ -68,7 +70,7 @@ class MyAccountViewModel: MyAccountViewModelType{
         }, onError: { (error) in
             
             self.state = .error
-            }).disposed(by: bag)
+        }).disposed(by: bag)
         
     }
     

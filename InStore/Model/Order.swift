@@ -1,0 +1,80 @@
+//
+//  Order.swift
+//  InStore
+//
+//  Created by sandra on 6/3/22.
+//  Copyright © 2022 mac. All rights reserved.
+//
+
+import Foundation
+
+// MARK: - discount_codePostOrder
+struct PostOrderRequest: Codable {
+    var order: PostNewOrder?
+}
+
+// MARK: - discount_codeOrder
+struct PostOrder: Codable {
+    var email, fulfillmentStatus: String?
+    var lineItems: [PostLineItem]?
+    enum CodingKeys: String, CodingKey {
+        case email
+        case fulfillmentStatus = "fulfillment_status"
+        case lineItems = "line_items"
+    }
+}
+// new
+struct PostNewOrder:Codable {
+    var lineItems: [PostLineItem]?
+    var customer: MyCustomer?
+    var financialStatus: String?
+    var discountCode: [DiscountCode]?
+    var default_address : Address?
+    var total_discounts : String? //
+    var total_line_items_price : String? //
+    
+    enum CodingKeys: String, CodingKey {
+        case lineItems = "line_items"
+        case customer
+        case financialStatus = "financial_status"
+        case discountCode = "discount_codes"
+    }
+}
+
+////struct Codes:Codable {
+////    let codes : [Code]
+////}
+//
+//struct Code:Codable {
+//
+//    var code : String?
+//    var ammount : String = "10.00"
+//    var type : String = "percentage"
+//
+//    enum CodingKeys: String, CodingKey {
+//        case code
+//        case ammount = "amount"
+//        case type
+//    }
+//
+//}
+
+struct MyCustomer: Codable {
+    var id: Int?
+}
+
+//new
+
+struct PostCustomer: Codable {
+    var id: Int?
+}
+
+// MARK: - discount_codeLineItem
+struct PostLineItem: Codable {
+    var variantID, quantity: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case variantID = "variant_id"
+        case quantity
+    }
+}

@@ -20,14 +20,14 @@ class BrandsCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setup(_ brand :Brand){
-        if (brand.name == "PUMA"){
+    func setup(_ brand :Smart_collection){
+        if (brand.title == "PUMA"){
             brandImage.image =  #imageLiteral(resourceName: "Puma-logo")
         }
         else {
             brandImage.kf.setImage(with: URL(string:brand.image?.src ?? "https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg" ))
         }
-        brandName.text = brand.name
+        brandName.text = brand.title
     }
     
 }
