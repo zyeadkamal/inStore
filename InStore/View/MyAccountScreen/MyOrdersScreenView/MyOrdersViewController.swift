@@ -22,7 +22,6 @@ class MyOrdersViewController: UIViewController {
     private var bag = DisposeBag()
     
     
-    
     //MARK: - Init
     
     init?(coder: NSCoder ,myOrdersViewModel:MyAccountViewModelType ) {
@@ -66,13 +65,13 @@ class MyOrdersViewController: UIViewController {
         
         myOrdersViewModel.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asDriver(onErrorJustReturn: [])
             .drive( ordersTableView.rx.items(cellIdentifier: String(describing: MyOrderTableViewCell.self),cellType: MyOrderTableViewCell.self) ){( row, order, cell) in
-                print("data")
                 cell.setupCell(order: order)
             }.disposed(by: bag)
         
         
-        myOrdersViewModel.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { orders in
-
+        myOrdersViewModel.orderObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: {  
+            [weak self] orders in
+            guard let self = self else{return}
             print(orders.count)
             if (orders.isEmpty)
             {

@@ -73,6 +73,9 @@
 		59BE6E57284A9043002FAAFC /* DiscountCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E56284A9043002FAAFC /* DiscountCodes.swift */; };
 		59BE6E59284A9BF5002FAAFC /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E58284A9BF5002FAAFC /* Categories.swift */; };
 		59BE6E5B284AA72F002FAAFC /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E5A284AA72F002FAAFC /* HomeResponse.swift */; };
+		59BE6E5E284B6EBB002FAAFC /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E5D284B6EBB002FAAFC /* UserDefaults.swift */; };
+		59BE6E61284B8CC3002FAAFC /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE6E60284B8CC3002FAAFC /* SplashScreenViewModel.swift */; };
+		59BE6E63284BCF31002FAAFC /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 59BE6E62284BCF31002FAAFC /* splash.json */; };
 		59F0D5F328419934003F9C96 /* AllProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F0D5F228419934003F9C96 /* AllProductsCollectionViewCell.swift */; };
 		59F0D5F5284199C2003F9C96 /* AllProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F0D5F4284199C2003F9C96 /* AllProductsViewController.swift */; };
 		59F0D5F728419A20003F9C96 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F0D5F628419A20003F9C96 /* ProductDetailsViewController.swift */; };
@@ -182,6 +185,9 @@
 		59BE6E56284A9043002FAAFC /* DiscountCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodes.swift; sourceTree = "<group>"; };
 		59BE6E58284A9BF5002FAAFC /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		59BE6E5A284AA72F002FAAFC /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		59BE6E5D284B6EBB002FAAFC /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		59BE6E60284B8CC3002FAAFC /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		59BE6E62284BCF31002FAAFC /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		59F0D5F228419934003F9C96 /* AllProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		59F0D5F4284199C2003F9C96 /* AllProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsViewController.swift; sourceTree = "<group>"; };
 		59F0D5F628419A20003F9C96 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +441,7 @@
 		048B3F40283CD23A00CEF8D0 /* InStore */ = {
 			isa = PBXGroup;
 			children = (
+				59BE6E5C284B6E9D002FAAFC /* UserDefaults */,
 				04530B8A2847BBF20064149C /* Service */,
 				04530B892847BBE80064149C /* Database */,
 				04530B882847BBA40064149C /* Repository */,
@@ -479,6 +486,7 @@
 		048B3F67283CD28900CEF8D0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				59BE6E5F284B8CAA002FAAFC /* SplashScreen */,
 				59BE6E53284A8D51002FAAFC /* HomeScreen */,
 				B6C78E542848CC8E002810FD /* Cart */,
 				594C4CE12846C17500EE2BB9 /* MyAccountScreen */,
@@ -685,6 +693,22 @@
 			path = HomeScreen;
 			sourceTree = "<group>";
 		};
+		59BE6E5C284B6E9D002FAAFC /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				59BE6E5D284B6EBB002FAAFC /* UserDefaults.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		59BE6E5F284B8CAA002FAAFC /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				59BE6E60284B8CC3002FAAFC /* SplashScreenViewModel.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 		59F0D5EF284198C4003F9C96 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +837,7 @@
 		B656DFCE283EF38B0043FCF7 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				59BE6E62284BCF31002FAAFC /* splash.json */,
 				B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */,
 			);
 			path = Animation;
@@ -958,6 +983,7 @@
 				596F500B2840E04D008CA0E9 /* MyOrderTableViewCell.xib in Resources */,
 				596F4FEF2840DDE0008CA0E9 /* MyAccountScreen.storyboard in Resources */,
 				048B3F49283CD23A00CEF8D0 /* Main.storyboard in Resources */,
+				59BE6E63284BCF31002FAAFC /* splash.json in Resources */,
 				59F2064B283E6C3C00E12D88 /* HomeScreen.storyboard in Resources */,
 				596F500F2840E064008CA0E9 /* MyAddressTableViewCell.xib in Resources */,
 				59F20646283E6ACA00E12D88 /* SplashScreen.storyboard in Resources */,
@@ -1058,6 +1084,7 @@
 				048B3F42283CD23A00CEF8D0 /* AppDelegate.swift in Sources */,
 				59F2065F283E7C6600E12D88 /* OnBoardingCollectionViewCell.swift in Sources */,
 				592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */,
+				59BE6E5E284B6EBB002FAAFC /* UserDefaults.swift in Sources */,
 				04716B2328452E0600472C58 /* RegisterViewController.swift in Sources */,
 				04530BA22847C2370064149C /* LocalDataSource.swift in Sources */,
 				04716B0E2845261900472C58 /* ConfirmOrderViewController.swift in Sources */,
@@ -1082,6 +1109,7 @@
 				59F20657283E73BB00E12D88 /* UIView+Extention.swift in Sources */,
 				B6CD9733284149C3001E7FF5 /* PaymentViewController.swift in Sources */,
 				042EE8A02844A062004ECD9A /* FilterCell.swift in Sources */,
+				59BE6E61284B8CC3002FAAFC /* SplashScreenViewModel.swift in Sources */,
 				59F20650283E6EA700E12D88 /* OnBoardingViewController.swift in Sources */,
 				04530B8C2847BC040064149C /* Customer.swift in Sources */,
 				B6C78E572848CCCD002810FD /* AddAddressViewModel.swift in Sources */,

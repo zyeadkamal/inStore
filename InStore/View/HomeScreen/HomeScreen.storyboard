@@ -257,17 +257,33 @@ Fashion </string>
                                                 <rect key="frame" x="188.5" y="564" width="37" height="37"/>
                                                 <color key="color" name="PrimaryColor"/>
                                             </activityIndicatorView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKa-KN-Bde">
+                                                <rect key="frame" x="31" y="104" width="352" height="180"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onAdsClick:" destination="Qhp-pP-ev9" eventType="touchUpInside" id="vT0-gC-JbB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="A5t-6t-iVd" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="2aQ-co-ZrL"/>
                                             <constraint firstItem="JZO-ap-4Bh" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="89V-AY-Ykd"/>
                                             <constraint firstItem="4FJ-CS-FpJ" firstAttribute="top" secondItem="uoJ-Wh-b2R" secondAttribute="bottom" constant="8" id="93g-2x-w17"/>
+                                            <constraint firstItem="RKa-KN-Bde" firstAttribute="leading" secondItem="A5t-6t-iVd" secondAttribute="leading" id="C1M-kK-neo"/>
                                             <constraint firstAttribute="trailing" secondItem="Weg-l3-bnl" secondAttribute="trailing" constant="31" id="Ch5-vT-ZFQ"/>
                                             <constraint firstAttribute="trailing" secondItem="A5t-6t-iVd" secondAttribute="trailing" constant="31" id="FNk-1Y-kJU"/>
+                                            <constraint firstItem="RKa-KN-Bde" firstAttribute="top" secondItem="A5t-6t-iVd" secondAttribute="top" id="FjZ-oo-pWh"/>
                                             <constraint firstItem="rm2-Zb-K1q" firstAttribute="top" secondItem="A5t-6t-iVd" secondAttribute="bottom" constant="40" id="HjX-Ju-2Zx"/>
                                             <constraint firstAttribute="trailing" secondItem="fo1-DD-LMa" secondAttribute="trailing" id="IjV-6T-3jc"/>
                                             <constraint firstAttribute="trailing" secondItem="jyo-aT-FtS" secondAttribute="trailing" constant="31" id="J84-Dl-IqU"/>
                                             <constraint firstItem="uoJ-Wh-b2R" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="KDQ-Ba-ZU0"/>
+                                            <constraint firstItem="A5t-6t-iVd" firstAttribute="trailing" secondItem="RKa-KN-Bde" secondAttribute="trailing" id="LCw-gF-oRl"/>
                                             <constraint firstAttribute="trailing" secondItem="8dU-E8-6WJ" secondAttribute="trailing" id="LKU-C4-eK6"/>
                                             <constraint firstItem="Fhi-lg-O1v" firstAttribute="width" secondItem="SP8-3s-ClK" secondAttribute="width" multiplier="0.384058" id="Nlf-SO-Agw"/>
                                             <constraint firstItem="UNz-5w-29C" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="P5L-Ku-PJy"/>
@@ -289,6 +305,7 @@ Fashion </string>
                                             <constraint firstItem="rm2-Zb-K1q" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="u3a-e2-vX9"/>
                                             <constraint firstItem="4FJ-CS-FpJ" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" constant="31" id="vV3-LA-fw6"/>
                                             <constraint firstItem="fo1-DD-LMa" firstAttribute="leading" secondItem="SP8-3s-ClK" secondAttribute="leading" id="wAu-Cs-cQQ"/>
+                                            <constraint firstItem="A5t-6t-iVd" firstAttribute="bottom" secondItem="RKa-KN-Bde" secondAttribute="bottom" id="wbZ-Jp-WYm"/>
                                         </constraints>
                                     </view>
                                 </subviews>

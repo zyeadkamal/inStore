@@ -9,19 +9,24 @@
 import Foundation
 import RxSwift
 
+//new file for protocols
 protocol HomeScreenViewModelType{
     func loadData()
     var ads : [DiscountCode]?{get}
     var brands : [Smart_collection]?{get}
     var showLoadingObservable: Observable<State> { get set }
     
+    func getAdAtIndex(index: Int)->DiscountCode
+    func getBrandAtIndex(indexPath:IndexPath)->Smart_collection
+    func getAdsCount()->Int
+    func getBrandsCount()-> Int
 }
+
 class HomeScreenViewModel : HomeScreenViewModelType{
-    
     
     private var bag = DisposeBag()
     
-    var adsList : [DiscountCode]?{
+    private var adsList : [DiscountCode]?{
         didSet {
             self.ads = adsList
         }
@@ -29,14 +34,13 @@ class HomeScreenViewModel : HomeScreenViewModelType{
     var ads : [DiscountCode]?
     
     
-    var brandsList : [Smart_collection]?{
+    private var brandsList : [Smart_collection]?{
         didSet {
             self.brands = brandsList
         }
     }
     var brands : [Smart_collection]?
     
-    private(set) var homeResponseList : HomeResponse?
     private var repo : RepositoryProtocol
     
     
@@ -57,86 +61,56 @@ class HomeScreenViewModel : HomeScreenViewModelType{
         
     }
     
-    func getOrders(userId:Int) -> Observable<Orders>?{
-        var orders : Observable<Orders>?
-        orders = repo.getOrders(userId: userId)
-        return orders
-    }
-    
-    func getAds()->Observable<DiscountCodes>?{
-        let discount = repo.getDiscountCodes(priceRuleID: "1185721155819")
+    private func getAds()->Observable<DiscountCodes>?{
+        let discount = repo.getDiscountCodes(priceRuleID: "1027348594860")
         return discount
     }
-    func getBrands() -> Observable<Smart_collections>?{
+    private func getBrands() -> Observable<Smart_collections>?{
         let brands = repo.getBrands()
         return brands
     }
     
     
-    
-    
     func loadData() {
-        
-        
-//                state = .loading
-////                getAds()!.observe(on: MainScheduler.instance).subscribe(onNext: { (ads) in
-////                    self.adsList = ads.discount_codes
-////                    print(self.adsList)
-////
-////
-////                    if(self.adsList!.isEmpty){
-////                        self.state = .empty
-////                    }else {
-////                        self.state = .populated
-////                    }
-////                }, onError: { (error) in
-////                   // self.state = .error
-////                    }).disposed(by: bag)
-////
-////
-//                getBrands()!.observe(on: MainScheduler.instance).subscribe(onNext: { (brands) in
-//                    self.brandsList = brands.smart_collections
-//                    print(self.brandsList)
-//
-//                    if(self.brandsList!.isEmpty){
-//                        self.state = .empty
-//                    }else {
-//                        self.state = .populated
-//                    }
-//                }, onError: { (error) in
-//                  //  self.state = .error
-//                    print(error.localizedDescription)
-//                    }).disposed(by: bag)
-//
-//            }
         state = .loading
-//        finalResult?.asDriver(onErrorJustReturn: []).drive(
-//                    myCollectionView.rx.items(cellIdentifier: "cell", cellType: MyCollectionViewCell.self)){ index , element , cell in
-//                            cell.countryStr = element.country
-//                            cell.nameStr = element.name
-//
-//                }.disposed(by: disposeBag)
-        
+
         let homeResponse = Observable.zip(getAds()!,getBrands()!).subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .observe(on: MainScheduler.instance).subscribe(onNext: {
+                [weak self] in
+                guard let self = self else{return}
+            
             self.adsList = ($0).discount_codes
-
             self.brandsList = ($1).smart_collections
-            print("ads :\($0.discount_codes.isEmpty)")
-            print("brands :\($1.smart_collections.isEmpty)")
+           
+                //            if(self.adsList!.isEmpty && self.brandsList!.isEmpty){
 
-            if(self.adsList!.isEmpty && self.brandsList!.isEmpty){
+            if(self.brandsList!.isEmpty){
                 self.state = .empty
             }else {
                 self.state = .populated
             }
             print(self.state)
         }, onError: { (error) in
+            //add error observable
             print(error.localizedDescription)
             //self.state = .error
         }).disposed(by: bag)
 
-        
     }
+    
+    func getAdAtIndex(index: Int)->DiscountCode{
+        return ads![index]
+    }
+    func getAdsCount()->Int{
+        return ads?.count ?? 0
+    }
+    func getBrandAtIndex(indexPath:IndexPath)->Smart_collection{
+        return brands![indexPath.row]
+    }
+    func getBrandsCount()-> Int{
+        return brands?.count ?? 0
+    }
+    
+    
     
 }
