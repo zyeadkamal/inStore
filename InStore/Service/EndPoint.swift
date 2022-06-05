@@ -16,4 +16,6 @@ enum EndPoint : String {
     case orders = "orders" // myAccount , order
     case checkouts = "checkouts"
     case payments = "payments"
+    case price_rules = "price_rules"
+    case discount_codes = "discount_codes"
 }

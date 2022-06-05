@@ -56,13 +56,15 @@ class CardViewController: UIViewController {
 //        cartViewModel?.addProductToCart(product: myProduct)
         if hasAddress {
             guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
             }) else { return }
+            print("my order -> \(self.cartViewModel?.getListOfProductsToOrder() ?? [])")
             navigationController?.pushViewController(addressesVC, animated: true)
         }else{
             guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!))
+                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
             }) else { return }
+            print(cartViewModel?.getListOfProductsToOrder())
             navigationController?.pushViewController(addAddressVC, animated: true)
         }
     }
@@ -103,6 +105,7 @@ class CardViewController: UIViewController {
 
         }).disposed(by: disposeBag)
     }
+    
     
     func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

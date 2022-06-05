@@ -17,6 +17,7 @@ protocol CartViewModelType {
     func fetchAllSavedProducts() -> Observable<[CartProduct]>?
     func deleteProduct(productId : Int64)
     func getLocalProducts()
+    func getListOfProductsToOrder() -> [PostLineItem]
 }
 
 
@@ -60,6 +61,21 @@ class CartViewModel: CartViewModelType {
         fetchAllSavedProducts()?.observe(on: MainScheduler.instance).subscribe(onNext: { productsList in
             self.cartProducts = productsList
             }).disposed(by: DisposeBag())
+    }
+    
+    func getListOfProductsToOrder() -> [PostLineItem]{ //[CartProduct]
+        var myOrder = [PostLineItem]()
+//        fetchAllSavedProducts()?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { order in
+//            order.forEach { (product) in
+//                myOrder.append(PostLineItem(variantID: Int(product.vartiantId), quantity: Int(product.productAmount)))
+//                print("my order -> \(myOrder)")
+//            }
+//            }).disposed(by: DisposeBag())
+        self.products.forEach { (product) in
+            myOrder.append(PostLineItem(variantID: Int(product.vartiantId), quantity: Int(product.productAmount)))
+            print("my order -> \(myOrder)")
+        }
+        return myOrder
     }
     
 }

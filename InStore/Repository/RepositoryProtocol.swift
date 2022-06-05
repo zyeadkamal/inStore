@@ -18,8 +18,9 @@ protocol RepositoryProtocol {
     func getOrders(userId:Int) -> Observable<Orders>?
     func addAddress(address : Address) -> Observable<NewCustomer>?
     func getAddresses(userId:Int) -> Observable<CustomerAddress>?
-    
-    
+    func postOrder(order : PostOrderRequest) -> Observable<PostOrderRequest>?
+    func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?
+    //func checkCouponExistance(coupon : String, priceRoleID: String) -> Bool 
     
     //local data functions
     func addToCart(product: Product)
