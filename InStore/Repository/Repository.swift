@@ -112,7 +112,6 @@ class Repository: RepositoryProtocol {
     }
     
     
-    //https://4a798eacca0d39cc2048369ad2025b47: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@mad-sv.myshopify.com/admin/api/2022-04/price_rules/1185721155819/discount_codes.json
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
         
         let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
@@ -120,6 +119,12 @@ class Repository: RepositoryProtocol {
         
     }
     
+    func getBrands() -> Observable<Smart_collections>?{
+        
+        let brands = apiClient?.getRequest(fromEndpoint: EndPoint.smart_collections, httpMethod: .get, parameters: [:],ofType: Smart_collections.self, json: ".json")
+        
+        return brands
+    }
     
     func addToCart(product: Product) {
         localDataSource?.addToCart(product: product)
@@ -136,4 +141,7 @@ class Repository: RepositoryProtocol {
     func editProductAmountInCart(productId: Int64, amount: Int16) {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
     }
+    
+    
+    
 }

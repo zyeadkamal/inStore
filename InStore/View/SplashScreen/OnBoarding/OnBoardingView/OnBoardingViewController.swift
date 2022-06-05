@@ -10,12 +10,17 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
     
-    
+    //MARK: - IBOutlet
+
     @IBOutlet weak var onBoardCollectionView: UICollectionView!
     
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var getStartedBtn: UIButton!
+    
+    
+    //MARK: - Properties
+
     var slides: [OnboardingSlide] = []
     var currentPage = 0 {
         didSet{
@@ -30,12 +35,17 @@ class OnBoardingViewController: UIViewController {
         
     }
     
+    //MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initSlides()
         configureCollectionViews()
         // Do any additional setup after loading the view.
     }
+    
+    
+    //MARK: - Methodes
     
     private func configureCollectionViews(){
         registerCellsForCollectionView()
@@ -56,13 +66,15 @@ class OnBoardingViewController: UIViewController {
         slides = [OnboardingSlide(title: "Welcome!", description: "It’s a pleasure to meet you. We are excited that you’re here so let’s get started!", image: #imageLiteral(resourceName: "onBoarding1")),
                   OnboardingSlide(title: "Irrelevant \nresults again?", description: "No need to rummage through irrelevant items anymore, we got you covered. inStore sends you relevant items based off of your habits and interests.", image: #imageLiteral(resourceName: "onboarding2")),
                   OnboardingSlide(title: "Your interests\nworking with you.", description: "Tell us what you like. No, really, it helps a bunch when we serve you some great products. You just keep doing your thing.", image: #imageLiteral(resourceName: "onboarding3")),]
-        
     }
     
+    //MARK: - IBActions
+
     @IBAction func onSkipBtnClick(_ sender: UIButton) {
         print("perform navigation")
        let viewController = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
         viewController.modalPresentationStyle = .fullScreen
+        MyUserDefaults.add(val: false, key: .loggedIn)
         self.present(viewController, animated: true, completion: nil)
     }
     
@@ -85,6 +97,9 @@ class OnBoardingViewController: UIViewController {
     }
     
 }
+
+
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension OnBoardingViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
     

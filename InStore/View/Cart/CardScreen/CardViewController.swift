@@ -51,22 +51,22 @@ class CardViewController: UIViewController {
     }
     //MARK: -- IBActions
     @IBAction func didPressCheckout(_ sender: UIButton) {
-//        let myProduct = Product(id: 7695676997867, title: "ADIDAS", description: "ADIDAS", vendor: "ADIDAS", productType: "ACCESSORIES", images: [ProductImage(id: 5444, productID: 7695676997867, position: 1, width: 635.0, height: 560.0, src: "https://cdn.shopify.com/s/files/1/0645/8441/7515/products/85cc58608bf138a50036bcfe86a3a362.jpg?v=1653146549", graphQlID: "gid://shopify/ProductImage/37295483912427")], options: [OptionList(id: 9788103393515, productID: 7695676997867, name: "Size", position: 1, values: ["OS"])], varients: [Varient(id: 42851028631787, productID: 7695676997867, title: "OS / black", price: "70.00")], count: 1)
+        let myProduct = Product(id: 7695676997867, title: "ADIDAS", description: "ADIDAS", vendor: "ADIDAS", productType: "ACCESSORIES", images: [ProductImage(id: 5444, productID: 7695676997867, position: 1, width: 635.0, height: 560.0, src: "https://cdn.shopify.com/s/files/1/0645/8441/7515/products/85cc58608bf138a50036bcfe86a3a362.jpg?v=1653146549", graphQlID: "gid://shopify/ProductImage/37295483912427")], options: [OptionList(id: 9788103393515, productID: 7695676997867, name: "Size", position: 1, values: ["OS"])], varients: [Varient(id: 42851028631787, productID: 7695676997867, title: "OS / black", price: "70.00")], count: 1)
 //
-//        cartViewModel?.addProductToCart(product: myProduct)
-        if hasAddress {
-            guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
-            }) else { return }
-            print("my order -> \(self.cartViewModel?.getListOfProductsToOrder() ?? [])")
-            navigationController?.pushViewController(addressesVC, animated: true)
-        }else{
-            guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
-            }) else { return }
-            print(cartViewModel?.getListOfProductsToOrder())
-            navigationController?.pushViewController(addAddressVC, animated: true)
-        }
+        cartViewModel?.addProductToCart(product: myProduct)
+//        if hasAddress {
+//            guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
+//                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
+//            }) else { return }
+//            print("my order -> \(self.cartViewModel?.getListOfProductsToOrder() ?? [])")
+//            navigationController?.pushViewController(addressesVC, animated: true)
+//        }else{
+//            guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
+//                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
+//            }) else { return }
+//            print(cartViewModel?.getListOfProductsToOrder())
+//            navigationController?.pushViewController(addAddressVC, animated: true)
+//        }
     }
 
     //MARK: -- Functions
@@ -94,8 +94,9 @@ class CardViewController: UIViewController {
     }
     
     func bindTableEmptyOrNot(){
-        cartViewModel?.cartObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { productss in
-        if(productss.isEmpty){
+        cartViewModel?.cartObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] productss in
+            guard let self = self else{return}
+            if(self.cartList.isEmpty){
             self.emptyCartImg.isHidden = false
             self.containerStack.isHidden = true
         }else{

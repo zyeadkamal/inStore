@@ -26,22 +26,22 @@ class LocalDataSource: LocalDataSourceProtocol {
         return local
     }
     func addToCart(product: Product) {
-        let cartEntity = CartProduct(context: self.managedContext!)
-        cartEntity.productId = Int64(product.id)
-        cartEntity.productTitle = product.title
-        cartEntity.productImg = product.images[0].src
-        cartEntity.productPrice = product.varients?[0].price
-        cartEntity.productAmount = 1
-        cartEntity.customerEmail = "mando@ggg.com"
-        cartEntity.vartiantId = Int64(product.varients?[0].id ?? 0)
-        do{
-            print("Product Saved Successfully")
-            print(cartEntity)
-            try managedContext?.save()
-        }catch let error as NSError{
-            print("\(error) in saving data to cart entity")
+            let cartEntity = CartProduct(context: self.managedContext!)
+            cartEntity.productId = Int64(product.id)
+            cartEntity.productTitle = product.title
+            cartEntity.productImg = product.images[0].src
+            cartEntity.productPrice = product.varients?[0].price
+            cartEntity.productAmount = 1
+            cartEntity.customerEmail = "mando@ggg.com"
+            cartEntity.vartiantId = Int64(product.varients?[0].id ?? 0)
+            do{
+                print("Product Saved Successfully")
+                print(cartEntity)
+                try managedContext?.save()
+            }catch let error as NSError{
+                print("\(error) in saving data to cart entity")
+            }
         }
-    }
     
 
     

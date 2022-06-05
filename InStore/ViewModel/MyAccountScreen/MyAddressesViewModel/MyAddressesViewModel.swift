@@ -68,7 +68,9 @@ class MyAddressViewModel: MyAddressViewModelType{
     func deleteData( index:Int){
        // state = .loading
         
-        deleteAddress(userId:6246222299371, index:index).observe(on: MainScheduler.instance).subscribe(onError: { (error) in
+        deleteAddress(userId:6035824083116, index:index).observe(on: MainScheduler.instance).subscribe(onError: {
+            [weak self](error) in
+            guard let self = self else{return}
             //self.state = .error
             self.addresses.remove(at: index)
 
@@ -85,7 +87,8 @@ class MyAddressViewModel: MyAddressViewModelType{
     
     func getData() {
         state = .loading
-        getAddress(userId:6246222299371).observe(on: MainScheduler.instance).subscribe(onNext: { (address) in
+        getAddress(userId:6035824083116).observe(on: MainScheduler.instance).subscribe(onNext: {   [weak self](address) in
+            guard let self = self else{return}
             self.addresses = address.addresses ?? []
             if(self.addresses.isEmpty){
                 self.state = .empty
