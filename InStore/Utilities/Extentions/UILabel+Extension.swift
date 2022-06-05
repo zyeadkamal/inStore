@@ -2,20 +2,32 @@
 //  UILabel+Extension.swift
 //  InStore
 //
-//  Created by mac on 5/27/22.
+//  Created by mac on 6/4/22.
 //  Copyright © 2022 mac. All rights reserved.
 //
 
 import UIKit
 
 extension UILabel {
+    //    @IBInspectable var strikeThrough: Bool {
+    //        get {
+    //            return false
+    //        }
+    //        set (f) {
+    //            guard let safeText = self.text else{return}
+    //            let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: safeText)
+    //            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
+    //        }
+    //    }
     
-   @IBInspectable var strikethrough : String {
+    @IBInspectable var strikethrough : Bool {
         get{
-            return ""
+            return false
         }
         set{
-            setStrikethrough(text: newValue)
+            if newValue {
+                setStrikethrough(text: self.text!)
+            }
         }
     }
     
@@ -24,4 +36,3 @@ extension UILabel {
         self.attributedText = attributedText
     }
 }
-

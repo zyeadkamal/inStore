@@ -9,21 +9,26 @@
 import Foundation
 
 struct AllProducts:Codable{
-    let products:[Product]
+    var products:[Product]
     enum CodingKeys : String , CodingKey {
         case products = "products"
     }
 }
-struct Product:Codable {
-    let id:Int
-    let title:String
-    let description:String
-    let vendor:String?
-    let productType:String?
-    let images:[ProductImage]
-    let options:[OptionList]?
-    let varients:[Varient]?
+struct Product:Codable, Equatable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    var id:Int
+    var title:String
+    var description:String
+    var vendor:String?
+    var productType:String?
+    var images:[ProductImage]
+    var options:[OptionList]?
+    var varients:[Varient]?
     var count: Int = 0
+    var isFavourite: Bool = false
     
     enum CodingKeys : String , CodingKey {
             case id = "id"
@@ -39,13 +44,13 @@ struct Product:Codable {
       
 }
 struct ProductImage:Codable {
-    let id:Int
-    let productID:Int
-    let position:Int
-    let width:Double
-    let height:Double
-    let src:String
-    let graphQlID:String
+    var id:Int
+    var productID:Int
+    var position:Int
+    var width:Double
+    var height:Double
+    var src:String
+    var graphQlID:String
     
    enum CodingKeys : String , CodingKey {
           
@@ -62,11 +67,11 @@ struct ProductImage:Codable {
 }
 struct OptionList:Codable{
     
-    let id:Int
-    let productID :Int
-    let name:String
-    let position:Int
-    let values:[String]?
+    var id:Int
+    var productID :Int
+    var name:String
+    var position:Int
+    var values:[String]?
     
     enum CodingKeys : String , CodingKey {
           
@@ -80,10 +85,10 @@ struct OptionList:Codable{
     
 }
 struct Varient:Codable {
-    let id:Int
-    let productID:Int
-    let title:String
-    let price :String
+    var id:Int
+    var productID:Int
+    var title:String
+    var price :String
     
     enum CodingKeys : String , CodingKey {
             

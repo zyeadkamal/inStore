@@ -39,11 +39,12 @@ class RegisterViewModel: RegisterViewModelProtocol {
     
     func registerNewUser(customer: NewCustomer) {
         repository?.register(customer: customer)?
-            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance)
-            .subscribe(onNext: { (newCustomer) in
-                self.successfullRegister = newCustomer
-            }, onError: { (error) in
-                self.errorMessage = "This email is already exist"
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (newCustomer) in
+                self?.successfullRegister = newCustomer
+            }, onError: { [weak self] (error) in
+                self?.errorMessage = "This email is already exist"
             }).disposed(by: bag)
     }
     

@@ -5,65 +5,84 @@
 //  Created by mac on 5/27/22.
 //  Copyright © 2022 mac. All rights reserved.
 //
-
 import UIKit
+import RxSwift
 
 class AllProductsViewController: UIViewController {
     
     @IBOutlet weak var AllProductsCollcectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noResultImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var searchController = UISearchController()
+    
+    private lazy var viewModel: AllProductsViewModelProtocol = AllProductsViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()))
+    private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        hideNavigationBarShadow()
+        bindActivityIndicatorState()
+        bindToProductList()
     }
     
-    private func initViews() {
-        AllProductsCollcectionView.delegate = self
-        AllProductsCollcectionView.dataSource = self
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getAllProducts()
     }
-    
-    
-    @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
-        
-        let filterVC = storyboard?.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
-        filterVC.modalPresentationStyle = .overCurrentContext
-        filterVC.modalTransitionStyle = .crossDissolve
-        filterVC.showTabBarProtocol = self
-        self.tabBarController?.tabBar.isHidden = true
-        present(filterVC, animated: true)
-        
-    }
-    
     
 }
 
-
+//MARK:- CollectionView Delegate & DataSource
 extension AllProductsViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.allProducts?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = AllProductsCollcectionView.dequeueReusableCell(withReuseIdentifier: "AllProducetsListCell", for: indexPath) as! AllProductsCollectionViewCell
+        if let safeProduct = viewModel.allProducts?[indexPath.row] {
+            cell.setUpCell(product: safeProduct)
+        }
+        cell.addToFavouriteClosure = {
+            if (Constants.favoriteProducts.contains((self.viewModel.allProducts?[indexPath.row])!)) {
+                cell.addToFavouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                for i in 0..<Constants.favoriteProducts.count{
+                    if Constants.favoriteProducts[i] == self.viewModel.allProducts?[indexPath.row] {
+                        Constants.favoriteProducts.remove(at: i)
+                        break
+                    }
+                }
+                ///Remove from favourites
+            }else {
+                cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
+                ///Add to favourites
+            }
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let produvtDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
-        self.navigationController?.pushViewController(produvtDetailsVC, animated: true)
+        
+        if let safeProduct = viewModel.allProducts?[indexPath.row] {
+            let viewModel = ProductDetailsViewModel(product: safeProduct)
+            guard let produvtDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController", creator: { (coder) -> ProductDetailsViewController? in
+                ProductDetailsViewController(coder: coder, viewModel: viewModel)
+            }) else {return}
+            self.navigationController?.pushViewController(produvtDetailsVC, animated: true)
+        }
+        
         
     }
-    
-    
 }
 
-
+//MARK:- CollectionView DelegateFlowLayout
 extension AllProductsViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,10 +100,107 @@ extension AllProductsViewController : UICollectionViewDelegateFlowLayout {
     
 }
 
+//MARK:- Setup Views
 extension AllProductsViewController: ShowTabBarProtocol {
+    
+    private func initViews() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.automaticallyShowsCancelButton = false
+        searchController.searchBar.backgroundColor = .clear
+        self.navigationItem.searchController = searchController
+        AllProductsCollcectionView.delegate = self
+        AllProductsCollcectionView.dataSource = self
+    }
+    
     func showTabBar() {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    private func hideNavigationBarShadow() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
     
+}
+
+//MARK:- IBActions
+extension AllProductsViewController {
+    
+    @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
+        
+        let filterVC = storyboard?.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
+        filterVC.modalPresentationStyle = .overCurrentContext
+        filterVC.modalTransitionStyle = .crossDissolve
+        filterVC.showTabBarProtocol = self
+        self.tabBarController?.tabBar.isHidden = true
+        present(filterVC, animated: true)
+        
+    }
+    
+}
+
+//MARK:- Binding
+extension AllProductsViewController {
+    
+    private func bindActivityIndicatorState() {
+        viewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: { state in
+            
+            switch state {
+            case .error:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.AllProductsCollcectionView.alpha = 0.0
+                    self.noResultImageView.alpha = 1.0
+                    self.activityIndicator.alpha = 0.0
+                    
+                })
+            case .empty:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.AllProductsCollcectionView.alpha = 0.0
+                    self.noResultImageView.alpha = 1.0
+                    self.activityIndicator.alpha = 0.0
+                    
+                })
+            case .loading:
+                self.activityIndicator.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.AllProductsCollcectionView.alpha = 0.0
+                    self.noResultImageView.alpha = 0.0
+                })
+            case .populated:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.AllProductsCollcectionView.alpha = 1.0
+                    self.noResultImageView.alpha = 0.0
+                    self.activityIndicator.alpha = 0.0
+                    
+                })
+            }
+        }).disposed(by: bag)
+    }
+    
+    
+    func bindToProductList() {
+        viewModel.allProductsObservable
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (allProducts) in
+                self?.AllProductsCollcectionView.reloadData()
+            }).disposed(by: bag)
+    }
+}
+
+//MARK:- UISearchController Delegate
+extension AllProductsViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        var filteredProduct = [Product]()
+        guard let allProduct = viewModel.allProducts else { return }
+        for product in allProduct {
+//            if product.title.lowercased().contains(searchController.searchBar.text?.lowercased()){
+//                filteredProduct.append(product)
+//            }
+        }
+    }
 }
