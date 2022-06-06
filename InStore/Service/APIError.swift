@@ -11,4 +11,6 @@ import Foundation
 enum ApiError: String {
     case NetworkFaild = "Network Faild"
     case DuplicateEmail = "Duplicate Email"
+    case AddressNoAdded = "Address Not Added"
+    case InvalidInputs = "Invalid Inputs"
 }
