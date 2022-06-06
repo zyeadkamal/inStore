@@ -48,14 +48,24 @@ class LoginViewModel: LoginViewModelProtocol {
                 if let safePassword = loginResponse.customers[0].tags {
                     if safePassword == password {
                         self?.successfullLogin = loginResponse
+                        let currentUser = loginResponse.customers[0]
+                        self?.initUserDefaults(loggedIn: true, email: currentUser.email!, username: currentUser.first_name!, id: currentUser.id!, hasAddress: !(currentUser.addresses!.isEmpty))
+                        
                     }else {
                         self?.errorMessage = "Wrong email or password"
                         
                     }
                 }
             }, onError: { [weak self] (error) in
-                self?.errorMessage = "Wrong password"
+                self?.errorMessage = "Please Check Your Connection!"
             }).disposed(by: bag)
+    }
+    private func initUserDefaults(loggedIn:Bool,email:String,username:String,id:Int,hasAddress:Bool){
+        MyUserDefaults.add(val: loggedIn, key: .loggedIn)
+        MyUserDefaults.add(val: email, key: .email)
+        MyUserDefaults.add(val: username, key: .username)
+        MyUserDefaults.add(val: id, key: .id)
+        MyUserDefaults.add(val: hasAddress, key: .hasAddress)
     }
     
 }

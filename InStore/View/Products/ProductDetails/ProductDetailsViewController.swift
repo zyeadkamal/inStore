@@ -69,7 +69,7 @@ extension ProductDetailsViewController : UICollectionViewDelegate, UICollectionV
 extension ProductDetailsViewController {
     
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
-        viewModel.addProductToCart(product: viewModel.product)
+        viewModel.addProductToCart(product: viewModel.product,customerName: getUserEmail())
         let productName = viewModel.product.title
         Toast(text: "\(productName) added to Cart", delay:Delay.short , duration: Delay.short).show()
     }
@@ -121,4 +121,10 @@ extension ProductDetailsViewController {
         }
     }
     
+    func getUserEmail() -> String {
+        if (MyUserDefaults.getValue(forKey: .email)) == nil{
+            return ""
+        }
+        return (MyUserDefaults.getValue(forKey: .email) as! String)
+    }
 }

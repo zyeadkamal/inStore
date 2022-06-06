@@ -28,10 +28,10 @@ protocol RepositoryProtocol {
     //func checkCouponExistance(coupon : String, priceRoleID: String) -> Bool 
     
     //local data functions
-    func addToCart(product: Product)
-    func fetchProductsFromCart() -> Observable<[CartProduct]>?
-    func deleteProductFromCart(deletedProductId: Int64)
-    func editProductAmountInCart(productId : Int64, amount : Int16)
+    func addToCart(product: Product,customerName:String)
+    func fetchProductsFromCart(customerName:String) -> Observable<[CartProduct]>?
+    func deleteProductFromCart(deletedProductId: Int64,customerName:String)
+    func editProductAmountInCart(productId : Int64, amount : Int16,customerName:String)
     
     func fetchProductsFromFavourites(customerEmail:String) -> Observable<[Favourites]>?
     func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)

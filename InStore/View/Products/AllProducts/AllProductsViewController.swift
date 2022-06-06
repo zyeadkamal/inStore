@@ -15,7 +15,8 @@ class AllProductsViewController: UIViewController {
     @IBOutlet weak var noResultImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private lazy var viewModel: AllProductsViewModelProtocol = AllProductsViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()))
+    private lazy var viewModel: AllProductsViewModelProtocol = AllProductsViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
+
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
@@ -30,9 +31,12 @@ class AllProductsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.getAllProducts()
-        print("zhraaaaat")
+        
     }
-    
+    func injectViewModel( viewModel : AllProductsViewModelProtocol ) {
+        self.viewModel = viewModel
+    }
+ 
 }
 
 //MARK:- CollectionView Delegate & DataSource
@@ -60,14 +64,14 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
                 }
                 //MyUserDefaults.getValue(forKey: .email)
 
-                self.viewModel.removeProductFromFavourites(customerEmail: "mando@ggg.com", deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
+                self.viewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
                 
                 ///Remove from favourites
             }else {
                 cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
                 ///Add to favourites
-                self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: "mando@ggg.com")
+                self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: self.getUserEmail())
             }
         }
         return cell
@@ -186,6 +190,12 @@ extension AllProductsViewController {
         }).disposed(by: bag)
     }
     
+    func getUserEmail() -> String {
+        if (MyUserDefaults.getValue(forKey: .email)) == nil{
+            return ""
+        }
+        return (MyUserDefaults.getValue(forKey: .email) as! String)
+    }
     
     func bindToProductList() {
         viewModel.allProductsObservable

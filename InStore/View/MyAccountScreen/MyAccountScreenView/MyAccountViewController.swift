@@ -17,6 +17,7 @@ class MyAccountViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noOrdersImage: UIImageView!
     @IBOutlet weak var ordersTableView: UITableView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     //MARK: - Properties
     
@@ -31,15 +32,20 @@ class MyAccountViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if(self.isLoggedIn()){
+        if(self.isNotLoggedIn()){
             let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self))
             viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true, completion: nil)
         }
+        else {
+            setUsername()
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavControllerTransparent()
+        
         configureCollectionViews()
         myAccountViewModel.getData()
         // Do any additional setup after loading the view.
@@ -47,8 +53,12 @@ class MyAccountViewController: UIViewController {
     
     //MARK: - Methodes
     
-    func isLoggedIn() -> Bool  {
+    func isNotLoggedIn() -> Bool  {
         return (MyUserDefaults.getValue(forKey: .loggedIn) == nil)
+    }
+    
+    func setUsername()  {
+        userNameLabel.text = (MyUserDefaults.getValue(forKey: .username) as! String)
     }
     
     private func setNavControllerTransparent(){
