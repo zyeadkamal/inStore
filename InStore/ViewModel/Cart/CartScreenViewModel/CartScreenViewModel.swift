@@ -12,7 +12,7 @@ import RxSwift
 protocol CartViewModelType {
     var products : [CartProduct]{get set}
     var cartObservable : Observable<[CartProduct]>{get set}
-    func addProductToCart(product : Product) 
+    var showLoadingObservable : Observable<State>{get set}
     func updateProductAmount(productId : Int64, amount: Int16)
     func fetchAllSavedProducts() -> Observable<[CartProduct]>?
     func deleteProduct(productId : Int64)
@@ -24,9 +24,10 @@ protocol CartViewModelType {
 class CartViewModel: CartViewModelType {
     
     var repo : RepositoryProtocol?
+    
     var products : [CartProduct] = [CartProduct]()
     var cartObservable : Observable<[CartProduct]>
-    private var cartSubject : PublishSubject = PublishSubject<[CartProduct]>()
+    private var cartSubject : BehaviorSubject = BehaviorSubject<[CartProduct]>.init(value: [])
     private var cartProducts: [CartProduct] = []{
         didSet{
             self.products = cartProducts
@@ -36,9 +37,20 @@ class CartViewModel: CartViewModelType {
     }
     
     
+    var showLoadingObservable: Observable<State>
+    private let showLoadingSubject : BehaviorSubject = BehaviorSubject<State>.init(value: .empty)
+    
+    var state : State = .empty{
+        didSet{
+            showLoadingSubject.onNext(state)
+        }
+    }
+    
+    
     init(repo : RepositoryProtocol) {
         self.repo = repo
         cartObservable = cartSubject.asObserver()
+        showLoadingObservable = showLoadingSubject.asObserver()
     }
     
     func addProductToCart(product : Product) {
@@ -58,19 +70,22 @@ class CartViewModel: CartViewModelType {
     }
     
     func getLocalProducts(){
-        fetchAllSavedProducts()?.observe(on: MainScheduler.instance).subscribe(onNext: { productsList in
+        state = .loading
+        fetchAllSavedProducts()?.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] productsList in
+            guard let self = self else {return}
             self.cartProducts = productsList
-            }).disposed(by: DisposeBag())
+            if(self.cartProducts.isEmpty){
+                self.state = .empty
+            }else{
+                self.state = .populated
+            }
+            }, onError: { error in
+                self.state = .error
+        }).disposed(by: DisposeBag())
     }
     
     func getListOfProductsToOrder() -> [PostLineItem]{ //[CartProduct]
         var myOrder = [PostLineItem]()
-//        fetchAllSavedProducts()?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { order in
-//            order.forEach { (product) in
-//                myOrder.append(PostLineItem(variantID: Int(product.vartiantId), quantity: Int(product.productAmount)))
-//                print("my order -> \(myOrder)")
-//            }
-//            }).disposed(by: DisposeBag())
         self.products.forEach { (product) in
             myOrder.append(PostLineItem(variantID: Int(product.vartiantId), quantity: Int(product.productAmount)))
             print("my order -> \(myOrder)")

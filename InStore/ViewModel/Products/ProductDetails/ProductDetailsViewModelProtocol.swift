@@ -10,4 +10,5 @@ import Foundation
 
 protocol ProductDetailsViewModelProtocol {
     var product: Product{get set}
+    func addProductToCart(product : Product)
 }

@@ -62,8 +62,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-gS-E6Q">
-                                                                    <rect key="frame" x="196" y="66" width="95" height="24"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-gS-E6Q">
+                                                                    <rect key="frame" x="186" y="66" width="105" height="24"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDb-ra-1q1" userLabel="minusBtn">
                                                                             <rect key="frame" x="0.0" y="0.0" width="22.5" height="24"/>
@@ -76,7 +76,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dL-68-OVq" userLabel="amountLbl">
-                                                                            <rect key="frame" x="42.5" y="0.0" width="10" height="24"/>
+                                                                            <rect key="frame" x="47.5" y="0.0" width="10" height="24"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="10" id="2U8-Tt-fCo"/>
                                                                             </constraints>
@@ -85,7 +85,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUo-Ug-1H7" userLabel="plusBtn">
-                                                                            <rect key="frame" x="72.5" y="0.0" width="22.5" height="24"/>
+                                                                            <rect key="frame" x="82.5" y="0.0" width="22.5" height="24"/>
                                                                             <color key="tintColor" name="PrimaryColor"/>
                                                                             <state key="normal" image="plus" catalog="system">
                                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
@@ -100,7 +100,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$65.80" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZB-vk-xAA">
-                                                                    <rect key="frame" x="20" y="62.5" width="160" height="20.5"/>
+                                                                    <rect key="frame" x="20" y="62.5" width="150" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -189,13 +189,19 @@
                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_cart" translatesAutoresizingMaskIntoConstraints="NO" id="uRI-EE-Ayg">
                                         <rect key="frame" x="0.0" y="8" width="414" height="656"/>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-sZ-UIL">
+                                        <rect key="frame" x="188.5" y="317.5" width="37" height="37"/>
+                                        <color key="color" name="PrimaryColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" name="white"/>
                                 <constraints>
                                     <constraint firstItem="uRI-EE-Ayg" firstAttribute="leading" secondItem="6rg-m0-bdd" secondAttribute="leading" id="6fT-rm-Spx"/>
                                     <constraint firstAttribute="bottom" secondItem="uRI-EE-Ayg" secondAttribute="bottom" constant="8" id="7vG-eb-FVg"/>
                                     <constraint firstAttribute="trailing" secondItem="uRI-EE-Ayg" secondAttribute="trailing" id="Au7-Xh-g9Y"/>
+                                    <constraint firstItem="7B2-sZ-UIL" firstAttribute="centerY" secondItem="6rg-m0-bdd" secondAttribute="centerY" id="Kuh-vn-gW8"/>
                                     <constraint firstItem="Po1-9a-sVQ" firstAttribute="leading" secondItem="6rg-m0-bdd" secondAttribute="leading" id="SHn-X5-sbp"/>
+                                    <constraint firstItem="7B2-sZ-UIL" firstAttribute="centerX" secondItem="6rg-m0-bdd" secondAttribute="centerX" id="TPG-EC-gqn"/>
                                     <constraint firstItem="uRI-EE-Ayg" firstAttribute="top" secondItem="6rg-m0-bdd" secondAttribute="top" constant="8" id="VKR-fl-IfP"/>
                                     <constraint firstAttribute="bottom" secondItem="Po1-9a-sVQ" secondAttribute="bottom" constant="83" id="ffR-IB-YpD"/>
                                     <constraint firstAttribute="trailing" secondItem="Po1-9a-sVQ" secondAttribute="trailing" id="fkW-si-K42"/>
@@ -233,6 +239,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="KFc-IL-XSd"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="7B2-sZ-UIL" id="ZLf-7x-kQu"/>
                         <outlet property="cardTableView" destination="lT0-JJ-fxR" id="emp-hI-fKZ"/>
                         <outlet property="checkoutBtn" destination="sh1-rN-Bd2" id="cTi-li-K7z"/>
                         <outlet property="containerStack" destination="Po1-9a-sVQ" id="C8O-dN-Rc1"/>
@@ -648,12 +655,18 @@
                                             <action selector="didPressContinuePayment:" destination="EIJ-zE-KzD" eventType="touchUpInside" id="FW0-ai-jf7"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lZl-Ad-SQA">
+                                        <rect key="frame" x="172.5" y="300.5" width="37" height="37"/>
+                                        <color key="color" name="PrimaryColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="ZcQ-Xz-yRg" firstAttribute="top" secondItem="Mnu-n5-F0w" secondAttribute="bottom" constant="43" id="0cO-HT-hXl"/>
                                     <constraint firstItem="Mnu-n5-F0w" firstAttribute="top" secondItem="zT8-z6-Eo5" secondAttribute="top" constant="16" id="CKd-Ur-uRZ"/>
                                     <constraint firstAttribute="trailing" secondItem="ZcQ-Xz-yRg" secondAttribute="trailing" constant="16" id="Jik-fY-DKZ"/>
+                                    <constraint firstItem="lZl-Ad-SQA" firstAttribute="centerY" secondItem="zT8-z6-Eo5" secondAttribute="centerY" id="RlC-Qv-w25"/>
+                                    <constraint firstItem="lZl-Ad-SQA" firstAttribute="centerX" secondItem="zT8-z6-Eo5" secondAttribute="centerX" id="S8a-Ad-JPZ"/>
                                     <constraint firstItem="ZcQ-Xz-yRg" firstAttribute="leading" secondItem="zT8-z6-Eo5" secondAttribute="leading" constant="16" id="UQB-IM-tHJ"/>
                                     <constraint firstItem="ZcQ-Xz-yRg" firstAttribute="height" secondItem="Mnu-n5-F0w" secondAttribute="height" multiplier="0.1" id="jcw-sj-an9"/>
                                     <constraint firstAttribute="trailing" secondItem="Mnu-n5-F0w" secondAttribute="trailing" id="oq8-uN-MZT"/>
@@ -692,6 +705,7 @@
                         <viewLayoutGuide key="safeArea" id="Lml-ir-ao9"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="lZl-Ad-SQA" id="Jfq-M3-9vn"/>
                         <outlet property="addressesTableView" destination="Mnu-n5-F0w" id="ZRP-WV-8LJ"/>
                         <outlet property="continuePaymentBtn" destination="ZcQ-Xz-yRg" id="diw-fM-tti"/>
                     </connections>

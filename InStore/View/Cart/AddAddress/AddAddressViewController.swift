@@ -48,6 +48,7 @@ class AddAddressViewController: UIViewController {
                 print("on next address \(customer)")
                 self.showAlert(alertTitle: "Added Successfully", alertMsg: "Address Added Succssefully", handler: { _ in
                     self.clearTextFields()
+                    MyUserDefaults.add(val: true, key: .hasAddress)
                     self.navigateToAddresses()
                 })
             }, onError: { error in
