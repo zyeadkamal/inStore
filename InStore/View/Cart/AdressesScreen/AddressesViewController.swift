@@ -71,20 +71,24 @@ class AddressesViewController: UIViewController {
             print(state)
             switch state {
             case .error:
+                self.activityIndicator.stopAnimating()
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.addressesTableView.alpha = 0.0
+                    self.hideView()
                 })
             case .empty:
+                self.activityIndicator.stopAnimating()
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.addressesTableView.alpha = 0.0
+                    self.hideView()
                 })
             case .loading:
+                self.activityIndicator.startAnimating()
                 UIView.animate(withDuration: 0.2, animations: {
                     self.addressesTableView.alpha = 0.0
                 })
             case .populated:
+                self.activityIndicator.stopAnimating()
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.addressesTableView.alpha = 1.0
+                    self.showView()
                 })
                 self.addressesTableView.reloadData()
             }
@@ -105,6 +109,16 @@ class AddressesViewController: UIViewController {
     func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func hideView(){
+        self.addressesTableView.alpha = 0.0
+        self.activityIndicator.alpha = 0.0
+    }
+    
+    func showView(){
+        self.addressesTableView.alpha = 1.0
+        self.activityIndicator.alpha = 0.0
     }
 
     /*

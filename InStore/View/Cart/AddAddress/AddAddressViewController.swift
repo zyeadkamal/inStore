@@ -21,7 +21,7 @@ class AddAddressViewController: UIViewController {
     
     //MARK: -- Properties
     private var addAddressVM : AddAddressViewModelType?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -43,22 +43,27 @@ class AddAddressViewController: UIViewController {
     
     //MARK: -- IBActions
     @IBAction func didPressAddAddress(_ sender: UIButton) {
-        if isValidTF(){
-            addAddressVM?.addAddressForCurrentCustomer(address: Address(customer_id: 6036098154668, address1: addressTF.text, city: cityTF.text, country: countryTF.text , phone: phoneTF.text))?.subscribe( on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { customer in
-                print("on next address \(customer)")
-                self.showAlert(alertTitle: "Added Successfully", alertMsg: "Address Added Succssefully", handler: { _ in
-                    self.clearTextFields()
-                    MyUserDefaults.add(val: true, key: .hasAddress)
-                    self.navigateToAddresses()
-                })
-            }, onError: { error in
-                print("on error address \(error)")
-                self.showAlert(alertTitle: "Error", alertMsg: "Error in adding address", handler: nil)
-            }, onCompleted: {
-                print("completed")
-                }).disposed(by: disposeBag)
+        if NetworkMonitor.shared.isConnected{
+            if isValidTF(){
+                let address = Address(customer_id: 6036098154668, address1: addressTF.text, city: cityTF.text, country: countryTF.text , phone: phoneTF.text)
+                addAddressVM?.addAddressForCurrentCustomer(address: address)?.subscribe( on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { customer in
+                    print("on next address \(customer)")
+                    self.showAlert(alertTitle: "Added Successfully", alertMsg: "Address Added Succssefully", handler: { _ in
+                        self.clearTextFields()
+                        MyUserDefaults.add(val: true, key: .hasAddress)
+                        self.navigateToAddresses()
+                    })
+                }, onError: { error in
+                    print("on error address \(error)")
+                    self.showAlert(alertTitle: "Error", alertMsg: "Error in adding address", handler: nil)
+                }, onCompleted: {
+                    print("completed")
+                    }).disposed(by: disposeBag)
+            }else{
+                self.showAlert(alertTitle: "Invalid Inputs", alertMsg: "Please Enter Valid Inputs", handler: nil)
+            }
         }else{
-            self.showAlert(alertTitle: "Invalid Inputs", alertMsg: "Please Enter Valid Inputs", handler: nil)
+            self.showAlert(alertTitle: "Something went wrong!", alertMsg: "Please check your internet connection!", handler: nil)
         }
     }
     

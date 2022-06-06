@@ -21,7 +21,7 @@ class CardViewController: UIViewController {
     
     //MARK: -- Properties
     //var hasAddress = MyUserDefaults.getValue(forKey: .hasAddress)
-    var hasAddress = true
+    var hasAddress = false
     var cartViewModel : CartViewModelType?
     var totalPrice : Double?
     var disposeBag = DisposeBag()
@@ -88,9 +88,7 @@ class CardViewController: UIViewController {
                 })
                 self.cardTableView.reloadData()
             }
-        }, onError: {error in
-            
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     func bindCartTableView(){
