@@ -111,7 +111,6 @@ class Repository: RepositoryProtocol {
         return addresses
     }
     
-     //https://5d028b96729c6d9493e99c6962b8193b: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@MAD-SV20221.myshopify.com/admin/api/2022-04/price_rules/1027348594860/discount_codes.json
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>?{
         
         let discountCodes = apiClient?.getRequest(fromEndpoint: EndPoint.price_rules, httpMethod: .get, parameters: [:], ofType: DiscountCodes.self, json: "/\(priceRuleID)/\(EndPoint.discount_codes).json")
@@ -131,20 +130,20 @@ class Repository: RepositoryProtocol {
         return brands
     }
     
-    func addToCart(product: Product) {
-        localDataSource?.addToCart(product: product)
+    func addToCart(product: Product ,customerName:String) {
+        localDataSource?.addToCart(product: product,customerName: customerName)
     }
     
-    func fetchProductsFromCart() -> Observable<[CartProduct]>? {
-        return localDataSource?.fetchProductsFromCart()
+    func fetchProductsFromCart(customerName:String) -> Observable<[CartProduct]>? {
+        return localDataSource?.fetchProductsFromCart(customerName: customerName)
     }
     
-    func deleteProductFromCart(deletedProductId: Int64) {
-        localDataSource?.deleteProductFromCart(deletedProductId: deletedProductId)
+    func deleteProductFromCart(deletedProductId: Int64,customerName:String) {
+        localDataSource?.deleteProductFromCart(deletedProductId: deletedProductId,customerName: customerName)
     }
     
-    func editProductAmountInCart(productId: Int64, amount: Int16) {
-        localDataSource?.editProductAmountInCart(productId: productId, amount: amount)
+    func editProductAmountInCart(productId: Int64, amount: Int16,customerName:String) {
+        localDataSource?.editProductAmountInCart(productId: productId, amount: amount,customerName: customerName)
     }
     
     func getAllProducts() -> Observable<AllProducts>? {

@@ -18,7 +18,16 @@ class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     }
     
     
-    func addProductToCart(product : Product) {
-        repo?.addToCart(product: product)
+    func addProductToCart(product : Product , customerName:String) {
+        repo?.addToCart(product: product ,customerName: customerName)
     }
+    
+    func addToFavourite(product: Product , customerEmail: String) {
+        repo?.addToFavourite(product: product,customerEmail: customerEmail)
+    }
+    
+    func removeProductFromFavourites(customerEmail: String, deletedProductId: Int64) {
+        repo?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
+    }
+    
 }

@@ -13,10 +13,10 @@ protocol CartViewModelType {
     var products : [CartProduct]{get set}
     var cartObservable : Observable<[CartProduct]>{get set}
     var showLoadingObservable : Observable<State>{get set}
-    func updateProductAmount(productId : Int64, amount: Int16)
-    func fetchAllSavedProducts() -> Observable<[CartProduct]>?
-    func deleteProduct(productId : Int64)
-    func getLocalProducts()
+    func updateProductAmount(productId : Int64, amount: Int16,customerName:String)
+    func fetchAllSavedProducts(customerName:String) -> Observable<[CartProduct]>?
+    func deleteProduct(productId : Int64,customerName:String)
+    func getLocalProducts(customerName:String)
     func getListOfProductsToOrder() -> [PostLineItem]
 }
 
@@ -53,25 +53,26 @@ class CartViewModel: CartViewModelType {
         showLoadingObservable = showLoadingSubject.asObservable()
     }
     
-    func addProductToCart(product : Product) {
-        repo?.addToCart(product: product)
+    func addProductToCart(product : Product , customerName:String) {
+        repo?.addToCart(product: product,customerName: customerName)
     }
     
-    func updateProductAmount(productId : Int64, amount: Int16) {
-        repo?.editProductAmountInCart(productId: productId, amount: amount)
+    
+    func updateProductAmount(productId : Int64, amount: Int16 ,customerName:String) {
+        repo?.editProductAmountInCart(productId: productId, amount: amount , customerName: customerName)
     }
     
-    internal func fetchAllSavedProducts() -> Observable<[CartProduct]>? {
-        return repo?.fetchProductsFromCart()
+    internal func fetchAllSavedProducts(customerName:String) -> Observable<[CartProduct]>? {
+        return repo?.fetchProductsFromCart(customerName: customerName)
     }
     
-    func deleteProduct(productId : Int64){
-        repo?.deleteProductFromCart(deletedProductId: productId)
+    func deleteProduct(productId : Int64,customerName:String){
+        repo?.deleteProductFromCart(deletedProductId: productId,customerName: customerName)
     }
     
-    func getLocalProducts(){
+    func getLocalProducts(customerName:String){
         state = .loading
-        fetchAllSavedProducts()?.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] productsList in
+        fetchAllSavedProducts(customerName: customerName)?.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] productsList in
             guard let self = self else {return}
             self.cartProducts = productsList
             if(self.cartProducts.isEmpty){

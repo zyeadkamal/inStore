@@ -20,6 +20,9 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
     var womenCategory: Bool?
     var menCategory: Bool?
     var kidsCategory: Bool?
+    var saleCategory: Bool?
+    var vendorCategory: String?
+
     var clothesCategory: Bool?
     var shoesCategory: Bool?
     var accessoriesCategory: Bool?
@@ -47,14 +50,35 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
         }
     }
     
-    init(repository: RepositoryProtocol?) {
+    init(repository: RepositoryProtocol? , category:String? = nil) {
         self.repository = repository
         self.allProductsObservable = allProductsSubject.asObservable()
         showLoadingObservable = showLoadingSubject.asObserver()
         productCountObservable = productCountSubject.asObservable()
+        specifyCategory(category:category)
     }
     
-    
+    private func specifyCategory(category:String?){
+        guard let category = category else {return}
+        
+        switch category {
+        case Categories.men.rawValue :
+            self.menCategory = true
+            
+        case Categories.kid.rawValue :
+            self.kidsCategory = true
+            
+        case Categories.women.rawValue :
+            self.womenCategory = true
+            
+        case Categories.offers.rawValue :
+            self.saleCategory = true
+        
+        default:
+            self.vendorCategory = category
+        }
+        
+    }
     func getAllProducts() {
         self.state = .loading
         repository?.getAllProducts()?
@@ -87,10 +111,22 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
         
         var productList = Set<Product>()
         
+        if let vendorCategory = vendorCategory {
+            for product in products {
+                if let vendor = product.vendor {
+                    if vendor.contains(word: vendorCategory){
+                        productList.insert(product)
+                    }
+                }
+            }
+        }
+    
+        
+        
         if womenCategory != nil {
             for product in products{
                 if let tag = product.tag{
-                    if tag.contains(word: "women"){
+                    if tag.contains(word: Categories.women.rawValue){
                         productList.insert(product)
                     }
                 }
@@ -101,7 +137,7 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
         if menCategory != nil {
             for product in products{
                 if let tag = product.tag{
-                    if tag.contains(word: "men"){
+                    if tag.contains(word: Categories.men.rawValue){
                         productList.insert(product)
                     }
                 }
@@ -113,12 +149,23 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
         if kidsCategory != nil {
             for product in products{
                 if let tag = product.tag{
-                    if tag.contains(word: "kid"){
+                    if tag.contains(word: Categories.kid.rawValue){
                         productList.insert(product)
                     }
                 }
             }
         }
+        
+        if saleCategory != nil {
+            for product in products{
+                if let tag = product.tag{
+                    if tag.contains(word: Categories.offers.rawValue){
+                        productList.insert(product)
+                    }
+                }
+            }
+        }
+        
         
         
         

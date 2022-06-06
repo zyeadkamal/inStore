@@ -129,12 +129,21 @@ class HomeScreenViewController: UIViewController {
         }).disposed(by: bag)
     }
     
+    func navigateToProducts(category:String){
+        let viewModel : AllProductsViewModelProtocol = AllProductsViewModel(repository: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!,apiClient: ApiClient()),category: category)
+        let storyboard = UIStoryboard(name: "Products", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: String(describing: AllProductsViewController.self)) as! AllProductsViewController
+        
+        vc.injectViewModel(viewModel: viewModel)
+                self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //MARK: - IBActions
     
     @IBAction func onAdsClick(_ sender: UIButton) {
         if homeScreenViewModel.getAdsCount() != 0 {
             UIPasteboard.general.string = homeScreenViewModel.getAdAtIndex(index: 0).code
-            let alert = UIAlertController(title: "Done", message: "Discount code copied", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Done", message: "Coupon copied successfully 🎉", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
@@ -142,27 +151,23 @@ class HomeScreenViewController: UIViewController {
     
     @IBAction func onWomenCategoryClick(_ sender: Any) {
         
-        //        guard let vc = self.storyboard?.instantiateViewController(identifier: String(describing: OrderDetailsViewController.self), creator: { (coder) -> OrderDetailsViewController? in
-        //            OrderDetailsViewController(coder: coder, orderViewModel: self.myAccountViewModel , index:indexPath)
-        //        }) else {return}
-        //
-        //        self.navigationController?.pushViewController(vc, animated: true)
-        //
-        print(Categories.women)
+        navigateToProducts(category: Categories.women.rawValue)
+        
     }
     
     @IBAction func kidsCategoryPressed(_ sender: UIButton) {
-        print(Categories.kid)
+        
+        navigateToProducts(category: Categories.kid.rawValue)
         
     }
     
     @IBAction func menCategoryPressed(_ sender: Any) {
-        print(Categories.men)
-        
+        navigateToProducts(category: Categories.men.rawValue)
+
     }
     @IBAction func offersCategoryPressed(_ sender: UIButton) {
-        print(Categories.offers)
-        
+        navigateToProducts(category: Categories.offers.rawValue)
+
     }
     
     
@@ -187,16 +192,10 @@ extension HomeScreenViewController :UICollectionViewDataSource , UICollectionVie
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let selectedBrand = homeScreenViewModel.getBrandAtIndex(indexPath: indexPath)
         BrandsCollectionView.deselectItem(at: indexPath, animated: true)
+        navigateToProducts(category: selectedBrand.title)
         
-        print(homeScreenViewModel.getBrandAtIndex(indexPath: indexPath).title)
-        
-        //        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
-        //        //homeScreenViewModel.getBrandAtIndex(indexPath: indexPath)
-        //
-        //
-        //       // viewController.brand = brands[indexPath.row]
-        //        self.navigationController?.pushViewController(viewController, animated: true)
-        
+  
     }
 }

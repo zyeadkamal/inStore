@@ -17,8 +17,8 @@ protocol WishlistViewModelType{
     func getFavouriteByIndex(index:Int)-> Favourites
     func getFavouritesCount()-> Int
     func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?
-    func addToCart(product: Product)
-    func deleteProductFromCart(deletedProductId: Int64)
+    func addToCart(product: Product,customerName:String)
+    func deleteProductFromCart(deletedProductId: Int64,customerName:String)
 }
 class WishlistViewModel : WishlistViewModelType{
   
@@ -65,14 +65,15 @@ class WishlistViewModel : WishlistViewModelType{
         return favourites.count
     }
     
-    func addToCart(product: Product) {
-        repo?.addToCart(product: product)
+    func addToCart(product: Product,customerName:String) {
+        repo?.addToCart(product: product,customerName: customerName)
     }
+
     
     func checkIfProductAddedToCart(customerEmail: String, productId: Int64) -> Bool? {
         return repo?.checkIfProductAddedToCart(customerEmail: customerEmail, productId: productId)
     }
-    func deleteProductFromCart(deletedProductId: Int64){
-        repo?.deleteProductFromCart(deletedProductId: deletedProductId)
+    func deleteProductFromCart(deletedProductId: Int64,customerName:String){
+        repo?.deleteProductFromCart(deletedProductId: deletedProductId , customerName: customerName)
     }
 }

@@ -98,7 +98,7 @@ class AddressesViewController: UIViewController {
         addressesTableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             self?.addressesTableView.deselectRow(at: indexPath, animated: true)
             let cell = self?.addressesTableView.cellForRow(at: indexPath) as? AddressesTableViewCell
-            self?.addressesVM.order?.order?.default_address = Address(customer_id: 6036098154668, address1: cell?.addressName, city: cell?.addressName, country: "Egypt")
+            self?.addressesVM.order?.order?.default_address = Address(customer_id: self!.getUserId(), address1: cell?.addressName, city: cell?.addressName, country: "Egypt")
             print("address selected is : \(self?.addressesVM.order?.order?.default_address)")
             self?.selectedIndex = indexPath
             self?.addressesTableView.reloadData()
@@ -106,6 +106,9 @@ class AddressesViewController: UIViewController {
 
     }
 
+    func getUserId() -> Int {
+       return (MyUserDefaults.getValue(forKey: .id) as! Int)
+    }
     func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
