@@ -17,13 +17,14 @@ class CardViewController: UIViewController {
     @IBOutlet weak var checkoutBtn: UIButton!
     @IBOutlet weak var emptyCartImg: UIImageView!
     @IBOutlet weak var containerStack: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: -- Properties
+    //var hasAddress = MyUserDefaults.getValue(forKey: .hasAddress)
     var hasAddress = true
     var cartViewModel : CartViewModelType?
-    var totalPrice : Int?
+    var totalPrice : Double?
     var disposeBag = DisposeBag()
-    var cartList = [""]
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -32,47 +33,64 @@ class CardViewController: UIViewController {
         // Do any additional setup after loading the view.
         setNavControllerTransparent()
         
-        cardTableView.rx.setDelegate(self).disposed(by: disposeBag)
         cartViewModel = CartViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: ApiClient())!)
         configureCardTableView()
-        cartViewModel?.getLocalProducts()
-        totalAmountPriceLbl.text = "\(calculateTotalPrice(products: cartViewModel?.products ?? [])) EGP"
         
+        cartViewModel?.getLocalProducts()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cartViewModel?.getLocalProducts()
-        totalAmountPriceLbl.text = "\(calculateTotalPrice(products: cartViewModel?.products ?? [])) EGP"
-    }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        totalAmountPriceLbl.text = "\(calculateTotalPrice(products: cartViewModel?.products ?? [])) EGP"
-    }
     //MARK: -- IBActions
     @IBAction func didPressCheckout(_ sender: UIButton) {
-//        let myProduct = Product(id: 7330408726700, title: "ADIDAS", description: "ADIDAS", vendor: "ADIDAS", productType: "ACCESSORIES", images: [ProductImage(id: 5444, productID: 7330408726700, position: 1, width: 635.0, height: 560.0, src: "https://cdn.shopify.com/s/files/1/0645/8441/7515/products/85cc58608bf138a50036bcfe86a3a362.jpg?v=1653146549", graphQlID: "gid://shopify/ProductImage/37295483912427")], options: [OptionList(id: 9456229679276, productID: 7330408726700, name: "Size", position: 1, values: ["OS"])], varients: [Varient(id: 41672049819820, productID: 7330408726700, title: "OS / black", price: "70.00")], count: 1)
-////
-//        cartViewModel?.addProductToCart(product: myProduct)
         if hasAddress {
-            guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-                AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
-            }) else { return }
-            print("my order -> \(self.cartViewModel?.getListOfProductsToOrder() ?? [])")
-            navigationController?.pushViewController(addressesVC, animated: true)
+            navigateToChooseAddress()
         }else{
-            guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-                AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
-            }) else { return }
-            print(cartViewModel?.getListOfProductsToOrder())
-            navigationController?.pushViewController(addAddressVC, animated: true)
+            navigateToAddAddress()
         }
     }
 
     //MARK: -- Functions
     func configureCardTableView(){
+        cardTableView.rx.setDelegate(self).disposed(by: disposeBag)
         bindCartTableView()
         bindTableEmptyOrNot()
+        bindLoadingState()
+    }
+    
+    func setNavControllerTransparent(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func bindLoadingState(){
+        cartViewModel?.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] state in
+            guard let self = self else {return}
+            switch state{
+            case .error:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.hideView()
+                })
+            case .empty:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.hideView()
+                })
+            case .loading:
+                self.activityIndicator.startAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.cardTableView.alpha = 0.0
+                    self.emptyCartImg.alpha = 0.0
+                })
+            case .populated:
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.showView()
+                })
+                self.cardTableView.reloadData()
+            }
+        }, onError: {error in
+            
+            }).disposed(by: disposeBag)
     }
     
     func bindCartTableView(){
@@ -80,15 +98,18 @@ class CardViewController: UIViewController {
         .drive( cardTableView.rx.items(cellIdentifier: String(describing: CardTableViewCell.self),cellType: CardTableViewCell.self) ){( index, product, cell) in
             print("data")
             cell.productTitle = product.productTitle
-            cell.productPrice = "\(product.productPrice ?? "") EGP"
+            cell.productPrice = "$\(product.productPrice ?? "")"
             cell.productAmount = "\(String(describing: product.productAmount))"
             cell.productImg = product.productImg
             cell.updateProduct = { count in
                 self.cartViewModel?.updateProductAmount(productId: product.productId , amount: count)
+                self.updatePriceLbl()
                 self.cardTableView.reloadData()
             }
             cell.deleteProduct = {
+                self.updatePriceLbl()
                 self.cartViewModel?.deleteProduct(productId: product.productId)
+                self.cardTableView.reloadData()
             }
         }.disposed(by: disposeBag)
     }
@@ -107,10 +128,24 @@ class CardViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
+    func navigateToChooseAddress(){
+        guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: String(self.totalPrice ?? 0.0)))))
+        }) else { return }
+        navigationController?.pushViewController(addressesVC, animated: true)
+    }
     
-    func setNavControllerTransparent(){
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    func navigateToAddAddress(){
+        guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
+            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: String(self.totalPrice ?? 0.0)))))
+        }) else { return }
+        navigationController?.pushViewController(addAddressVC, animated: true)
+    }
+    
+    
+    func updatePriceLbl(){
+        
+        totalAmountPriceLbl.text = "$\(calculateTotalPrice(products: cartViewModel?.products ?? []))"
     }
     
     func calculateTotalPrice(products : [CartProduct]) -> String{
@@ -118,7 +153,20 @@ class CardViewController: UIViewController {
         products.forEach { (product) in
             totalSum += ((Double(product.productPrice ?? "0") ?? 0)*Double(product.productAmount))
         }
+        totalPrice = totalSum
         return String(totalSum)
+    }
+    
+    func hideView(){
+        self.cardTableView.alpha = 0.0
+        self.emptyCartImg.alpha = 1.0
+        self.activityIndicator.alpha = 0.0
+    }
+    
+    func showView(){
+        self.cardTableView.alpha = 1.0
+        self.emptyCartImg.alpha = 0.0
+        self.activityIndicator.alpha = 0.0
     }
 
 }

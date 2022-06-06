@@ -15,6 +15,7 @@ class AddressesViewController: UIViewController {
     //MARK: -- IBOutlets
     @IBOutlet weak var addressesTableView: UITableView!
     @IBOutlet weak var continuePaymentBtn: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     //MARK: -- Properties

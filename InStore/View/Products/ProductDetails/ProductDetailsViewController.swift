@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import Toaster
 
 class ProductDetailsViewController: UIViewController {
     
@@ -68,6 +69,9 @@ extension ProductDetailsViewController : UICollectionViewDelegate, UICollectionV
 extension ProductDetailsViewController {
     
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
+        viewModel.addProductToCart(product: viewModel.product)
+        let productName = viewModel.product.title
+        Toast(text: "\(productName) added to Cart", delay:Delay.short , duration: Delay.short).show()
     }
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
         if Constants.favoriteProducts.contains(viewModel.product) {

@@ -11,7 +11,14 @@ import Foundation
 class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     
     var product: Product
-    init(product: Product) {
+    var repo : RepositoryProtocol?
+    init(product: Product, repo : RepositoryProtocol) {
         self.product = product
+        self.repo = repo
+    }
+    
+    
+    func addProductToCart(product : Product) {
+        repo?.addToCart(product: product)
     }
 }

@@ -102,6 +102,7 @@
 		B656DFCC283EF1C20043FCF7 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCB283EF1C20043FCF7 /* Card.storyboard */; };
 		B656DFD0283EF3C60043FCF7 /* confirm_order_anim.json in Resources */ = {isa = PBXBuildFile; fileRef = B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */; };
 		B6943D5E284B74F8008315DA /* DiscountCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6943D5D284B74F8008315DA /* DiscountCodes.swift */; };
+		B69C38F1284D7E3D00B28CC0 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69C38F0284D7E3D00B28CC0 /* NetworkMonitor.swift */; };
 		B69EF912284A278B00A7D7EC /* CartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF911284A278B00A7D7EC /* CartScreenViewModel.swift */; };
 		B69EF918284AD8F200A7D7EC /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF917284AD8F200A7D7EC /* PaymentViewModel.swift */; };
 		B69EF91A284ADEA200A7D7EC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF919284ADEA200A7D7EC /* Order.swift */; };
@@ -226,6 +227,7 @@
 		B656DFCB283EF1C20043FCF7 /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
 		B656DFCF283EF3C50043FCF7 /* confirm_order_anim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confirm_order_anim.json; sourceTree = "<group>"; };
 		B6943D5D284B74F8008315DA /* DiscountCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodes.swift; sourceTree = "<group>"; };
+		B69C38F0284D7E3D00B28CC0 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		B69EF911284A278B00A7D7EC /* CartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewModel.swift; sourceTree = "<group>"; };
 		B69EF917284AD8F200A7D7EC /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		B69EF919284ADEA200A7D7EC /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				04530B962847BD070064149C /* APIError.swift */,
 				04530B982847BD200064149C /* EndPoint.swift */,
 				04530B9A2847BD3F0064149C /* APIClient.swift */,
+				B69C38F0284D7E3D00B28CC0 /* NetworkMonitor.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				59F20652283E6EEA00E12D88 /* GetStartedViewController.swift in Sources */,
 				B69EF91A284ADEA200A7D7EC /* Order.swift in Sources */,
 				04530B9B2847BD3F0064149C /* APIClient.swift in Sources */,
+				B69C38F1284D7E3D00B28CC0 /* NetworkMonitor.swift in Sources */,
 				596F4FC9283FBAD2008CA0E9 /* BrandsCollectionViewCell.swift in Sources */,
 				59F0D5F5284199C2003F9C96 /* AllProductsViewController.swift in Sources */,
 				04071ED62848B13900942AE2 /* RegisterViewModel.swift in Sources */,

@@ -32,6 +32,7 @@ class SplashScreenViewController: UIViewController {
         super.viewDidLoad()
         
         //MyUserDefaults.getValue(forKey: .email)
+        playSplashAnimation()
         
         splashScreenViewModel.fetchFavourites(customerEmail: "mando@ggg.com")
         bindFavouritesList()
