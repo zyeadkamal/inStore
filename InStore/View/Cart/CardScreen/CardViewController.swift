@@ -21,9 +21,9 @@ class CardViewController: UIViewController {
     
     //MARK: -- Properties
     //var hasAddress = MyUserDefaults.getValue(forKey: .hasAddress)
-    var hasAddress = false
+    var hasAddress = true
     var cartViewModel : CartViewModelType?
-    var totalPrice : Double?
+    var totalPrice : Double = 0.0
     var disposeBag = DisposeBag()
     
     //MARK: -- Lifecycle
@@ -128,14 +128,14 @@ class CardViewController: UIViewController {
     
     func navigateToChooseAddress(){
         guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: String(self.totalPrice ?? 0.0)))))
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
         }) else { return }
         navigationController?.pushViewController(addressesVC, animated: true)
     }
     
     func navigateToAddAddress(){
         guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: String(self.totalPrice ?? 0.0)))))
+            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel?.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel?.products ?? [])))))
         }) else { return }
         navigationController?.pushViewController(addAddressVC, animated: true)
     }
@@ -152,6 +152,7 @@ class CardViewController: UIViewController {
             totalSum += ((Double(product.productPrice ?? "0") ?? 0)*Double(product.productAmount))
         }
         totalPrice = totalSum
+        print("total price : \(totalPrice)")
         return String(totalSum)
     }
     

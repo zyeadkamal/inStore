@@ -50,7 +50,7 @@ class CartViewModel: CartViewModelType {
     init(repo : RepositoryProtocol) {
         self.repo = repo
         cartObservable = cartSubject.asObserver()
-        showLoadingObservable = showLoadingSubject.asObserver()
+        showLoadingObservable = showLoadingSubject.asObservable()
     }
     
     func addProductToCart(product : Product) {
