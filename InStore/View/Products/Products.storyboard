@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WlO-1A-klt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WlO-1A-klt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,7 +127,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$499.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-aX-iqb">
                                                             <rect key="frame" x="71.5" y="0.0" width="71.5" height="30"/>
                                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                            <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="strikethrough" value="YES"/>
@@ -138,7 +140,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="p4Q-mW-SO2">
-                                                    <rect key="frame" x="20" y="235" width="20" height="20"/>
+                                                    <rect key="frame" x="20" y="234.5" width="20" height="20"/>
                                                     <color key="tintColor" name="PrimaryColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Dyt-wR-fej"/>
@@ -207,7 +209,8 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YoD-A2-PCd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uiZ-rw-TpY" firstAttribute="trailing" secondItem="YoD-A2-PCd" secondAttribute="trailing" id="01j-Bw-Nhd"/>
                             <constraint firstItem="q82-4E-qbX" firstAttribute="leading" secondItem="YoD-A2-PCd" secondAttribute="leading" id="5MU-Y0-ivH"/>
@@ -233,7 +236,6 @@
                             <constraint firstItem="YoD-A2-PCd" firstAttribute="trailing" secondItem="q82-4E-qbX" secondAttribute="trailing" id="yEt-ra-W6h"/>
                             <constraint firstItem="uiZ-rw-TpY" firstAttribute="top" secondItem="hJc-Rz-F9I" secondAttribute="bottom" id="zbg-fy-Akk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YoD-A2-PCd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Serach" id="geI-ja-WAF">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="UqU-Wt-dRq">
@@ -265,7 +267,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-aR-PiN">
                                 <rect key="frame" x="0.0" y="44" width="414" height="269"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0ea-2c-1a4">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -299,7 +301,7 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="t2l-8K-cW6">
-                                <rect key="frame" x="187.5" y="321" width="39" height="37"/>
+                                <rect key="frame" x="187.5" y="321" width="39" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="fF4-Yz-Ven"/>
                                 </constraints>
@@ -321,12 +323,12 @@
                                     <constraint firstAttribute="height" constant="40" id="maV-D1-U0Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLB-M1-S39" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="20" y="455" width="120" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="IYG-YZ-VzZ"/>
                                     <constraint firstAttribute="height" constant="20" id="kwh-uG-WqX"/>
@@ -336,10 +338,10 @@
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="opaqueSeparatorColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="opaqueSeparatorColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
                                         <color key="value" name="PrimaryColor"/>
@@ -370,12 +372,12 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jIm-L4-2gp">
                                 <rect key="frame" x="20" y="547" width="374" height="150"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Ylk-en-HUR"/>
                                 </constraints>
                                 <string key="text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation ven</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -398,7 +400,7 @@
                                     <action selector="favouriteButtonPressed:" destination="o1L-3M-f8V" eventType="touchUpInside" id="Ud3-8U-ffT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbV-7o-RIh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbV-7o-RIh">
                                 <rect key="frame" x="98" y="796" width="284" height="50"/>
                                 <color key="backgroundColor" name="PrimaryColor"/>
                                 <constraints>
@@ -425,7 +427,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xf5-Jk-rMX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xf5-Jk-rMX" firstAttribute="trailing" secondItem="Iab-aR-PiN" secondAttribute="trailing" id="0OU-nr-Q1X"/>
                             <constraint firstItem="xf5-Jk-rMX" firstAttribute="bottom" secondItem="LbV-7o-RIh" secondAttribute="bottom" constant="16" id="0Yq-XY-VtX"/>
@@ -458,7 +461,6 @@
                             <constraint firstItem="jIm-L4-2gp" firstAttribute="top" secondItem="sav-aM-JXn" secondAttribute="bottom" constant="8" id="zKn-Yt-xtv"/>
                             <constraint firstItem="xf5-Jk-rMX" firstAttribute="trailing" secondItem="LbV-7o-RIh" secondAttribute="trailing" constant="32" id="zth-wd-9hx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xf5-Jk-rMX"/>
                     </view>
                     <connections>
                         <outlet property="addToCartButton" destination="LbV-7o-RIh" id="KwJ-Xy-L1g"/>
@@ -539,7 +541,7 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UeD-5P-e6g">
                                                         <rect key="frame" x="0.0" y="122" width="200" height="125"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="125" id="GIp-X1-Rsi"/>
                                                             <constraint firstAttribute="width" constant="200" id="VY5-0k-Z9d"/>
@@ -581,7 +583,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cz1-UI-urX" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cz1-UI-urX" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="31.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="1WQ-yK-wNM"/>
@@ -604,7 +606,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJZ-OT-Wbu" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJZ-OT-Wbu" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="32"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="B14-9x-XC9"/>
@@ -627,7 +629,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paS-E4-h9e" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paS-E4-h9e" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="31.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="5YS-8u-bKn"/>
@@ -650,7 +652,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcI-No-7PV" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcI-No-7PV" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="31.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="ssH-ar-6ax"/>
@@ -673,7 +675,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-Il-ASd" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-Il-ASd" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="32"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="tY5-AE-q2I"/>
@@ -696,7 +698,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-KT-L5l" customClass="AnimatableCheckBox" customModule="IBAnimatable">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-KT-L5l" customClass="AnimatableCheckBox" customModule="IBAnimatable">
                                                                         <rect key="frame" x="336" y="0.0" width="30" height="31.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="3gk-Sz-GH6"/>
@@ -759,7 +761,7 @@
                                                             <constraint firstAttribute="height" constant="1" id="flc-Hm-pRd"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rQ-Wr-0zJ">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rQ-Wr-0zJ">
                                                         <rect key="frame" x="16" y="854" width="374" height="50"/>
                                                         <color key="backgroundColor" name="PrimaryColor"/>
                                                         <constraints>
@@ -779,7 +781,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Ph4-M4-aIj" secondAttribute="trailing" constant="20" id="6Fl-Wz-ZUq"/>
                                                     <constraint firstAttribute="trailing" secondItem="3rQ-Wr-0zJ" secondAttribute="trailing" constant="16" id="GXY-p4-nfv"/>
@@ -830,7 +832,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="Nde-Iw-iR6"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="UTU-bM-M5j" secondAttribute="trailing" id="5Y2-5x-D59"/>
                                     <constraint firstItem="UTU-bM-M5j" firstAttribute="leading" secondItem="MRW-05-XXE" secondAttribute="leading" id="HKJ-4V-jYM"/>
@@ -845,6 +847,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="D3y-kr-YxF"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MRW-05-XXE" secondAttribute="bottom" id="HAf-lS-L0W"/>
@@ -852,7 +855,6 @@
                             <constraint firstItem="MRW-05-XXE" firstAttribute="leading" secondItem="D3y-kr-YxF" secondAttribute="leading" id="cd5-t2-0Ie"/>
                             <constraint firstItem="MRW-05-XXE" firstAttribute="height" secondItem="PPc-c2-2sg" secondAttribute="height" multiplier="0.82" id="cpM-zO-Hi7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="D3y-kr-YxF"/>
                     </view>
                     <size key="freeformSize" width="414" height="1300"/>
                     <connections>
@@ -879,7 +881,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mpm-nS-82W">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="PrimaryColor"/>
+                        <color key="tintColor" name="PrimaryColor"/>
+                        <color key="barTintColor" name="white"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="white"/>
                         </textAttributes>
@@ -897,25 +900,54 @@
             <point key="canvasLocation" x="163.768115942029" y="77.678571428571431"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="cz1-UI-urX">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+        <designable name="dcd-KT-L5l">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+        <designable name="fcI-No-7PV">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+        <designable name="pJZ-OT-Wbu">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+        <designable name="paS-E4-h9e">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+        <designable name="wEN-Il-ASd">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Selected" width="24" height="24"/>
         <image name="Unselected" width="24" height="24"/>
-        <image name="heart" catalog="system" width="64" height="54"/>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="no_result" width="327" height="166"/>
         <image name="product_image" width="286" height="252"/>
         <image name="products_top" width="375" height="151"/>
-        <image name="star.fill" catalog="system" width="64" height="58"/>
-        <image name="xmark" catalog="system" width="64" height="56"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="PrimaryColor">
             <color red="0.89411764705882357" green="0.36862745098039218" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

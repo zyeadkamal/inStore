@@ -40,7 +40,7 @@ class WishlistViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        wishlistViewModel.fetchFavourites(customerEmail: "mando@ggg.com")
+        wishlistViewModel.fetchFavourites(customerEmail: self.getUserEmail())
         
     }
     
@@ -48,6 +48,14 @@ class WishlistViewController: UIViewController {
     
     
     //MARK: -- Functions
+    
+    func getUserEmail() -> String {
+        if (MyUserDefaults.getValue(forKey: .email)) == nil{
+            return ""
+        }
+        return (MyUserDefaults.getValue(forKey: .email) as! String)
+    }
+
     func configureWishlistTableView() {
         wishlistTableView.delegate = self
         wishlistTableView.dataSource = self
@@ -98,7 +106,7 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
         let selectedItem = self.wishlistViewModel.getFavouriteByIndex(index: indexPath.row)
 
         wishlistCell.setupCell(favourite: wishlistViewModel.getFavouriteByIndex(index: indexPath.row))
-        wishlistCell.isAddedToCart = self.wishlistViewModel.checkIfProductAddedToCart(customerEmail: "mando@ggg.com", productId: selectedItem.id)!
+        wishlistCell.isAddedToCart = self.wishlistViewModel.checkIfProductAddedToCart(customerEmail: self.getUserEmail(), productId: selectedItem.id)!
         wishlistCell.changeButtonUI()
         wishlistCell.addToCart = { [weak self] () in
             
@@ -108,13 +116,14 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
                 print("\(selectedItem) removed")
                 wishlistCell.isAddedToCart = false
                 wishlistCell.changeButtonUI()
-                self.wishlistViewModel.deleteProductFromCart(deletedProductId: selectedItem.id)
+                self.wishlistViewModel.deleteProductFromCart(deletedProductId: selectedItem.id , customerName: self.getUserEmail())
+            
                 
             }else{
                 print("\(self.wishlistViewModel.getFavouriteByIndex(index: indexPath.row)) added")
                 wishlistCell.isAddedToCart = true
                 wishlistCell.changeButtonUI()
-                self.wishlistViewModel.addToCart(product: self.castFavouriteToProduct(favourite: selectedItem))
+                self.wishlistViewModel.addToCart(product: self.castFavouriteToProduct(favourite: selectedItem),customerName: self.getUserEmail())
             }
            
         }
@@ -140,7 +149,7 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
             
             self.wishlistTableView.beginUpdates()
             
-            self.wishlistViewModel.removeProductFromFavourites(customerEmail: "mando@ggg.com", deletedProductId: selectedItem.id)
+            self.wishlistViewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: selectedItem.id)
         
             
             self.wishlistViewModel.favourites.remove(at: indexPath.row)

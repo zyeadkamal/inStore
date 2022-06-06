@@ -10,5 +10,8 @@ import Foundation
 
 protocol ProductDetailsViewModelProtocol {
     var product: Product{get set}
-    func addProductToCart(product : Product)
+    func addProductToCart(product : Product ,customerName:String)
+    func addToFavourite(product: Product , customerEmail: String)
+    func removeProductFromFavourites(customerEmail: String, deletedProductId: Int64)
+    
 }

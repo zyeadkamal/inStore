@@ -24,6 +24,7 @@ class SplashScreenViewController: UIViewController {
     private var splashScreenViewModel = SplashScreenViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
     
     private var bag = DisposeBag()
+    var firstTime : Bool?
     
     
     //MARK: - LifeCycle
@@ -31,11 +32,26 @@ class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MyUserDefaults.getValue(forKey: .email)
-        playSplashAnimation()
         
-        splashScreenViewModel.fetchFavourites(customerEmail: "mando@ggg.com")
-        bindFavouritesList()
+        //MyUserDefaults.getValue(forKey: .email)
+        //playSplashAnimation()
+        
+        if((self.isFirstTime()) == nil){
+            self.playSplashAnimation(isFirst: true)
+        }
+        else {
+            if(MyUserDefaults.getValue(forKey: .email) == nil){
+                self.playSplashAnimation(isFirst: false)
+            }
+            else {
+                splashScreenViewModel.fetchFavourites(customerEmail: MyUserDefaults.getValue(forKey: .email) as! String)
+                bindFavouritesList()
+            }
+                
+        }
+        
+        
+        
     }
     
     //MARK: - Methods
@@ -43,12 +59,11 @@ class SplashScreenViewController: UIViewController {
     private func bindFavouritesList(){
         splashScreenViewModel.favouritesObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on:MainScheduler.instance).subscribe(onNext: {[weak self] favourites in
             guard let self = self else{return}
-            
-            self.playSplashAnimation()
+            self.playSplashAnimation(isFirst: false)
             Constants.favoriteProducts = favourites
         })
     }
-    private func playSplashAnimation(){
+    private func playSplashAnimation(isFirst:Bool){
         
         UIView.animate(withDuration: 2.5) {
                self.logo.alpha = 1.0
@@ -62,7 +77,7 @@ class SplashScreenViewController: UIViewController {
         animationView!.animationSpeed = 1
         animationVC.addSubview(animationView!)
         animationView!.play{[weak self](finished) in
-            if((self?.isFirstTime()) == nil){
+            if(isFirst){
                 self?.navigateToOnBoarding()
             }
             else {
@@ -72,7 +87,7 @@ class SplashScreenViewController: UIViewController {
     }
     
     func isFirstTime() -> Bool  {
-        return (MyUserDefaults.getValue(forKey: .isFirstTime) == nil)
+        return ((MyUserDefaults.getValue(forKey: .isFirstTime) == nil))
     }
     
     func navigateToHome(){

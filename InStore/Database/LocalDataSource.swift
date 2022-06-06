@@ -25,14 +25,14 @@ class LocalDataSource: LocalDataSourceProtocol {
         }
         return local
     }
-    func addToCart(product: Product) {
+    func addToCart(product: Product , customerName:String) {
         let cartEntity = CartProduct(context: self.managedContext!)
         cartEntity.productId = Int64(product.id)
         cartEntity.productTitle = product.title
         cartEntity.productImg = product.images[0].src
         cartEntity.productPrice = product.varients?[0].price
         cartEntity.productAmount = 1
-        cartEntity.customerEmail = "mando@ggg.com"
+        cartEntity.customerEmail = customerName
         cartEntity.vartiantId = Int64(product.varients?[0].id ?? 0)
         do{
             print("Product Saved Successfully")
@@ -46,7 +46,8 @@ class LocalDataSource: LocalDataSourceProtocol {
     
     func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?{
         var isAdded : Bool = false
-        let retreivedProducts = fetchProductsFromCart()
+        let retreivedProducts = fetchProductsFromCart(customerName:  customerEmail)
+
         retreivedProducts?.subscribe(onNext: { products in
             products.forEach({ (product) in
                 if product.value(forKey: "productId") as! Int64 == productId{
@@ -62,25 +63,18 @@ class LocalDataSource: LocalDataSourceProtocol {
         return isAdded
     }
     
-    func fetchProductsFromCart() -> Observable<[CartProduct]>? {
+    func fetchProductsFromCart(customerName:String) -> Observable<[CartProduct]>? {
         return Observable<[CartProduct]>.create { (observer) -> Disposable in
-            let currentUserEmail = "mando@ggg.com"
+            let currentUserEmail = customerName
             var cartElements = [CartProduct]()
             let fetchReq = CartProduct.fetchRequest() as! NSFetchRequest
             let emailPredicate = NSPredicate(format: "customerEmail == %@", currentUserEmail)
             fetchReq.predicate = emailPredicate
             do{
-                print("Products Fetched Successfully")
-                
-                //            let allProductsInCart = try managedContext.fetch(fetchReq) as! [CartProduct]
-                //            allProductsInCart.forEach { (product) in
-                //                if product.customerEmail == currentUserEmail{
-                //                    cartElements.append(product)
-                //                }
-                //            }
+                print("Cart Products Fetched Successfully")
                 cartElements = try self.managedContext?.fetch(fetchReq) as! [CartProduct]
                 cartElements.forEach { (product) in
-                    print("for product amount in local \(product.productAmount)")
+                    print("for product amount in local \(product.productId) \(product.productTitle) \(product.productAmount)")
                 }
                 print(cartElements.count)
                 observer.onNext(cartElements)
@@ -92,8 +86,8 @@ class LocalDataSource: LocalDataSourceProtocol {
         }
     }
     
-    func deleteProductFromCart(deletedProductId: Int64) {
-        let retreivedProducts = fetchProductsFromCart()
+    func deleteProductFromCart(deletedProductId: Int64 , customerName:String) {
+        let retreivedProducts = fetchProductsFromCart(customerName: customerName)
         retreivedProducts?.subscribe(onNext: { products in
             products.forEach({ (product) in
                 if product.value(forKey: "productId") as! Int64 == deletedProductId{
@@ -111,8 +105,8 @@ class LocalDataSource: LocalDataSourceProtocol {
     
     
     
-    func editProductAmountInCart(productId : Int64, amount : Int16) {
-        guard let allProductsInCart = fetchProductsFromCart() else {return}
+    func editProductAmountInCart(productId : Int64, amount : Int16,customerName:String) {
+        guard let allProductsInCart = fetchProductsFromCart(customerName: customerName) else {return}
         allProductsInCart.subscribe(onNext: { products in
             products.forEach { (product) in
                 if product.value(forKey: "productId") as! Int64 == productId{

@@ -37,7 +37,6 @@ class CardTableViewCell: UITableViewCell {
     }
     var productAmount : String?{
         didSet{
-            productAmount = String(count)
             productCardAmount.text = productAmount
         }
     }
