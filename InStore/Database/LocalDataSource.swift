@@ -76,7 +76,7 @@ class LocalDataSource: LocalDataSourceProtocol {
                 cartElements.forEach { (product) in
                     print("for product amount in local \(product.productId) \(product.productTitle) \(product.productAmount)")
                 }
-                print(cartElements.count)
+                print(" count in fetch \(cartElements.count)")
                 observer.onNext(cartElements)
             }catch let error as NSError{
                 print("\(error) in retreiving data from cart entity")
@@ -91,6 +91,7 @@ class LocalDataSource: LocalDataSourceProtocol {
         retreivedProducts?.subscribe(onNext: { products in
             products.forEach({ (product) in
                 if product.value(forKey: "productId") as! Int64 == deletedProductId{
+                    print("\(product.productTitle) deleted \(product.productAmount)")
                     self.managedContext?.delete(product)
                 }
             })

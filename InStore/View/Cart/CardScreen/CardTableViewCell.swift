@@ -22,8 +22,8 @@ class CardTableViewCell: UITableViewCell {
     
     //MARK: -- Properties
     var updateProduct : (( Int16 ) -> Void) = {amount in }
-    var deleteProduct : (() -> ()) = {}
-    var count : Int16 = 1
+    //var deleteProduct : (() -> ()) = {}
+    var count : Int16?
     var productTitle : String?{
         didSet{
             productCardTitle.text = productTitle
@@ -61,22 +61,33 @@ class CardTableViewCell: UITableViewCell {
     
     //MARK: -- IBActions
     @IBAction func didPressMinusBtn(_ sender: UIButton) {
+        guard var count = count else {return}
         if count > 1{
             count -= 1
             self.updateProduct(count)
-        }else{
-            deleteProduct()
-            productMinusBtn.isHidden = true
+            productMinusBtn.isEnabled = true
+        }else {
+            productMinusBtn.isEnabled = false
         }
+//        else{
+//            print("count is \(count)")
+//            count = 0
+//            print("count after is \(count)")
+//            deleteProduct()
+//            productMinusBtn.isHidden = true
+//        }
     }
     
     
     
     @IBAction func didPressPlusBtn(_ sender: UIButton) {
+        guard var count = count else {return}
         if count >= 1{
             count += 1
             self.updateProduct(count)
+            productMinusBtn.isEnabled = true
         }else{
+            productMinusBtn.isEnabled = false
             productMinusBtn.isHidden = true
         }
     }

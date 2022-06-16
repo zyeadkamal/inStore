@@ -12,12 +12,11 @@ import RxSwift
 protocol CartViewModelType {
     var products : [CartProduct]{get set}
     var cartObservable : Observable<[CartProduct]>{get set}
-    var showLoadingObservable : Observable<State>{get set}
     func updateProductAmount(productId : Int64, amount: Int16,customerName:String)
     func fetchAllSavedProducts(customerName:String) -> Observable<[CartProduct]>?
-    func deleteProduct(productId : Int64,customerName:String)
     func getLocalProducts(customerName:String)
     func getListOfProductsToOrder() -> [PostLineItem]
+    func removeProduct(atRow : Int)
 }
 
 
@@ -31,7 +30,7 @@ class CartViewModel: CartViewModelType {
     private var cartProducts: [CartProduct] = []{
         didSet{
             self.products = cartProducts
-            print(products.count)
+            print("\(products.count) amount")
             cartSubject.onNext(cartProducts)
         }
     }
@@ -92,6 +91,13 @@ class CartViewModel: CartViewModelType {
             print("my order -> \(myOrder)")
         }
         return myOrder
+    }
+    
+    func removeProduct(atRow : Int){
+        let productToRemove = products[atRow]
+        deleteProduct(productId: productToRemove.productId, customerName: MyUserDefaults.getValue(forKey: .email) as! String)
+        products.remove(at: atRow)
+        cartSubject.onNext(products)
     }
     
 }

@@ -37,7 +37,6 @@ class CardViewController: UIViewController {
         configureCardTableView()
         cartViewModel.getLocalProducts(customerName: self.getUserEmail())
         bindTableEmptyOrNot()
-        //bindLoadingState()
         bindCartTableView()
         updatePriceLbl()
         
@@ -79,57 +78,48 @@ class CardViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    func bindLoadingState(){
-        cartViewModel.showLoadingObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] state in
-            guard let self = self else {return}
-            switch state{
-            case .error:
-                self.activityIndicator.stopAnimating()
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.hideView()
-                })
-            case .empty:
-                self.activityIndicator.stopAnimating()
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.hideView()
-                })
-            case .loading:
-                self.activityIndicator.startAnimating()
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.cardTableView.alpha = 0.0
-                    self.emptyCartImg.alpha = 0.0
-                })
-            case .populated:
-                self.activityIndicator.stopAnimating()
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.showView()
-                })
-                self.cardTableView.reloadData()
-            }
-        }).disposed(by: disposeBag)
-    }
-    
     func bindCartTableView(){
+        var cartProduct : CartProduct?
+        var cellIndex : IndexPath?
         cartViewModel.cartObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asDriver(onErrorJustReturn: [])
             .drive( cardTableView.rx.items(cellIdentifier: String(describing: CardTableViewCell.self),cellType: CardTableViewCell.self) ){( index, product, cell) in
-                print("data")
+                cartProduct = product
+                cellIndex = IndexPath(row: index, section: 0)
+                print("data + \(index)")
+                cell.count = product.productAmount
+                print("cell.count \(cell.count)")
                 cell.productTitle = product.productTitle
                 cell.productPrice = "$\(product.productPrice ?? "")"
                 cell.productAmount = "\(String(describing: product.productAmount))"
                 cell.productImg = product.productImg
                 cell.updateProduct = { count in
+                    print("count \(count)")
                     self.cartViewModel.updateProductAmount(productId: product.productId , amount: count , customerName: self.getUserEmail())
                     self.updatePriceLbl()
                     self.cardTableView.reloadData()
                 }
-                cell.deleteProduct = {
-                    self.updatePriceLbl()
-                    self.cartViewModel.deleteProduct(productId: product.productId,customerName: self.getUserEmail())
-                    self.cardTableView.reloadData()
-                }
+
             }.disposed(by: disposeBag)
+        self.delectProduct()
+        self.cardTableView.reloadRows(at: [cellIndex ?? IndexPath(row: 0, section: 0)], with: .automatic)
     }
-    
+    func delectProduct(){
+        cardTableView.rx.itemDeleted.subscribe(onNext: { (index) in
+            let alert = UIAlertController(title: "Delete item?", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {[weak self] _ in
+                guard let self = self else{return}
+                self.self.cartViewModel.removeProduct(atRow: index.row)
+                self.updatePriceLbl()
+                self.cardTableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        
+        }).disposed(by: self.disposeBag)
+        
+       
+        
+    }
     func bindTableEmptyOrNot(){
         cartViewModel.cartObservable.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] products in
             guard let self = self else{return}
