@@ -47,9 +47,10 @@ class MyAccountViewController: UIViewController {
         setNavControllerTransparent()
         
         configureCollectionViews()
-        myAccountViewModel.getData()
+        myAccountViewModel.getData(userId: getUserId())
         // Do any additional setup after loading the view.
     }
+
     
     //MARK: - Methodes
     
@@ -59,6 +60,13 @@ class MyAccountViewController: UIViewController {
     
     func setUsername()  {
         userNameLabel.text = (MyUserDefaults.getValue(forKey: .username) as! String)
+    }
+    
+    func getUserId() -> Int {
+        if (MyUserDefaults.getValue(forKey: .id)) == nil{
+            return 0
+        }
+        return (MyUserDefaults.getValue(forKey: .id) as! Int)
     }
     
     private func setNavControllerTransparent(){
@@ -135,7 +143,6 @@ class MyAccountViewController: UIViewController {
         }) else {return}
         
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func emptyUserDefaults(){
@@ -144,6 +151,7 @@ class MyAccountViewController: UIViewController {
         MyUserDefaults.add(val: "", key: .username)
         MyUserDefaults.add(val: "", key: .id)
         MyUserDefaults.add(val: false, key: .hasAddress)
+        MyUserDefaults.add(val: "$", key: .currency)
     }
     
     func showPickerView(){
@@ -177,7 +185,7 @@ class MyAccountViewController: UIViewController {
         //       // viewController.brand = brands[indexPath.row]
         //        self.navigationController?.pushViewController(viewController, animated: true)
         let vc = UIStoryboard(name: "UserAuthentication",bundle: nil).instantiateViewController(identifier: String(describing: LoginViewController.self)) as! LoginViewController
-    
+        emptyUserDefaults()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         

@@ -13,11 +13,11 @@ import RxSwift
 
 
 protocol MyAddressViewModelType{
-    func getData()
+    func getData(userId:Int)
     var addressObservable: Observable<[Address]> {get set}
     var addressesList : [Address]{get set}
     var showLoadingObservable: Observable<State> { get set }
-    func deleteData( index:Int)
+    func deleteData( index:Int,userId:Int)
 }
 
 class MyAddressViewModel: MyAddressViewModelType{
@@ -65,10 +65,10 @@ class MyAddressViewModel: MyAddressViewModelType{
         
     }
     
-    func deleteData( index:Int){
+    func deleteData( index:Int , userId:Int){
        // state = .loading
         
-        deleteAddress(userId:6035824083116, index:index).observe(on: MainScheduler.instance).subscribe(onError: {
+        deleteAddress(userId:userId, index:index).observe(on: MainScheduler.instance).subscribe(onError: {
             [weak self](error) in
             guard let self = self else{return}
             //self.state = .error
@@ -85,9 +85,9 @@ class MyAddressViewModel: MyAddressViewModelType{
     
     
     
-    func getData() {
+    func getData(userId:Int) {
         state = .loading
-        getAddress(userId:6035824083116).observe(on: MainScheduler.instance).subscribe(onNext: {   [weak self](address) in
+        getAddress(userId:userId).observe(on: MainScheduler.instance).subscribe(onNext: {   [weak self](address) in
             guard let self = self else{return}
             self.addresses = address.addresses ?? []
             if(self.addresses.isEmpty){

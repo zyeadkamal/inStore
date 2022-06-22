@@ -23,6 +23,9 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productCategoryLabel: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
     
+    var isAddedToCart = false
+
+    
     private var viewModel: ProductDetailsViewModelProtocol
     var currentPage = 0 {
         didSet{
@@ -33,6 +36,11 @@ class ProductDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeButtonUI()
     }
     
     init?(coder: NSCoder, viewModel: ProductDetailsViewModelProtocol) {
@@ -71,6 +79,20 @@ extension ProductDetailsViewController {
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
         viewModel.addProductToCart(product: viewModel.product,customerName: getUserEmail())
         let productName = viewModel.product.title
+        
+        if(isAddedToCart){
+            self.isAddedToCart = false
+            self.changeButtonUI()
+            self.viewModel.deleteProductFromCart(deletedProductId: Int64(self.viewModel.product.id) , customerName: self.getUserEmail())
+        
+        }else{
+            
+            self.isAddedToCart = true
+            self.changeButtonUI()
+            self.viewModel.addProductToCart(product: self.viewModel.product,customerName: self.getUserEmail())
+    
+            
+        }
         Toast(text: "\(productName) added to Cart", delay:Delay.short , duration: Delay.short).show()
     }
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
@@ -83,11 +105,16 @@ extension ProductDetailsViewController {
                     break
                 }
             }
-            ///Remove from favourites
+            
+            self.viewModel.removeProductFromFavourites(customerEmail:self.getUserEmail(), deletedProductId: Int64(viewModel.product.id))
+
         }else {
             favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             Constants.favoriteProducts.append(viewModel.product)
-            ///Add to favourites
+            
+            
+            self.viewModel.addToFavourite(product: viewModel.product,customerEmail: self.getUserEmail())
+
         }
     }
 }
@@ -119,6 +146,24 @@ extension ProductDetailsViewController {
         }else {
             favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
+    }
+    
+    func changeButtonUI(){
+        if (isAddedToCart){
+            addToCartButton.setTitle("Remove From Cart", for: .normal)
+        }
+        else {
+            addToCartButton.setTitle("Add to cart     \(self.getUserCurrency())\(self.viewModel.product.varients?[0].price ?? "100")", for: .normal)
+        }
+    
+
+    }
+
+    func getUserCurrency() -> String {
+        if (MyUserDefaults.getValue(forKey: .currency)) == nil{
+            return "&"
+        }
+        return (MyUserDefaults.getValue(forKey: .currency) as! String)
     }
     
     func getUserEmail() -> String {
