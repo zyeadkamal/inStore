@@ -162,8 +162,8 @@ class Repository: RepositoryProtocol {
         localDataSource?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
     }
 
-    func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?{
-        return localDataSource?.checkIfProductAddedToCart(customerEmail: customerEmail, productId: productId)
+    func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool{
+        return localDataSource?.checkIfProductAddedToCart(customerEmail: customerEmail, productId: productId) ?? false
     }
     
 

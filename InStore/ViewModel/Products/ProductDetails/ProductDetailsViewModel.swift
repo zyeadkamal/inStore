@@ -10,6 +10,8 @@ import Foundation
 
 class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     
+    
+    
     var product: Product
     var repo : RepositoryProtocol?
     init(product: Product, repo : RepositoryProtocol) {
@@ -19,7 +21,14 @@ class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     
     
     func addProductToCart(product : Product , customerName:String) {
-        repo?.addToCart(product: product ,customerName: customerName)
+        guard let repo = repo else {
+            return
+        }
+
+        if(!repo.checkIfProductAddedToCart(customerEmail: customerName, productId: Int64(product.id))){
+            repo.addToCart(product: product ,customerName: customerName)
+        }
+        
     }
     
     func addToFavourite(product: Product , customerEmail: String) {
@@ -28,6 +37,10 @@ class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     
     func removeProductFromFavourites(customerEmail: String, deletedProductId: Int64) {
         repo?.removeProductFromFavourites(customerEmail: customerEmail, deletedProductId: deletedProductId)
+    }
+    
+    func deleteProductFromCart(deletedProductId: Int64, customerName: String) {
+        repo?.deleteProductFromCart(deletedProductId: deletedProductId, customerName: customerName)
     }
     
 }

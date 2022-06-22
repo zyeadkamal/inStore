@@ -143,7 +143,6 @@ class MyAccountViewController: UIViewController {
         }) else {return}
         
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func emptyUserDefaults(){
@@ -152,6 +151,7 @@ class MyAccountViewController: UIViewController {
         MyUserDefaults.add(val: "", key: .username)
         MyUserDefaults.add(val: "", key: .id)
         MyUserDefaults.add(val: false, key: .hasAddress)
+        MyUserDefaults.add(val: "$", key: .currency)
     }
     
     func showPickerView(){

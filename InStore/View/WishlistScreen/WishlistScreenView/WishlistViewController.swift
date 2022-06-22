@@ -13,7 +13,6 @@ class WishlistViewController: UIViewController {
 
     //MARK: -- IBOutlets
     @IBOutlet weak var wishlistTableView: UITableView!
-    @IBOutlet weak var suggestedCollectionView: UICollectionView!
     @IBOutlet weak var noWishlistImg: UIImageView!
     
     
@@ -32,8 +31,6 @@ class WishlistViewController: UIViewController {
         setNavControllerTransparent()
         registerWishlistCell()
         configureWishlistTableView()
-        registerSuggestedCollectionView()
-        configureSuggestedCollectionView()
         bindFavourites()
 
         
@@ -65,14 +62,6 @@ class WishlistViewController: UIViewController {
         self.wishlistTableView.register(UINib(nibName: "WishlistTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
     
-    func configureSuggestedCollectionView(){
-        suggestedCollectionView.delegate = self
-        suggestedCollectionView.dataSource = self
-    }
-    
-    func registerSuggestedCollectionView(){
-        self.suggestedCollectionView.register(UINib(nibName: "SuggestedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
-    }
 
     func setNavControllerTransparent(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

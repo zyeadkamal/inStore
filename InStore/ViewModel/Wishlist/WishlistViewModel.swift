@@ -66,7 +66,13 @@ class WishlistViewModel : WishlistViewModelType{
     }
     
     func addToCart(product: Product,customerName:String) {
-        repo?.addToCart(product: product,customerName: customerName)
+        guard let repo = repo else {
+            return
+        }
+
+        if(!repo.checkIfProductAddedToCart(customerEmail: customerName, productId: Int64(product.id))){
+            repo.addToCart(product: product ,customerName: customerName)
+        }        
     }
 
     
