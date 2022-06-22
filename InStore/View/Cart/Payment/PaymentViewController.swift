@@ -67,6 +67,7 @@ class PaymentViewController: UIViewController {
         paymentVM?.myOrder?.order?.financialStatus = "paid"
         setOptionSelection(selectedBtn: sender, true)
         setOptionSelection(selectedBtn: CODBtn, false)
+        isCOD = false
     }
     
     
@@ -79,15 +80,16 @@ class PaymentViewController: UIViewController {
     
     
     @IBAction func didPressPayNowBtn(_ sender: Any) {
-        paymentVM?.myOrder?.order?.customer?.id = 6036098154668
+        paymentVM?.myOrder?.order?.customer?.id = Utils.getUserId()
         let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to Confirm the order?", preferredStyle: .alert)
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
-            self.paymentVM?.postOrder(order: self.paymentVM?.myOrder ?? PostOrderRequest())?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { (postOrder) in
-                print("oreder \(postOrder.order) posted")
-                let confirmationVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ConfirmOrderViewController.self)) as! ConfirmOrderViewController
-                self.navigationController?.pushViewController(confirmationVC, animated: true)
-            }).disposed(by: self.disposeBag)
+        confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self](_) in
+            
+            if(self?.isCOD ?? true) {
+                self?.postOrder()
+            }else{
+                
+            }
         }))
         
         
@@ -146,6 +148,14 @@ class PaymentViewController: UIViewController {
         let alert = UIAlertController(title: alertTitle, message: alertMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func postOrder() {
+        self.paymentVM?.postOrder(order: self.paymentVM?.myOrder ?? PostOrderRequest())?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { (postOrder) in
+            print("oreder \(postOrder.order) posted")
+            let confirmationVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ConfirmOrderViewController.self)) as! ConfirmOrderViewController
+            self.navigationController?.pushViewController(confirmationVC, animated: true)
+        }).disposed(by: self.disposeBag)
     }
     
 }

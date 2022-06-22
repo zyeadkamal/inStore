@@ -17,6 +17,13 @@ class Utils{
             return false
         }
     }
+    
+    static func getUserId() -> Int {
+           if (MyUserDefaults.getValue(forKey: .id)) == nil{
+               return 0
+           }
+           return (MyUserDefaults.getValue(forKey: .id) as! Int)
+       }
 }
 
 
