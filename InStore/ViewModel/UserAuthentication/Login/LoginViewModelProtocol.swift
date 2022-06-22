@@ -13,4 +13,5 @@ protocol LoginViewModelProtocol {
     func login(email: String, password: String)
     var successfullLoginObservable: Observable<LoginResponse?>{get}
     var errorMessageObservable: Observable<String?>{get}
+    func fetchFavourites(customerEmail: String)
 }

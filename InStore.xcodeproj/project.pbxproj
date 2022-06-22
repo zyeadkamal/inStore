@@ -57,6 +57,7 @@
 		048C1E012842F91100E4F512 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C1E002842F91100E4F512 /* Constants.swift */; };
 		04A7FD6B2842DFA2008467E2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */; };
 		04A7FD6E2842E32C008467E2 /* CustomVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */; };
+		04BC961A286385DA007F5909 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BC9619286385D9007F5909 /* UtilFunctions.swift */; };
 		49321410990E3EE85250171A /* Pods_InStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */; };
 		592229EF2848B0330057CCCB /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229EE2848B0330057CCCB /* MyAccountViewModel.swift */; };
 		592229F12848D1A50057CCCB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592229F02848D1A50057CCCB /* State.swift */; };
@@ -178,6 +179,7 @@
 		048C1E002842F91100E4F512 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04A7FD6A2842DFA2008467E2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVisualEffectView.swift; sourceTree = "<group>"; };
+		04BC9619286385D9007F5909 /* UtilFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
 		06BDC523D28EB8445EA58A1F /* Pods-InStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStore.debug.xcconfig"; path = "Target Support Files/Pods-InStore/Pods-InStore.debug.xcconfig"; sourceTree = "<group>"; };
 		1AF50FCA7EA54DD3BC1A65EF /* Pods_InStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5AE28203605372D3A4460C /* Pods-InStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStoreTests.release.xcconfig"; path = "Target Support Files/Pods-InStoreTests/Pods-InStoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 		048B3F6F283CD88600CEF8D0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04BC9618286384FD007F5909 /* UtilFunctions */,
 				048C1DFF2842F90400E4F512 /* Constants */,
 				04A7FD6C2842E302008467E2 /* VisualEffects */,
 				B656DFCE283EF38B0043FCF7 /* Animation */,
@@ -568,6 +571,14 @@
 				04A7FD6D2842E32C008467E2 /* CustomVisualEffectView.swift */,
 			);
 			path = VisualEffects;
+			sourceTree = "<group>";
+		};
+		04BC9618286384FD007F5909 /* UtilFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				04BC9619286385D9007F5909 /* UtilFunctions.swift */,
+			);
+			path = UtilFunctions;
 			sourceTree = "<group>";
 		};
 		04C65E1328460EE50000003C /* Recovered References */ = {
@@ -1218,6 +1229,7 @@
 				04716B09284525B800472C58 /* AddressesViewController.swift in Sources */,
 				596F500E2840E064008CA0E9 /* MyAddressTableViewCell.swift in Sources */,
 				596F4FC5283FB872008CA0E9 /* HomeScreenViewController.swift in Sources */,
+				04BC961A286385DA007F5909 /* UtilFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

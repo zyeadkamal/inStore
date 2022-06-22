@@ -54,23 +54,30 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
             cell.setUpCell(product: safeProduct)
         }
         cell.addToFavouriteClosure = {
-            if (Constants.favoriteProducts.contains((self.viewModel.allProducts?[indexPath.row])!)) {
-                cell.addToFavouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                for i in 0..<Constants.favoriteProducts.count{
-                    if Constants.favoriteProducts[i] == self.viewModel.allProducts?[indexPath.row] {
-                        Constants.favoriteProducts.remove(at: i)
-                        break
+            if(Utils.isNotLoggedIn()){
+                let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self))
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true, completion: nil)
+            }
+            else {
+                if (Constants.favoriteProducts.contains((self.viewModel.allProducts?[indexPath.row])!)) {
+                    cell.addToFavouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    for i in 0..<Constants.favoriteProducts.count{
+                        if Constants.favoriteProducts[i] == self.viewModel.allProducts?[indexPath.row] {
+                            Constants.favoriteProducts.remove(at: i)
+                            break
+                        }
                     }
-                }
-                //MyUserDefaults.getValue(forKey: .email)
+                    //MyUserDefaults.getValue(forKey: .email)
 
-                self.viewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
-                
-            }else {
-                cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
-                
-                self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: self.getUserEmail())
+                    self.viewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
+                    
+                }else {
+                    cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
+                    
+                    self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: self.getUserEmail())
+                }
             }
         }
         return cell
@@ -241,3 +248,4 @@ extension AllProductsViewController: UISearchBarDelegate{
         }
     }
 }
+
