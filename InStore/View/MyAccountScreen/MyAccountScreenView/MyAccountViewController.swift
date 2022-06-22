@@ -55,7 +55,13 @@ class MyAccountViewController: UIViewController {
     //MARK: - Methodes
     
     func isNotLoggedIn() -> Bool  {
-        return (MyUserDefaults.getValue(forKey: .loggedIn) == nil)
+        if(MyUserDefaults.getValue(forKey: .loggedIn) == nil){
+            return true
+        }else if(MyUserDefaults.getValue(forKey: .loggedIn) as! Int == 0) {
+            return true
+        }else{
+            return false
+        }
     }
     
     func setUsername()  {
@@ -149,7 +155,7 @@ class MyAccountViewController: UIViewController {
         MyUserDefaults.add(val: false, key: .loggedIn)
         MyUserDefaults.add(val: "", key: .email)
         MyUserDefaults.add(val: "", key: .username)
-        MyUserDefaults.add(val: "", key: .id)
+        MyUserDefaults.add(val: 0, key: .id)
         MyUserDefaults.add(val: false, key: .hasAddress)
         MyUserDefaults.add(val: "$", key: .currency)
     }

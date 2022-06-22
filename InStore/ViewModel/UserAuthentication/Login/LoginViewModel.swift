@@ -47,6 +47,7 @@ class LoginViewModel: LoginViewModelProtocol {
                 }
                 if let safePassword = loginResponse.customers[0].tags {
                     if safePassword == password {
+                        self?.fetchFavourites(customerEmail: email)
                         self?.successfullLogin = loginResponse
                         let currentUser = loginResponse.customers[0]
                         self?.initUserDefaults(loggedIn: true, email: currentUser.email!, username: currentUser.first_name!, id: currentUser.id!, hasAddress: !(currentUser.addresses!.isEmpty))
@@ -68,4 +69,22 @@ class LoginViewModel: LoginViewModelProtocol {
         MyUserDefaults.add(val: hasAddress, key: .hasAddress)
     }
     
+    
+    func fetchFavourites(customerEmail: String) {
+        repository?.fetchProductsFromFavourites(customerEmail: customerEmail)?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.asyncInstance).subscribe(onNext: { [weak self] favouriteList in
+                guard self != nil else {return}
+                
+                var favouriteListTemp :[Product] = []
+                for favourite in favouriteList {
+                    
+                    let product = Product(id: Int(favourite.id), title: favourite.title! , description: favourite.description, vendor: favourite.vendor, productType: favourite.productType, images: [ProductImage(id: 0, productID: Int(favourite.id), position: 0, width: 0, height: 0, src: favourite.image!, graphQlID: "")], varients: [Varient(id: 0, productID: Int(favourite.id), title: favourite.title!, price: favourite.price!)], count: 0, isFavourite: true)
+                    
+                    favouriteListTemp.append(product)
+                    
+                    
+                }
+                Constants.favoriteProducts = favouriteListTemp
+            }).disposed(by:bag)
+    }
 }
