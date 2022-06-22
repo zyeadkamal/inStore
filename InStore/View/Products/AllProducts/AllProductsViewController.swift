@@ -220,7 +220,7 @@ extension AllProductsViewController {
                     self.noResultImageView.alpha = 0.0
 
                 }
-            })
+            }).disposed(by: bag)
     }
 }
 
