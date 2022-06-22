@@ -901,23 +901,26 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="QLB-M1-S39">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
         <designable name="cz1-UI-urX">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
         <designable name="dcd-KT-L5l">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
         <designable name="fcI-No-7PV">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
         <designable name="pJZ-OT-Wbu">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
         <designable name="paS-E4-h9e">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
         <designable name="wEN-Il-ASd">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="24" height="24"/>
         </designable>
     </designables>
     <resources>

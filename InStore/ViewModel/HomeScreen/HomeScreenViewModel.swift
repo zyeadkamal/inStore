@@ -62,7 +62,7 @@ class HomeScreenViewModel : HomeScreenViewModelType{
     }
     
     private func getAds()->Observable<DiscountCodes>?{
-        let discount = repo.getDiscountCodes(priceRuleID: "1027348594860")
+        let discount = repo.getDiscountCodes(priceRuleID: "\(APIConstants.discountCodesId)")
         return discount
     }
     private func getBrands() -> Observable<Smart_collections>?{

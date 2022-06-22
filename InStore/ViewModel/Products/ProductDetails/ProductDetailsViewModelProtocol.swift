@@ -13,5 +13,7 @@ protocol ProductDetailsViewModelProtocol {
     func addProductToCart(product : Product ,customerName:String)
     func addToFavourite(product: Product , customerEmail: String)
     func removeProductFromFavourites(customerEmail: String, deletedProductId: Int64)
+    func deleteProductFromCart(deletedProductId: Int64,customerName:String)
+
     
 }

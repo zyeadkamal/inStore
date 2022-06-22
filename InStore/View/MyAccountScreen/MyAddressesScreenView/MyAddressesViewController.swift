@@ -41,7 +41,7 @@ class MyAddressesViewController: UIViewController {
         super.viewDidLoad()
         setNavControllerTransparent()
         configureTableView()
-        myAddressViewModel.getData()
+        myAddressViewModel.getData(userId: getUserId())
         // Do any additional setup after loading the view.
     }
     
@@ -51,6 +51,14 @@ class MyAddressesViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    func getUserId() -> Int {
+        if (MyUserDefaults.getValue(forKey: .id)) == nil{
+            return 0
+        }
+        return (MyUserDefaults.getValue(forKey: .id) as! Int)
+    }
+    
 
     private func configureTableView(){
         registerCellsForTableView()
@@ -115,7 +123,7 @@ class MyAddressesViewController: UIViewController {
     //MARK: - IBActions
 
     @IBAction func AddNewAddressPressed(_ sender: Any) {
-        self.myAddressViewModel.deleteData(index: 1)
+        self.myAddressViewModel.deleteData(index: 1,userId: self.getUserId())
     }
 }
 
@@ -144,8 +152,8 @@ extension MyAddressesViewController : UITableViewDelegate,UITableViewDataSource{
         
         let alert = UIAlertController(title: " Delete Address", message: "Are you sure you want to delete this \nchoose delete or cancel", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in
-            self.myAddressViewModel.deleteData(index: indexPath.row)
-        
+            self.myAddressViewModel.deleteData(index: indexPath.row , userId: self.getUserId())
+    
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             print("Cancel is pressed")

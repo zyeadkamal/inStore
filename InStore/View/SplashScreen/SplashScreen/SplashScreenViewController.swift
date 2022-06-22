@@ -90,6 +90,13 @@ class SplashScreenViewController: UIViewController {
         return ((MyUserDefaults.getValue(forKey: .isFirstTime) == nil))
     }
     
+    func setUserCurrency(){
+        if (MyUserDefaults.getValue(forKey: .currency)) == nil{
+            MyUserDefaults.add(val: "$", key: .currency)
+        }
+        
+    }
+    
     func navigateToHome(){
         let viewController = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBar") as! UITabBarController
         viewController.modalPresentationStyle = .fullScreen

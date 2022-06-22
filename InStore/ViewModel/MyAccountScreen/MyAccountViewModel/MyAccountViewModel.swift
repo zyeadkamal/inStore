@@ -12,7 +12,7 @@ import RxSwift
 
 
 protocol MyAccountViewModelType{
-    func getData()
+    func getData(userId:Int)
     var orderObservable: Observable<[MockOrder]> {get set}
     var orderList : [MockOrder]{get}
     var showLoadingObservable: Observable<State> { get set }
@@ -56,9 +56,9 @@ class MyAccountViewModel: MyAccountViewModelType{
     }
     
     
-    func getData() {
+    func getData(userId:Int) {
         state = .loading
-        getOrders(userId:6035824083116).observe(on: MainScheduler.instance).subscribe(onNext: {
+        getOrders(userId:userId).observe(on: MainScheduler.instance).subscribe(onNext: {
             [weak self](orders) in
             guard let self = self else{return}
             self.orders = orders.orders

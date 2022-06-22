@@ -66,11 +66,10 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
 
                 self.viewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: Int64((self.viewModel.allProducts?[indexPath.row].id)!))
                 
-                ///Remove from favourites
             }else {
                 cell.addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 Constants.favoriteProducts.append((self.viewModel.allProducts?[indexPath.row])!)
-                ///Add to favourites
+                
                 self.viewModel.addToFavourite(product: (self.viewModel.allProducts?[indexPath.row])!,customerEmail: self.getUserEmail())
             }
         }
