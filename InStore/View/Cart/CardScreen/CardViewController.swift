@@ -45,6 +45,7 @@ class CardViewController: UIViewController {
         super.viewWillAppear(animated)
         
         cartViewModel.getLocalProducts(customerName: self.getUserEmail())
+        updatePriceLbl()
         
     }
     
@@ -89,7 +90,12 @@ class CardViewController: UIViewController {
                 cell.count = product.productAmount
                 print("cell.count \(cell.count)")
                 cell.productTitle = product.productTitle
-                cell.productPrice = "$\(product.productPrice ?? "")"
+                if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+                    cell.productPrice = "$\(product.productPrice ?? "")"
+                }else{
+                    cell.productPrice = "\(Constants.convertPriceToEGP(priceToConv: product.productPrice ?? "0")) EGP"
+                }
+               
                 cell.productAmount = "\(String(describing: product.productAmount))"
                 cell.productImg = product.productImg
                 cell.updateProduct = { count in
@@ -153,7 +159,12 @@ class CardViewController: UIViewController {
     
     func updatePriceLbl(){
         
-        totalAmountPriceLbl.text = "$\(calculateTotalPrice(products: cartViewModel.products ?? []))"
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            totalAmountPriceLbl.text = "$\(calculateTotalPrice(products: cartViewModel.products))"
+        }else{
+            totalAmountPriceLbl.text = "\(Constants.convertPriceToEGP(priceToConv: calculateTotalPrice(products: cartViewModel.products))) EGP"
+        }
+        
     }
     
     func calculateTotalPrice(products : [CartProduct]) -> String{

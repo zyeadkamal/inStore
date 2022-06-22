@@ -35,8 +35,14 @@ extension AllProductsCollectionViewCell {
             productImageView.kf.setImage(with: URL(string: product.images[0].src))
         }
         productNameLabel.text = product.title
-        productPriceLabel.text = "$\(product.varients?[0].price ?? "399.9")"
-        productPrevPriceLabel.text = "$\((Double(product.varients?[0].price ?? "200.0")!) + 49.9)"
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            productPriceLabel.text = "$\(product.varients?[0].price ?? "399.9")"
+            productPrevPriceLabel.text = "$\((Double(product.varients?[0].price ?? "200.0")!) + 49.9)"
+        }else{
+            productPriceLabel.text = "\(Constants.convertPriceToEGP(priceToConv: product.varients?[0].price ?? "0")) EGP"
+            productPrevPriceLabel.text = "\((Double(Constants.convertPriceToEGP(priceToConv: product.varients?[0].price ?? "0"))!) + 49.9) EGP"
+        }
+        
         productRateLabel.text = "\(Constants.productRatings[Int.random(in: 0..<7)])"
         if Constants.favoriteProducts.contains(product){
             addToFavouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)

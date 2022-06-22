@@ -41,6 +41,7 @@ class ProductDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeButtonUI()
+        initViews()
     }
     
     init?(coder: NSCoder, viewModel: ProductDetailsViewModelProtocol) {
@@ -157,7 +158,12 @@ extension ProductDetailsViewController {
         let rate = Constants.productRatings[Int.random(in: 0..<7)]
         productRateLabel.text = "\(rate)"
         ratingBar.rating = rate
-        addToCartButton.setTitle("Add to cart     $\(viewModel.product.varients?[0].price ?? "150")", for: .normal)
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            addToCartButton.setTitle("Add to cart     $\(viewModel.product.varients?[0].price ?? "0")", for: .normal)
+        }else{
+            addToCartButton.setTitle("Add to cart     \(Constants.convertPriceToEGP(priceToConv: viewModel.product.varients?[0].price ?? "0")) EGP", for: .normal)
+        }
+        
         if Constants.favoriteProducts.contains(viewModel.product){
             favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }else {
