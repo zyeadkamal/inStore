@@ -46,7 +46,11 @@ class WishlistTableViewCell: UITableViewCell {
     
     func setupCell(favourite:Favourites)
     {
-        wishlistProductPrice.text = favourite.price
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            wishlistProductPrice.text = "$ \(favourite.price ?? "0")"
+        }else{
+            wishlistProductPrice.text = "\(Constants.convertPriceToEGP(priceToConv: favourite.price ?? "0")) EGP"
+        }
         wishlistProductTitle.text = favourite.title
         wishlistCellImg.kf.setImage(with: URL(string:favourite.image ?? "https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg" ))
     }
@@ -57,5 +61,6 @@ class WishlistTableViewCell: UITableViewCell {
         addToCart()
     }
     //MARK: -- Functions
+    
     
 }
