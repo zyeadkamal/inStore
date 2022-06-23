@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PassKit
 
 class PaymentViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak private var deliveryLbl: UILabel!
     @IBOutlet weak private var totalPaymentLbl: UILabel!
     @IBOutlet weak private var payNowBtn: UIButton!
+
     
     
     //MARK: -- Properties
@@ -34,7 +36,9 @@ class PaymentViewController: UIViewController {
     var discountPrice : Double = 0.0
     var orderPrice : Double = 0.0
     var totalPrice : Double = 0.0
-    
+    private var request:PKPaymentRequest!
+    var paymentCompleted = false
+
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -88,9 +92,10 @@ class PaymentViewController: UIViewController {
             if(self?.isCOD ?? true) {
                 self?.postOrder()
             }else{
-                
+                self?.requestPayment(msg: "total", price: self!.totalPrice)
             }
         }))
+
         
         
         self.present(confirmationAlert, animated: true, completion: nil)
@@ -158,4 +163,41 @@ class PaymentViewController: UIViewController {
         }).disposed(by: self.disposeBag)
     }
     
+}
+extension PaymentViewController: PKPaymentAuthorizationViewControllerDelegate {
+    func requestPayment(msg: String, price: Double) {
+        
+        request = PKPaymentRequest()
+        request.merchantIdentifier = "merchant.inStore.app"
+        request.supportedNetworks = [.masterCard, .visa ]
+        request.supportedCountries = ["US", "EG"]
+        request.merchantCapabilities = .capability3DS
+        request.countryCode = "EG"
+        request.currencyCode = MyUserDefaults.getValue(forKey: .currency) as! String
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: msg, amount: NSDecimalNumber(value: price))]
+        
+        let controller = PKPaymentAuthorizationViewController(paymentRequest: request)
+                
+        if controller != nil {
+            controller!.delegate = self
+            present(controller!, animated: true, completion: nil)
+        }
+    }
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+
+        if paymentCompleted {
+           // showAlret()
+            self.postOrder()
+        
+        }
+        
+    }
+        
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        paymentCompleted = true
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+
+    }
 }

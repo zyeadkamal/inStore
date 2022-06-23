@@ -63,7 +63,7 @@ class ChooseAddressViewModel : ChooseAddressViewModelType{
     func getData() {
         state = .loading
         
-        getAllAddresses(customerId : 6036098154668).observe(on: MainScheduler.instance).subscribe( onNext: { address in
+        getAllAddresses(customerId : MyUserDefaults.getValue(forKey: .id) as! Int).observe(on: MainScheduler.instance).subscribe( onNext: { address in
             self.addresses = address.addresses ?? []
             if(self.addresses.isEmpty){
                 self.state = .empty
