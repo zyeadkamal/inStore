@@ -157,7 +157,7 @@ class MyAccountViewController: UIViewController {
         MyUserDefaults.add(val: "", key: .username)
         MyUserDefaults.add(val: 0, key: .id)
         MyUserDefaults.add(val: false, key: .hasAddress)
-        MyUserDefaults.add(val: "$", key: .currency)
+        MyUserDefaults.add(val: "USD", key: .currency)
     }
     
     func showPickerView(){
