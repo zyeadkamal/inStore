@@ -36,7 +36,7 @@ class SplashScreenViewController: UIViewController {
         //MyUserDefaults.getValue(forKey: .email)
         //playSplashAnimation()
         
-        if((self.isFirstTime()) == nil){
+        if(MyUserDefaults.getValue(forKey: .isFirstTime) == nil){
             self.playSplashAnimation(isFirst: true)
         }
         else {
@@ -78,6 +78,7 @@ class SplashScreenViewController: UIViewController {
         animationVC.addSubview(animationView!)
         animationView!.play{[weak self](finished) in
             if(isFirst){
+                self?.setUserCurrency()
                 self?.navigateToOnBoarding()
             }
             else {
@@ -85,14 +86,11 @@ class SplashScreenViewController: UIViewController {
             }
         }
     }
-    
-    func isFirstTime() -> Bool  {
-        return ((MyUserDefaults.getValue(forKey: .isFirstTime) == nil))
-    }
+  
     
     func setUserCurrency(){
         if (MyUserDefaults.getValue(forKey: .currency)) == nil{
-            MyUserDefaults.add(val: "$", key: .currency)
+            MyUserDefaults.add(val: "USD", key: .currency)
         }
         
     }
