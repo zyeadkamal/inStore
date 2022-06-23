@@ -123,7 +123,11 @@ class MyAddressesViewController: UIViewController {
     //MARK: - IBActions
 
     @IBAction func AddNewAddressPressed(_ sender: Any) {
-        self.myAddressViewModel.deleteData(index: 1,userId: self.getUserId())
+        let cartStoryboard = UIStoryboard.init(name: "Card", bundle: nil)
+        let addAddressVC = cartStoryboard.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
+            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest()))
+        }) 
+        navigationController?.pushViewController(addAddressVC, animated: true)
     }
 }
 
