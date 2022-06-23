@@ -144,14 +144,14 @@ class CardViewController: UIViewController {
     
     func navigateToChooseAddress(){
         guard let addressesVC = storyboard?.instantiateViewController(identifier: String(describing: AddressesViewController.self), creator: { (coder) in
-            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel.products ?? [])))))
+            AddressesViewController(coder: coder, addressesVM : ChooseAddressViewModel(repo: Repository.shared(apiClient: ApiClient())!, myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel.getListOfProductsToOrder() ?? [], customer: MyCustomer(id: MyUserDefaults.getValue(forKey: .id) as! Int) , total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel.products ?? [])))))
         }) else { return }
         navigationController?.pushViewController(addressesVC, animated: true)
     }
     
     func navigateToAddAddress(){
         guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
-            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel.getListOfProductsToOrder() ?? [], total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel.products ?? [])))))
+            AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel.getListOfProductsToOrder() ?? [], customer: MyCustomer(id: MyUserDefaults.getValue(forKey: .id) as! Int) , total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel.products ?? [])))))
         }) else { return }
         navigationController?.pushViewController(addAddressVC, animated: true)
     }
