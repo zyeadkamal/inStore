@@ -22,6 +22,7 @@ class AddAddressViewController: UIViewController {
     //MARK: -- Properties
     private var addAddressVM : AddAddressViewModelType?
     private var disposeBag = DisposeBag()
+    static var isToPay = false
     
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -46,12 +47,20 @@ class AddAddressViewController: UIViewController {
         if NetworkMonitor.shared.isConnected{
             if isValidTF(){
                 let address = Address(customer_id: self.getUserId(), address1: addressTF.text, city: cityTF.text, country: countryTF.text , phone: phoneTF.text)
-                addAddressVM?.addAddressForCurrentCustomer(address: address)?.subscribe( on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { customer in
+                addAddressVM?.addAddressForCurrentCustomer(address: address)?.subscribe( on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] customer in
+                    guard let self = self else{return}
                     print("on next address \(customer)")
                     self.showAlert(alertTitle: "Added Successfully", alertMsg: "Address Added Succssefully", handler: { _ in
                         self.clearTextFields()
                         MyUserDefaults.add(val: true, key: .hasAddress)
-                        self.navigateToAddresses()
+                        if AddAddressViewController.isToPay{
+                            self.navigateToAddresses()
+                        }else{
+                            let myAccountSB = UIStoryboard.init(name: "MyAccountScreen", bundle: nil)
+                            let myAccountVC = myAccountSB.instantiateViewController(identifier: String(describing: MyAccountViewController.self))
+                            self.navigationController?.pushViewController(myAccountVC, animated: true)
+                        }
+                        
                     })
                 }, onError: { error in
                     print("on error address \(error)")

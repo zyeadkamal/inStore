@@ -106,6 +106,12 @@
 		B69EF912284A278B00A7D7EC /* CartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF911284A278B00A7D7EC /* CartScreenViewModel.swift */; };
 		B69EF918284AD8F200A7D7EC /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF917284AD8F200A7D7EC /* PaymentViewModel.swift */; };
 		B69EF91A284ADEA200A7D7EC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EF919284ADEA200A7D7EC /* Order.swift */; };
+		B6C0E2C22864897100628EEE /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2C12864897100628EEE /* MockAPIClient.swift */; };
+		B6C0E2C528648D5F00628EEE /* ChooseAddresses.json in Resources */ = {isa = PBXBuildFile; fileRef = B6C0E2C428648D5F00628EEE /* ChooseAddresses.json */; };
+		B6C0E2C8286494BD00628EEE /* MockChooseAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2C7286494BD00628EEE /* MockChooseAddressView.swift */; };
+		B6C0E2CC2864955E00628EEE /* ChooseAddressViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2CB2864955E00628EEE /* ChooseAddressViewModelTests.swift */; };
+		B6C0E2CF2864960700628EEE /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2CE2864960700628EEE /* MockRepository.swift */; };
+		B6C0E2D2286497D800628EEE /* MockLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2D1286497D800628EEE /* MockLocalDataSource.swift */; };
 		B6C78E532848A056002810FD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E522848A056002810FD /* Product.swift */; };
 		B6C78E572848CCCD002810FD /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E562848CCCD002810FD /* AddAddressViewModel.swift */; };
 		B6C78E5928491DEE002810FD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E5828491DEE002810FD /* ErrorModel.swift */; };
@@ -231,6 +237,12 @@
 		B69EF911284A278B00A7D7EC /* CartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewModel.swift; sourceTree = "<group>"; };
 		B69EF917284AD8F200A7D7EC /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		B69EF919284ADEA200A7D7EC /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B6C0E2C12864897100628EEE /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		B6C0E2C428648D5F00628EEE /* ChooseAddresses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChooseAddresses.json; sourceTree = "<group>"; };
+		B6C0E2C7286494BD00628EEE /* MockChooseAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseAddressView.swift; sourceTree = "<group>"; };
+		B6C0E2CB2864955E00628EEE /* ChooseAddressViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAddressViewModelTests.swift; sourceTree = "<group>"; };
+		B6C0E2CE2864960700628EEE /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
+		B6C0E2D1286497D800628EEE /* MockLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalDataSource.swift; sourceTree = "<group>"; };
 		B6C78E522848A056002810FD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B6C78E562848CCCD002810FD /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 		B6C78E5828491DEE002810FD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
@@ -501,6 +513,8 @@
 		048B3F5A283CD23C00CEF8D0 /* InStoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				B6C0E2C92864952000628EEE /* Tests */,
+				B6C0E2BF2864890200628EEE /* Mocks */,
 				048B3F5B283CD23C00CEF8D0 /* InStoreTests.swift */,
 				048B3F5D283CD23C00CEF8D0 /* Info.plist */,
 			);
@@ -928,6 +942,74 @@
 			path = PaymentViewModel;
 			sourceTree = "<group>";
 		};
+		B6C0E2BF2864890200628EEE /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2C62864948B00628EEE /* Views */,
+				B6C0E2D0286497BC00628EEE /* Database */,
+				B6C0E2CD286495D400628EEE /* Repository */,
+				B6C0E2C02864892900628EEE /* Network */,
+				B6C0E2C328648D0200628EEE /* JSON */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B6C0E2C02864892900628EEE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2C12864897100628EEE /* MockAPIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B6C0E2C328648D0200628EEE /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2C428648D5F00628EEE /* ChooseAddresses.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		B6C0E2C62864948B00628EEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2C7286494BD00628EEE /* MockChooseAddressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6C0E2C92864952000628EEE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2CA2864952C00628EEE /* ChooseAddressTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		B6C0E2CA2864952C00628EEE /* ChooseAddressTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2CB2864955E00628EEE /* ChooseAddressViewModelTests.swift */,
+			);
+			path = ChooseAddressTests;
+			sourceTree = "<group>";
+		};
+		B6C0E2CD286495D400628EEE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2CE2864960700628EEE /* MockRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		B6C0E2D0286497BC00628EEE /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B6C0E2D1286497D800628EEE /* MockLocalDataSource.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		B6C78E542848CC8E002810FD /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1074,6 +1156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C0E2C528648D5F00628EEE /* ChooseAddresses.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1321,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				048B3F5C283CD23C00CEF8D0 /* InStoreTests.swift in Sources */,
+				B6C0E2C8286494BD00628EEE /* MockChooseAddressView.swift in Sources */,
+				B6C0E2CF2864960700628EEE /* MockRepository.swift in Sources */,
+				B6C0E2CC2864955E00628EEE /* ChooseAddressViewModelTests.swift in Sources */,
+				B6C0E2D2286497D800628EEE /* MockLocalDataSource.swift in Sources */,
+				B6C0E2C22864897100628EEE /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

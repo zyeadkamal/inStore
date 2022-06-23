@@ -153,6 +153,7 @@ class CardViewController: UIViewController {
         guard let addAddressVC = storyboard?.instantiateViewController(identifier: String(describing: AddAddressViewController.self), creator: { (coder) in
             AddAddressViewController(coder: coder, addAddressVM: AddAddressViewModel(repo: Repository.shared(apiClient: ApiClient())! , myOrder: PostOrderRequest(order: PostNewOrder(lineItems: self.cartViewModel.getListOfProductsToOrder() ?? [], customer: MyCustomer(id: MyUserDefaults.getValue(forKey: .id) as! Int) , total_line_items_price: self.calculateTotalPrice(products: self.cartViewModel.products ?? [])))))
         }) else { return }
+        AddAddressViewController.isToPay = true
         navigationController?.pushViewController(addAddressVC, animated: true)
     }
     

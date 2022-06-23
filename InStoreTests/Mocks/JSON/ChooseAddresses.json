@@ -1,0 +1,61 @@
+{
+   "addresses":[
+      {
+         "id":7373787037873,
+         "customer_id":6074548519089,
+         "first_name":"Mohamed",
+         "last_name":null,
+         "company":null,
+         "address1":"hossary",
+         "address2":null,
+         "city":"October",
+         "province":null,
+         "country":"Egypt",
+         "zip":null,
+         "phone":"011488",
+         "name":"Mohamed",
+         "province_code":null,
+         "country_code":"EG",
+         "country_name":"Egypt",
+         "default":true
+      },
+      {
+         "id":7373853655217,
+         "customer_id":6074548519089,
+         "first_name":"Mohamed",
+         "last_name":null,
+         "company":null,
+         "address1":"Sadie Lane",
+         "address2":null,
+         "city":"Maadi",
+         "province":null,
+         "country":"Egypt",
+         "zip":null,
+         "phone":"01024196555",
+         "name":"Mohamed",
+         "province_code":null,
+         "country_code":"EG",
+         "country_name":"Egypt",
+         "default":false
+      },
+      {
+         "id":7373870629041,
+         "customer_id":6074548519089,
+         "first_name":"Mohamed",
+         "last_name":null,
+         "company":null,
+         "address1":"ay 7aga",
+         "address2":null,
+         "city":"ay 7aga",
+         "province":null,
+         "country":"Egypt",
+         "zip":null,
+         "phone":"0122222",
+         "name":"Mohamed",
+         "province_code":null,
+         "country_code":"EG",
+         "country_name":"Egypt",
+         "default":false
+      }
+   ]
+}
