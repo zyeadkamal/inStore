@@ -146,6 +146,10 @@ class Repository: RepositoryProtocol {
         localDataSource?.editProductAmountInCart(productId: productId, amount: amount,customerName: customerName)
     }
     
+    func deleteAllFromCart(customerEmail: String){
+        localDataSource?.deleteAllFromCart(customerEmail: customerEmail)
+    }
+
     func getAllProducts() -> Observable<AllProducts>? {
         let allProducts = apiClient?.getRequest(fromEndpoint: .products, httpMethod: .get, parameters: [:], ofType: AllProducts.self, json: ".json")
         return allProducts

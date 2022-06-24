@@ -20,6 +20,6 @@ protocol LocalDataSourceProtocol {
     func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)
     func addToFavourite(product: Product , customerEmail: String)
     func checkIfProductAddedToCart(customerEmail:String, productId :Int64)->Bool?
-    
+    func deleteAllFromCart(customerEmail : String)
 }
 
