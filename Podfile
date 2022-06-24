@@ -7,7 +7,7 @@ target 'InStore' do
 
   # Pods for InStore
  
- pod 'Alamofire', '~> 5.0.0'
+pod 'Alamofire', '~> 5.0.0'
   pod 'Kingfisher', '~> 5.0'
   pod 'lottie-ios', '3.3.0'
   pod 'Toaster', '2.3.0'
@@ -17,6 +17,7 @@ target 'InStore' do
   pod 'IBAnimatable', '6.1.0'
   pod 'UICheckbox', '0.0.2'
   pod 'IQKeyboardManagerSwift', '6.5.9'
+ 
 
   target 'InStoreTests' do
     inherit! :search_paths

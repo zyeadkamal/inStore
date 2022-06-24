@@ -87,7 +87,7 @@ extension AllProductsViewController : UICollectionViewDataSource, UICollectionVi
         
         if let safeProduct = viewModel.allProducts?[indexPath.row] {
             guard let repo = Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)!, apiClient: ApiClient()) else {return}
-            let viewModel = ProductDetailsViewModel(product: safeProduct, repo: repo)
+            let viewModel = ProductDetailsViewModel(product: safeProduct, repo: repo, managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
             guard let produvtDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController", creator: { (coder) -> ProductDetailsViewController? in
                 ProductDetailsViewController(coder: coder, viewModel: viewModel)
             }) else {return}

@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import CoreData
 
 class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
     
     
-    
+    private var managedContext : NSManagedObjectContext?
     var product: Product
     var repo : RepositoryProtocol?
-    init(product: Product, repo : RepositoryProtocol) {
+    init(product: Product, repo : RepositoryProtocol, managedContext : NSManagedObjectContext) {
         self.product = product
         self.repo = repo
+        self.managedContext = managedContext
     }
     
     
@@ -43,4 +45,15 @@ class ProductDetailsViewModel: ProductDetailsViewModelProtocol {
         repo?.deleteProductFromCart(deletedProductId: deletedProductId, customerName: customerName)
     }
     
+    func transformProduct(product: Product) -> CartProduct {
+        let cartEntity = CartProduct(context: self.managedContext!)
+        cartEntity.productId = Int64(product.id)
+        cartEntity.productTitle = product.title
+        cartEntity.productImg = product.images[0].src
+        cartEntity.productPrice = product.varients?[0].price
+        cartEntity.productAmount = 1
+        cartEntity.customerEmail = "customerName"
+        cartEntity.vartiantId = Int64(product.varients?[0].id ?? 0)
+        return cartEntity
+    }
 }

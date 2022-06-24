@@ -51,4 +51,12 @@ class SplashScreenViewModel : SplashScreenViewModelType{
     }
     
     
+    func getLocalProducts(customerName:String){
+        repo?.fetchProductsFromCart(customerName: customerName)?.observe(on: MainScheduler.instance).subscribe(onNext: { productsList in
+            Constants.cartProductsList = productsList
+            }, onError: { error in
+        }).disposed(by: DisposeBag())
+    }
+    
+    
 }

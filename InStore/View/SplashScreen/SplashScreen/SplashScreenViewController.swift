@@ -45,6 +45,7 @@ class SplashScreenViewController: UIViewController {
             }
             else {
                 splashScreenViewModel.fetchFavourites(customerEmail: MyUserDefaults.getValue(forKey: .email) as! String)
+                splashScreenViewModel.getLocalProducts(customerName: MyUserDefaults.getValue(forKey: .email) as! String)
                 bindFavouritesList()
             }
                 

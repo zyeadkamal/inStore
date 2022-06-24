@@ -79,6 +79,7 @@ class AllProductsViewModel: AllProductsViewModelProtocol {
         }
         
     }
+    
     func getAllProducts() {
         self.state = .loading
         repository?.getAllProducts()?
