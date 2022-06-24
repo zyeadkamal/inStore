@@ -11,7 +11,7 @@ import XCTest
 
 class ChooseAddressViewModelTests: XCTestCase {
     
-    private var sut : ChooseAddressViewModelType!
+    private var sut : ChooseAddressViewModel!
     private var repo : RepositoryProtocol!
     
     override func setUp() {
@@ -27,6 +27,24 @@ class ChooseAddressViewModelTests: XCTestCase {
         sut = nil
     }
 
+    func testSut_whenInitCalled_repoIsSet(){
+        XCTAssertNotNil(sut.repo)
+    }
     
+    func testSut_whenInitCalled_myOrderIsSet(){
+        XCTAssertNotNil(sut.myOrder)
+    }
 
-}
+    func testSut_whenGetDataCalled_allAddressesReturn(){
+        sut.getData()
+        XCTAssertEqual(sut.addressesList.count, 3)
+    }
+    
+    func testSut_whenFailToCallNetwork_stateEmptyReturn(){
+        repo = MockRepository(localDataSource: MockLocalDataSource(), apiClient: MockAPIClient(fileName: "Error"))
+        sut = ChooseAddressViewModel(repo: repo, myOrder: PostOrderRequest())
+        sut.getData()
+        XCTAssertTrue(sut.addressesList.isEmpty)
+        XCTAssertEqual(sut.state, .empty)
+    }
+    }

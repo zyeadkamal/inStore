@@ -24,7 +24,7 @@ class ChooseAddressViewModel : ChooseAddressViewModelType{
     var addressesList : [Address] = [Address]()
     var addressObservable: Observable<[Address]>
     var myOrder : PostOrderRequest?
-    private var repo : RepositoryProtocol
+    var repo : RepositoryProtocol
     private var disposeBag = DisposeBag()
     private let addressSubject : BehaviorSubject = BehaviorSubject<[Address]>.init(value: [])
     private var addresses:[Address] = []{
@@ -72,16 +72,6 @@ class ChooseAddressViewModel : ChooseAddressViewModelType{
             }
             
         }, onError: { error in
-            //             switch error {
-            //             case ApiError.conflict:
-            //                 print("Conflict error")
-            //             case ApiError.forbidden:
-            //                 print("Forbidden error")
-            //             case ApiError.notFound:
-            //                 print("Not found error")
-            //             default:
-            //                 print("Unknown error:", error.localizedDescription)
-            //             }
             self.state = .error
         }).disposed(by: disposeBag)
         

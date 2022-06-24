@@ -29,6 +29,7 @@ class MockAPIClient: APIClientProtocol {
             guard let data = self.data(in: self.fileName, extension: "json") else {
                 assertionFailure("Unable to find the file with name: \(self.fileName ?? "")")
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
+                return Disposables.create()
             }
             
             do {
@@ -38,6 +39,7 @@ class MockAPIClient: APIClientProtocol {
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 print(error.localizedDescription)
             }
+            return Disposables.create()
         }
     }
     
@@ -46,6 +48,7 @@ class MockAPIClient: APIClientProtocol {
             guard let data = self.data(in: self.fileName, extension: "json") else {
                 assertionFailure("Unable to find the file with name: \(self.fileName ?? "")")
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
+                return Disposables.create()
             }
             
             do {
@@ -55,6 +58,7 @@ class MockAPIClient: APIClientProtocol {
                 observer.onError(NSError(domain: ApiError.NetworkFaild.rawValue, code: 500, userInfo: nil))
                 print(error.localizedDescription)
             }
+            return Disposables.create()
         }
     }
     
@@ -80,5 +84,8 @@ class MockAPIClient: APIClientProtocol {
         return data
     }
     
+    enum OrderAppError: Error {
+        case decodingError
+    }
 }
 
