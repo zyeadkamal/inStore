@@ -21,73 +21,71 @@ class MockRepository: RepositoryProtocol {
     }
     func login(email: String) -> Observable<LoginResponse>? {
         return Observable<LoginResponse>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func register(customer: NewCustomer) -> Observable<NewCustomer>? {
         return Observable<NewCustomer>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func editAddresses(customer: NewCustomer) -> Observable<NewCustomer>? {
         return Observable<NewCustomer>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func deleteAddress(customerId: Int, addressID: Int) -> Observable<NewCustomer>? {
         return Observable<NewCustomer>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func getOrders(userId: Int) -> Observable<Orders>? {
         return Observable<Orders>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func addAddress(address: Address) -> Observable<NewCustomer>? {
         return Observable<NewCustomer>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func getAddresses(userId: Int) -> Observable<CustomerAddress>? {
-        return Observable<CustomerAddress>.create { (observer) -> Disposable in
-            
-        }
+        return apiClient?.getRequest(fromEndpoint: EndPoint.customers, httpMethod: .get, parameters: [:],ofType: CustomerAddress.self,json: "/\(userId)/\(EndPoint.addresses).json")
     }
     
     func getAllProducts() -> Observable<AllProducts>? {
         return Observable<AllProducts>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func getCodes(priceRuleID: String) -> Observable<DiscountCodes>? {
         return Observable<DiscountCodes>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func getBrands() -> Observable<Smart_collections>? {
         return Observable<Smart_collections>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func getDiscountCodes(priceRuleID: String) -> Observable<DiscountCodes>? {
         return Observable<DiscountCodes>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     
     func postOrder(order: PostOrderRequest) -> Observable<PostOrderRequest>? {
         return Observable<PostOrderRequest>.create { (observer) -> Disposable in
-            
+            return Disposables.create()
         }
     }
     

@@ -111,6 +111,7 @@
 		B6C0E2CC2864955E00628EEE /* ChooseAddressViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2CB2864955E00628EEE /* ChooseAddressViewModelTests.swift */; };
 		B6C0E2CF2864960700628EEE /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2CE2864960700628EEE /* MockRepository.swift */; };
 		B6C0E2D2286497D800628EEE /* MockLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E2D1286497D800628EEE /* MockLocalDataSource.swift */; };
+		B6C0E2D42865E98300628EEE /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = B6C0E2D32865E98300628EEE /* Error.json */; };
 		B6C78E532848A056002810FD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E522848A056002810FD /* Product.swift */; };
 		B6C78E572848CCCD002810FD /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E562848CCCD002810FD /* AddAddressViewModel.swift */; };
 		B6C78E5928491DEE002810FD /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C78E5828491DEE002810FD /* ErrorModel.swift */; };
@@ -244,6 +245,7 @@
 		B6C0E2CB2864955E00628EEE /* ChooseAddressViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAddressViewModelTests.swift; sourceTree = "<group>"; };
 		B6C0E2CE2864960700628EEE /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
 		B6C0E2D1286497D800628EEE /* MockLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalDataSource.swift; sourceTree = "<group>"; };
+		B6C0E2D32865E98300628EEE /* Error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		B6C78E522848A056002810FD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B6C78E562848CCCD002810FD /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 		B6C78E5828491DEE002810FD /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
@@ -966,6 +968,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C0E2C428648D5F00628EEE /* ChooseAddresses.json */,
+				B6C0E2D32865E98300628EEE /* Error.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C0E2D42865E98300628EEE /* Error.json in Resources */,
 				B6C0E2C528648D5F00628EEE /* ChooseAddresses.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
