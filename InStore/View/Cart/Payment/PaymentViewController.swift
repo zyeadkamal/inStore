@@ -88,16 +88,14 @@ class PaymentViewController: UIViewController {
         let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to Confirm the order?", preferredStyle: .alert)
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         confirmationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self](_) in
-            
-            if(self?.isCOD ?? true) {
-                self?.postOrder()
+            guard let self = self else{ return}
+            if(self.isCOD ) {
+                self.postOrder()
             }else{
-                self?.requestPayment(msg: "total", price: self!.totalPrice)
+                self.requestPayment(msg: "total", price: self.totalPrice)
             }
+            self.paymentVM?.deleteAllFromCart(customerEmail: MyUserDefaults.getValue(forKey: .email) as! String)
         }))
-
-        
-        
         self.present(confirmationAlert, animated: true, completion: nil)
     }
     

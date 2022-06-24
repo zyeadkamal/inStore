@@ -16,6 +16,7 @@ protocol PaymentViewModelType {
     var myOrder : PostOrderRequest? {get set}
     func postOrder(order : PostOrderRequest) -> Observable<PostOrderRequest>?
     func checkCouponExistance(coupon : String)
+    func deleteAllFromCart(customerEmail: String)
 }
 
 
@@ -42,11 +43,6 @@ class PaymentViewModel : PaymentViewModelType{
         return repo?.postOrder(order: order)
     }
     
-    //    private func getDiscountCodes() -> Observable<DiscountCodes>?{
-    //        return repo?.getDiscountCodes(priceRuleID: "1027348594860")
-    //    }
-    
-    
     
     func checkCouponExistance(coupon : String){
         var coupons = Constants.discountCodes
@@ -60,6 +56,10 @@ class PaymentViewModel : PaymentViewModelType{
             }
         }
         
+    }
+    
+    func deleteAllFromCart(customerEmail: String){
+        repo?.deleteAllFromCart(customerEmail: customerEmail)
     }
 }
 

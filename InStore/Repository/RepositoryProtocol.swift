@@ -32,7 +32,7 @@ protocol RepositoryProtocol {
     func fetchProductsFromCart(customerName:String) -> Observable<[CartProduct]>?
     func deleteProductFromCart(deletedProductId: Int64,customerName:String)
     func editProductAmountInCart(productId : Int64, amount : Int16,customerName:String)
-    
+    func deleteAllFromCart(customerEmail: String)
     func fetchProductsFromFavourites(customerEmail:String) -> Observable<[Favourites]>?
     func removeProductFromFavourites(customerEmail:String,deletedProductId: Int64)
     func addToFavourite(product: Product , customerEmail: String)

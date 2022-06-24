@@ -123,6 +123,19 @@ class LocalDataSource: LocalDataSourceProtocol {
         }).disposed(by: DisposeBag())
     }
     
+    func deleteAllFromCart(customerEmail: String){
+        guard let allProducts = fetchProductsFromCart(customerName: customerEmail) else {return}
+        allProducts.subscribe(onNext: { (products) in
+            products.forEach { (product) in
+                self.managedContext?.delete(product)
+            }
+            do{
+                try self.managedContext?.save()
+            }catch let error as NSError{
+                print("\(error) in deleting products from cart entity")
+            }
+        }).disposed(by: DisposeBag())
+    }
     
     func addToFavourite(product: Product , customerEmail: String) {
         let favouritesEntity = Favourites(context: self.managedContext!)
