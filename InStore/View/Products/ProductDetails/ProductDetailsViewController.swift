@@ -35,12 +35,10 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeButtonUI()
         initViews()
     }
     
@@ -84,21 +82,25 @@ extension ProductDetailsViewController {
             self.present(viewController, animated: true, completion: nil)
         }
         else {
-            viewModel.addProductToCart(product: viewModel.product,customerName: getUserEmail())
             let productName = viewModel.product.title
             
             if(isAddedToCart){
                 self.isAddedToCart = false
                 self.changeButtonUI()
                 self.viewModel.deleteProductFromCart(deletedProductId: Int64(self.viewModel.product.id) , customerName: self.getUserEmail())
+                for i in 0...(Constants.cartProductsList.count - 1){
+                    if Constants.cartProductsList[i].productTitle == viewModel.product.title {
+                        Constants.cartProductsList.remove(at: i)
+                    }
+                }
                 
             }else{
                 
                 self.isAddedToCart = true
                 self.changeButtonUI()
                 self.viewModel.addProductToCart(product: self.viewModel.product,customerName: self.getUserEmail())
-                
-                
+                Constants.cartProductsList.append(viewModel.transformProduct(product: viewModel.product))
+        
             }
             Toast(text: "\(productName) added to Cart", delay:Delay.short , duration: Delay.short).show()
         }
@@ -168,6 +170,15 @@ extension ProductDetailsViewController {
             favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }else {
             favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
+        for product in Constants.cartProductsList{
+            if let productTitle = product.productTitle{
+                if productTitle == viewModel.product.title{
+                    isAddedToCart = true
+                    changeButtonUI()
+                }
+            }
         }
     }
     

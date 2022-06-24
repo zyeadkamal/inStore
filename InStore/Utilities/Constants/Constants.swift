@@ -15,6 +15,7 @@ class Constants {
     static var favoriteProducts = [Product]()
     static var adsArr = ["vouchers" , "banner2" , "banner3"]
     static var discountCodes = [DiscountCode]()
+    static var cartProductsList = [CartProduct]()
 
     static func convertPriceToEGP(priceToConv: String) -> String{
         let price = round(Double(priceToConv)! * 18.76)

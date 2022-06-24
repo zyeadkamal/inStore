@@ -48,6 +48,7 @@ class LoginViewModel: LoginViewModelProtocol {
                 if let safePassword = loginResponse.customers[0].tags {
                     if safePassword == password {
                         self?.fetchFavourites(customerEmail: email)
+                        self?.getLocalProducts(customerName: email)
                         self?.successfullLogin = loginResponse
                         let currentUser = loginResponse.customers[0]
                         self?.initUserDefaults(loggedIn: true, email: currentUser.email!, username: currentUser.first_name!, id: currentUser.id!, hasAddress: !(currentUser.addresses!.isEmpty))
@@ -86,5 +87,12 @@ class LoginViewModel: LoginViewModelProtocol {
                 }
                 Constants.favoriteProducts = favouriteListTemp
             }).disposed(by:bag)
+    }
+    
+    func getLocalProducts(customerName:String){
+        repository?.fetchProductsFromCart(customerName: customerName)?.observe(on: MainScheduler.instance).subscribe(onNext: { productsList in
+            Constants.cartProductsList = productsList
+            }, onError: { error in
+        }).disposed(by: DisposeBag())
     }
 }
