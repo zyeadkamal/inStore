@@ -71,7 +71,13 @@ class OrderDetailsViewController: UIViewController {
         
         orderID.text = String("\((orderViewModel.orderList[index].id)!)")
         orderedAtLabel.text = orderViewModel.orderList[index].created_at?.getNamedDayNamedMonthYear()
-        totalAmountLabel.text = String("\((orderViewModel.orderList[index].currency)!)\((orderViewModel.orderList[index].current_total_price)!)")
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            totalAmountLabel.text = String("\(orderViewModel.orderList[index].current_total_price ?? "0") $")
+        }else{
+            totalAmountLabel.text = String("\(Constants.convertPriceToEGP(priceToConv:orderViewModel.orderList[index].current_total_price ?? "0")) EGP")
+           
+        }
+       
     }
 
     private func registerCellsForTableView(){

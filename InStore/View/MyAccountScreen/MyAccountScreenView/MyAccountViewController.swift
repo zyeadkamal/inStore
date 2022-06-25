@@ -39,15 +39,14 @@ class MyAccountViewController: UIViewController {
         }
         else {
             setUsername()
+            myAccountViewModel.getData(userId: getUserId())
         }
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavControllerTransparent()
-        
         configureCollectionViews()
-        myAccountViewModel.getData(userId: getUserId())
         // Do any additional setup after loading the view.
     }
 
@@ -168,11 +167,12 @@ class MyAccountViewController: UIViewController {
         .disposed(by: bag)
         
         pickerView.rx.itemSelected
-            .subscribe { (event) in
+            .subscribe { [weak self] (event) in
                 switch event {
                 case .next(let selected):
                     MyUserDefaults.add(val: selected.row, key: .currency)
                     print("You selected #\(selected.row)")
+                    
                 default:
                     break
                 }
@@ -184,12 +184,7 @@ class MyAccountViewController: UIViewController {
     //MARK: - IBActions
     
     @IBAction func logoutPressed(_ sender: Any) {
-        //        let viewController = UIStoryboard(name: "SplashScreen", bundle: nil).instantiateViewController(withIdentifier: String(describing: GetStartedViewController.self)) as! GetStartedViewController
-        //        //homeScreenViewModel.getBrandAtIndex(indexPath: indexPath)
-        //
-        //
-        //       // viewController.brand = brands[indexPath.row]
-        //        self.navigationController?.pushViewController(viewController, animated: true)
+
         let vc = UIStoryboard(name: "UserAuthentication",bundle: nil).instantiateViewController(identifier: String(describing: LoginViewController.self)) as! LoginViewController
         emptyUserDefaults()
         vc.modalPresentationStyle = .fullScreen
@@ -240,10 +235,7 @@ class MyAccountViewController: UIViewController {
         }) else {return}
         
         self.navigationController?.pushViewController(vc, animated: true)
-        //
-        //        let viewController = storyboard?.instantiateViewController(withIdentifier: String(describing: MyAddressesViewController.self)) as! MyAddressesViewController
-        //
-        //        self.navigationController?.pushViewController(viewController, animated: true)
+
         
     }
 }

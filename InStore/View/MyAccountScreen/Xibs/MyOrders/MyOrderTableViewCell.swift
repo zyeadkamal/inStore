@@ -20,7 +20,12 @@ class MyOrderTableViewCell: UITableViewCell {
     }
 
     func setupCell(order:MockOrder) {
-        orderTotal.text = String("\(order.currency ?? "$")\(order.current_total_price ?? "0")")
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            orderTotal.text = String("\(order.current_total_price ?? "0") $")
+        }else{
+            orderTotal.text = String("\(Constants.convertPriceToEGP(priceToConv: order.current_total_price ?? "0")) EGP")
+            
+        }
         orderedAt.text = order.created_at?.getNamedDayNamedMonthYear() ?? "27-06-1998"
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

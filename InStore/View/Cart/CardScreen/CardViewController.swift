@@ -114,7 +114,8 @@ class CardViewController: UIViewController {
             let alert = UIAlertController(title: "Delete item?", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {[weak self] _ in
                 guard let self = self else{return}
-                self.self.cartViewModel.removeProduct(atRow: index.row)
+                self.cartViewModel.removeProduct(atRow: index.row)
+                Constants.cartProductsList.remove(at: index.row)
                 self.updatePriceLbl()
                 self.cardTableView.reloadData()
             }))

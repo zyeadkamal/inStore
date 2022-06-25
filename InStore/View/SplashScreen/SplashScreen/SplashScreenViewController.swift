@@ -91,9 +91,8 @@ class SplashScreenViewController: UIViewController {
     
     func setUserCurrency(){
         if (MyUserDefaults.getValue(forKey: .currency)) == nil{
-            MyUserDefaults.add(val: "USD", key: .currency)
+            MyUserDefaults.add(val: "EGP", key: .currency)
         }
-        
     }
     
     func navigateToHome(){

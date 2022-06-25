@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zen-Tz-MBg">
-                                <rect key="frame" x="0.0" y="703" width="414" height="159"/>
+                                <rect key="frame" x="0.0" y="717" width="414" height="179"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -34,9 +34,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="omw-RF-e9K" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="GlM-H5-S66"/>
-                            <constraint firstItem="Zen-Tz-MBg" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" constant="-34" id="MBp-sa-N2S"/>
+                            <constraint firstItem="Zen-Tz-MBg" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="MBp-sa-N2S"/>
                             <constraint firstItem="Zen-Tz-MBg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hOt-4N-HLC"/>
-                            <constraint firstItem="Zen-Tz-MBg" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.177455" id="iuc-x0-4oM"/>
+                            <constraint firstItem="Zen-Tz-MBg" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.2" id="iuc-x0-4oM"/>
                             <constraint firstItem="Zen-Tz-MBg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="tDC-Ln-fhY"/>
                             <constraint firstItem="omw-RF-e9K" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="v8s-o6-5JH"/>
                         </constraints>
