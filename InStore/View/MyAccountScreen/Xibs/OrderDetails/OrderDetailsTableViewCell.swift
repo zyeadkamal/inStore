@@ -23,7 +23,12 @@ class OrderDetailsTableViewCell: UITableViewCell {
 
     func setupCell(orderItem:OrderItem){
         productName.text = String("\(orderItem.name ?? "")")
-        productPrice.text = String("\(orderItem.price ?? "")")
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            productPrice.text = String("\(orderItem.price ?? "0") $")
+        }else{
+            productPrice.text = String("\(Constants.convertPriceToEGP(priceToConv: orderItem.price ?? "0")) EGP")
+            
+        }
         productQty.text = String("\(orderItem.quantity!)")
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

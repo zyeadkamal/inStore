@@ -136,7 +136,7 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
             let selectedItem = self.wishlistViewModel.getFavouriteByIndex(index: indexPath.row)
         
             
-            self.wishlistTableView.beginUpdates()
+            //self.wishlistTableView.beginUpdates()
             
             self.wishlistViewModel.removeProductFromFavourites(customerEmail: self.getUserEmail(), deletedProductId: selectedItem.id)
         
@@ -144,9 +144,9 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
             self.wishlistViewModel.favourites.remove(at: indexPath.row)
             Constants.favoriteProducts.remove(at: indexPath.row)
             
-            self.wishlistTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+           // self.wishlistTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             
-            self.wishlistTableView.endUpdates()
+            self.wishlistTableView.reloadData()
             
             
         

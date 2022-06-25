@@ -24,7 +24,9 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productNameLabel: UILabel!
     
     var isAddedToCart = false
+    var navBarTintColor : UIColor?
     
+
     
     private var viewModel: ProductDetailsViewModelProtocol
     var currentPage = 0 {
@@ -40,6 +42,16 @@ class ProductDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initViews()
+        
+        navBarTintColor = self.navigationController?.navigationBar.tintColor
+        // Navigation Bar Text:
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "PrimaryColor")
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let navBarTintColor = navBarTintColor else { return  }
+        self.navigationController?.navigationBar.tintColor = navBarTintColor
     }
     
     init?(coder: NSCoder, viewModel: ProductDetailsViewModelProtocol) {

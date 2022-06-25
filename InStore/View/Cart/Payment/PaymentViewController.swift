@@ -38,6 +38,7 @@ class PaymentViewController: UIViewController {
     var totalPrice : Double = 0.0
     private var request:PKPaymentRequest!
     var paymentCompleted = false
+    var navBarTintColor : UIColor?
 
     
     //MARK: -- Lifecycle
@@ -47,6 +48,20 @@ class PaymentViewController: UIViewController {
         // Do any additional setup after loading the view.
         setNavControllerTransparent()
         configureAddressAndPriceInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navBarTintColor = self.navigationController?.navigationBar.tintColor
+        // Navigation Bar Text:
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "PrimaryColor")
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let navBarTintColor = navBarTintColor else { return  }
+        self.navigationController?.navigationBar.tintColor = navBarTintColor
     }
     
     init?(coder: NSCoder, paymentVM : PaymentViewModelType) {
@@ -115,9 +130,17 @@ class PaymentViewController: UIViewController {
             discountPrice = 0.0
             totalPrice = (orderPrice + deliveryPrice)
         }
-        discountLbl.text = "$\(discountPrice)"
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            discountLbl.text = "$ \(discountPrice)"
+            totalPaymentLbl.text = "$ \(totalPrice)"
+            
+        }else{
+            discountLbl.text = "EGP \(Constants.convertPriceToEGP(priceToConv:String(discountPrice)))"
+            totalPaymentLbl.text = "EGP \(Constants.convertPriceToEGP(priceToConv:String(totalPrice)))"
+        }
+       
         deliveryLbl.text = "FREE"
-        totalPaymentLbl.text = "$\(totalPrice)"
+        
     }
     
     func setOptionSelection(selectedBtn :UIButton ,_ isSelected : Bool){
@@ -137,6 +160,7 @@ class PaymentViewController: UIViewController {
         guard let isExist = paymentVM?.isExists else { return }
         if isExist {
             paymentVM?.myOrder?.order?.discountCode?[0].code = promoCodeTF.text ?? ""
+//            paymentVM?.myOrder?.order?.total_discounts = String(self.discountPrice) ?? "1"
             print(paymentVM?.myOrder?.order?.discountCode?[0].code ?? "")
             discountApplied = true
             showAlert(alertTitle: "Coupon Submitted", alertMsg: "Congratulations, coupon applied successfully 🎉")
@@ -155,7 +179,6 @@ class PaymentViewController: UIViewController {
     
     func postOrder() {
         self.paymentVM?.postOrder(order: self.paymentVM?.myOrder ?? PostOrderRequest())?.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).observe(on: MainScheduler.instance).subscribe(onNext: { (postOrder) in
-            print("oreder \(postOrder.order) posted")
             let confirmationVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ConfirmOrderViewController.self)) as! ConfirmOrderViewController
             self.navigationController?.pushViewController(confirmationVC, animated: true)
         }).disposed(by: self.disposeBag)
@@ -172,7 +195,14 @@ extension PaymentViewController: PKPaymentAuthorizationViewControllerDelegate {
         request.merchantCapabilities = .capability3DS
         request.countryCode = "EG"
         request.currencyCode = MyUserDefaults.getValue(forKey: .currency) as! String
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: msg, amount: NSDecimalNumber(value: price))]
+        
+        if(MyUserDefaults.getValue(forKey: .currency) as! String == "USD"){
+            request.paymentSummaryItems = [PKPaymentSummaryItem(label: msg, amount: NSDecimalNumber(value: price))]
+        }else{
+            request.paymentSummaryItems = [PKPaymentSummaryItem(label: msg, amount: NSDecimalNumber(value: Double(Constants.convertPriceToEGP(priceToConv:String(price))) ?? 0.0))]
+        }
+        
+       
         
         let controller = PKPaymentAuthorizationViewController(paymentRequest: request)
                 
