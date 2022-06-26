@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import CoreData
 
 class WishlistViewController: UIViewController {
 
@@ -19,9 +20,9 @@ class WishlistViewController: UIViewController {
     //MARK: -- Properties
     var wishlistItems : [String] = []
     private var wishlistViewModel = WishlistViewModel(repo: Repository.shared(localDataSource: LocalDataSource.shared(managedContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)! , apiClient: ApiClient())!)
-    
     private var bag = DisposeBag()
-    
+    private var managedContext : NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
 
     //MARK: -- Lifecycle
     override func viewDidLoad() {
@@ -75,6 +76,18 @@ class WishlistViewController: UIViewController {
             
         })
     }
+    
+    func transformProduct(product: Favourites) -> CartProduct {
+        let cartEntity = CartProduct(context: self.managedContext)
+        cartEntity.productId = Int64(product.id)
+        cartEntity.productTitle = product.title
+        cartEntity.productImg = ""
+        cartEntity.productPrice = ""
+        cartEntity.productAmount = 1
+        cartEntity.customerEmail = "customerName"
+        cartEntity.vartiantId = 1
+        return cartEntity
+    }
 
 }
 
@@ -105,15 +118,18 @@ extension WishlistViewController : UITableViewDelegate, UITableViewDataSource{
                 print("\(selectedItem) removed")
                 wishlistCell.isAddedToCart = false
                 wishlistCell.changeButtonUI()
+                Constants.cartProductsList.remove(at: indexPath.row)
                 self.wishlistViewModel.deleteProductFromCart(deletedProductId: selectedItem.id , customerName: self.getUserEmail())
-            
                 
             }else{
                 print("\(self.wishlistViewModel.getFavouriteByIndex(index: indexPath.row)) added")
                 wishlistCell.isAddedToCart = true
                 wishlistCell.changeButtonUI()
                 self.wishlistViewModel.addToCart(product: self.castFavouriteToProduct(favourite: selectedItem),customerName: self.getUserEmail())
+                Constants.cartProductsList.append(self.transformProduct(product: self.wishlistViewModel.getFavouriteByIndex(index: indexPath.row)))
+                
             }
+        
            
         }
     
